@@ -4,13 +4,12 @@ import Inputs from "../Inputs";
 
 const AdminLogin = () => {
   return <div>
-<Inputs/>
-<Buttons name={"login"} color={"primary"}/>
-
+    <Inputs />
+    <Buttons name={"login"} color={"primary"} />
 
   </div>
-  
-  ;
+
+    ;
 };
 
 export default AdminLogin;

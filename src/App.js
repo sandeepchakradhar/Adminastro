@@ -12,14 +12,14 @@ function App() {
       <AdminLogin />
       <Icons />
       <Button2 name={"cancel"} color={"primary"} />
-      <Typography sx={{color:"info"}} color="info">khsbdvfkj</Typography>
+      <Typography sx={{ color: "info" }} color="info">khsbdvfkj</Typography>
 
-      <Modals 
-    
-      name1={"accept"}
-      name2={"cancel"}
-      color1={"primary"}
-      color2={"danger"}
+      <Modals
+        contents={"Are you sure you want to change status? "}
+        name1={"accept"}
+        name2={"cancel"}
+        color1={"primary"}
+        color2={"danger"}
 
       />
     </div>
