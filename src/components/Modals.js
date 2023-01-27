@@ -20,9 +20,8 @@ const style = {
   width: 400,
   bgcolor: "background.paper",
   border: "1px solid #000",
-
   boxShadow: 24,
-  p: 4,
+  pl: 2,
 };
 
 const Modals = ({ color1, color2, name1, name2, contents }) => {

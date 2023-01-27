@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-// import { red } from '@mui/material/colors';
-// import { green, purple } from '@mui/material/colors';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { ThemeProvider, createTheme,responsiveFontSizes } from "@mui/material/styles";
+
+import { ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 import Typography from '@mui/material/Typography';
 
@@ -19,21 +19,25 @@ const theme = createTheme({
   // },
   palette: {
     primary: {
-      main:"#FF1D1D",
+      main: "#FF1D1D",
     },
     secondary: {
       main: "#F8F7FF",
     },
-    danger:{
-      main:"#FF1D1D0A"
+    danger: {
+      main: "#FF1D1D0A"
     },
-    success:{
-      main:"#F8F7FF"
+    success: {
+      main: "#EAECEE"
     },
-    info:{
-      main:"#FF1D1D05"
+    info: {
+      main: "#FF1D1D05"
     }
-    
+    ,
+    error: {
+      main: "#586D95"
+    }
+
   },
 });
 
@@ -42,11 +46,11 @@ const theme = createTheme({
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
-  </React.StrictMode>
+  </BrowserRouter>
 );
 
 
