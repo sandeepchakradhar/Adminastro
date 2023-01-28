@@ -42,7 +42,7 @@ const Modals = ({ color1, color2, name1, name2, contents }) => {
 
 
 
-          <Typography className=" bg-danger" id="modal-modal-title" variant="h6" component="h2">
+          <Typography className=" bg-info" id="modal-modal-title" variant="h6" component="h2">
             confirm
           </Typography>
 
@@ -52,7 +52,7 @@ const Modals = ({ color1, color2, name1, name2, contents }) => {
             {contents}
           </Typography>
 
-          <div className=" bg-danger ml-20 mt-9  flex gap-2">
+          <div className=" bg-info ml-20 mt-9  flex gap-2">
 
             <Button2 className=" text-xs" name={name2} color={color2}></Button2>
             <Button2 name={name1} color={color1}></Button2>

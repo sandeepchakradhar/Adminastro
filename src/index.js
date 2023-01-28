@@ -5,12 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import {
+  ThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+} from "@mui/material/styles";
 
-import { ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material/styles";
-
-import Typography from '@mui/material/Typography';
-
-
+import Typography from "@mui/material/Typography";
 
 const theme = createTheme({
   // typography: {
@@ -22,33 +23,24 @@ const theme = createTheme({
       main: "#FF1D1D",
     },
     secondary: {
-      main: "#F8F7FF",
+      main: "#EAECEE",
     },
     danger: {
-      main: "#FF1D1D0A"
+      main: " rgba(255, 29, 29, 0.04)",
     },
-    success:{
-      main:"#586D95"
+    info: {
+      main: "#586D95",
     },
-    info:{
-      main:"#FF1D1D05"
-    },
-    error:{
-      main:"#FCFCFC"
-    },
-    warning:{
-      main:"#EAECEE"
-
-    ,
     error: {
-      main: "#586D95"
-    }
-
+      main: "#FCFCFC",
+    },
+    wite: {
+      main: "#FFFFFF",
+    },
   },
-}});
+});
 
 // theme = responsiveFontSizes(theme);
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -58,8 +50,6 @@ root.render(
     </ThemeProvider>
   </BrowserRouter>
 );
-
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
