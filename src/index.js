@@ -28,10 +28,16 @@ const theme = createTheme({
       main:"#FF1D1D0A"
     },
     success:{
-      main:"#F8F7FF"
+      main:"#586D95"
     },
     info:{
       main:"#FF1D1D05"
+    },
+    error:{
+      main:"#FCFCFC"
+    },
+    warning:{
+      main:"#EAECEE"
     }
     
   },

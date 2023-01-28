@@ -5,15 +5,19 @@ import Icons from "./components/Icons";
 import Button2 from "./components/Button2";
 import { Typography } from "@mui/material";
 import Modals from "./components/Modals";
+import HumanIcon from "./components/HumanIcon";
+import SideBar from "./components/SideBar";
 
 function App() {
   return (
     <div>
-      <AdminLogin />
+<SideBar/>
+
+      {/* <AdminLogin />
       <Icons />
       <Button2 name={"cancel"} color={"primary"} />
       <Typography sx={{color:"info"}} color="info">khsbdvfkj</Typography>
-
+<HumanIcon/>
       <Modals 
     
       name1={"accept"}
@@ -21,7 +25,7 @@ function App() {
       color1={"primary"}
       color2={"danger"}
 
-      />
+      /> */}
     </div>
   );
 }
