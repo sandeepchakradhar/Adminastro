@@ -19,12 +19,12 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "1px solid #000",
   boxShadow: 24,
-  p: 4,
+  pl: 2,
 };
 
-const Modals = ({ color1, color2, name1, name2 }) => {
+const Modals = ({ color1, color2, name1, name2, contents }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -39,23 +39,27 @@ const Modals = ({ color1, color2, name1, name2 }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div color="danger">
-            <Typography className=" text-cyan-500" id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-          </div>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+
+
+
+          <Typography className=" bg-danger" id="modal-modal-title" variant="h6" component="h2">
+            confirm
           </Typography>
 
-          <div className=" ml-20 mt-9  flex gap-2">
-          
+
+
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {contents}
+          </Typography>
+
+          <div className=" bg-danger ml-20 mt-9  flex gap-2">
+
             <Button2 className=" text-xs" name={name2} color={color2}></Button2>
             <Button2 name={name1} color={color1}></Button2>
           </div>
         </Box>
       </Modal>
-    </div>
+    </div >
   );
 };
 
