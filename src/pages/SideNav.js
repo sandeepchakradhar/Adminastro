@@ -95,10 +95,10 @@ const SideNav = () => {
               onClick={(e) => {
                 buttonFunction3(e);
               }}
-              to="/Dashboard/Experts"
+              to="/Dashboard/Payout"
             >
               <Button color="info" variants="text">
-                PayoutRequests
+                Payout Requests
               </Button>
             </Link>
           </Box>

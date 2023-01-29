@@ -1,23 +1,24 @@
 // import { Box, Button } from "@mui/material";
 import "./App.css";
 import AdminLogin from "./components/login/AdminLogin";
-import Icons from "./components/Icons";
-import Button2 from "./components/Button2";
-import { Button, Typography } from "@mui/material";
-import Modals from "./components/Modals";
-import DashboardBox from "./components/DashboardBox";
+// import Icons from "./components/Icons";
+// import Button2 from "./components/Button2";
+// import { Button, Typography } from "@mui/material";
+// import Modals from "./components/Modals";
+// import DashboardBox from "./components/DashboardBox";
 import { Routes, Route } from "react-router-dom";
-import AlertDialogSlide from "./components/Dialogs";
+// import AlertDialogSlide from "./components/Dialogs";
 import Experts from "./pages/Experts";
 import Dashboard from "./pages/Dashboard";
-import SideNav from "./pages/SideNav";
+// import SideNav from "./pages/SideNav";
 import Users from "./pages/Users";
-import Home from "./pages/Home"
+// import Home from "./pages/Home"
 import Language from "./pages/Language";
 import Admins from "./pages/Admins";
 import Banner from "./pages/Banner";
 import Recharge from "./pages/Recharge";
 import Specialization from "./pages/Specialization";
+import Payout from "./pages/Payout";
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
           <Route path="Recharge" element={<Recharge />} />
           <Route path="Users" element={<Users />} />
           <Route path="Specialization" element={<Specialization/>} />
+          <Route path="Payout" element={<Payout/>} />
         </Route>
       </Routes>
 
