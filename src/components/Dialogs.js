@@ -43,7 +43,7 @@ export default function AlertDialogSlide({ color1, color2, name1, name2, content
                         confirm
                     </Typography> */}
                 </DialogTitle>
-                <DialogContent>
+                <DialogContent className=' my-8'>
                     <DialogContentText id="alert-dialog-slide-description">
                         {contents}
 

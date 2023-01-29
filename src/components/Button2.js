@@ -1,12 +1,12 @@
 import React, { } from "react";
 import { Button, Typography } from "@mui/material";
 
-const Button2 = ({ name, color, variants }) => {
+const Button2 = ({ name, color, variants,handleClose }) => {
 
 
   return (
     <div>
-      <Button className=" text-xs" sx={{ padding: "10px 16px" }} variant={variants ? variants : "contained"} color={color}>
+      <Button onClick={handleClose} className=" text-xs" sx={{ padding: "10px 16px" }} variant={variants ? variants : "contained"} color={color}>
         <Typography variant="caption">
 
           {name}

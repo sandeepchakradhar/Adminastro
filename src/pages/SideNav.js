@@ -138,8 +138,20 @@ const SideNav = () => {
               </Button>
             </Link>
           </Box>
-
           <Box>
+            <Link
+              onClick={(e) => {
+                buttonFunction3(e);
+              }}
+              to="/Dashboard/Specialization"
+            >
+              <Button color="info" variants="text">
+                Specialization
+              </Button>
+            </Link>
+          </Box>
+
+          {/* <Box>
             <Button
               onClick={(e) => {
                 buttonFunction4(e);
@@ -149,7 +161,7 @@ const SideNav = () => {
             >
               Specialization
             </Button>
-          </Box>
+          </Box> */}
         </Stack>
       </Container>
     </div>

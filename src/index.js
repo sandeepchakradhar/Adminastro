@@ -25,6 +25,9 @@ const theme = createTheme({
     secondary: {
       main: "#EAECEE",
     },
+    success: {
+      main: "#F7F8FF",
+    },
     danger: {
       main: " rgba(255, 29, 29, 0.04)",
     },

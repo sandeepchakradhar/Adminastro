@@ -6,18 +6,17 @@
 // // import DialogContentText from '@mui/material/DialogContentText';
 // // import DialogTitle from '@mui/material/DialogTitle';
 
-
 // // const AddRecharge = () => {
 // //     const [open, setOpen] = React.useState(false);
 
 // //     const handleClickOpen = () => {
 // //       setOpen(true);
 // //     };
-  
+
 // //     const handleClose = () => {
 // //       setOpen(false);
 // //     };
-  
+
 // //   return <div>
 // //     <Button variant="outlined" onClick={handleClickOpen}>
 // //         Open alert dialog
@@ -44,14 +43,11 @@
 // //           </Button>
 // //         </DialogActions>
 // //       </Dialog>
-    
-
 
 // //   </div>;
 // // };
 
 // // export default AddRecharge;
-
 
 // import React from "react";
 // import { styled } from "@mui/material/styles";
@@ -77,11 +73,8 @@
 
 // const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-
-
 // const AddRecharge = () => {
 
- 
 //   const [open, setOpen] = React.useState(false);
 
 //   const handleClickOpen = () => {
@@ -223,7 +216,6 @@
 
 // export default AddRecharge;
 
-
 import React from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -231,7 +223,6 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 
 import IconButton from "@mui/material/IconButton";
-
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
@@ -248,11 +239,7 @@ import Button2 from "../components/Button2";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-
-
 const AddRecharge = () => {
-
-
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -265,15 +252,16 @@ const AddRecharge = () => {
 
   return (
     <div>
-
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle className=" bg-danger" id="alert-dialog-title">{"Add Recharge"}</DialogTitle>
-        <DialogContent>
+        <DialogTitle className=" bg-danger" id="alert-dialog-title">
+          {"Add Recharge"}
+        </DialogTitle>
+        <DialogContent className=" my-5">
           <DialogContentText id="alert-dialog-description">
             <Stack
               direction="column"
@@ -353,7 +341,7 @@ const AddRecharge = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions className=" bg-danger">
-          <Box >
+          <Box>
             <Button2 color={"wite"} name={"Cancel"} />
           </Box>
           <Box>
@@ -367,25 +355,27 @@ const AddRecharge = () => {
       </Dialog>
 
       <Card sx={{ width: "220px", height: "140px" }}>
-        <CardHeader
-          className=" text-primary"
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon
-                onClick={() => {
-                  handleClickOpen();
-                }}
-              />
-            </IconButton>
-          }
-          title="500 credits"
-        />
+        <div className=" bg-success">
+          <CardHeader
+            className=" text-primary"
+            action={
+              <IconButton aria-label="settings">
+                <MoreVertIcon
+                  onClick={() => {
+                    handleClickOpen();
+                  }}
+                />
+              </IconButton>
+            }
+            title="500 credits"
+          />
 
-        <CardContent className=" flex">
-          <CurrencyRupeeIcon className=" mt-1" />
-          <h6 className=" ml-2 text-2xl font-bold ">500</h6>
-        </CardContent>
-        <CardActions disableSpacing></CardActions>
+          <CardContent className=" flex">
+            <CurrencyRupeeIcon className=" mt-1" />
+            <h6 className=" ml-2 text-2xl font-bold ">500</h6>
+          </CardContent>
+          <CardActions disableSpacing></CardActions>
+        </div>
       </Card>
     </div>
   );

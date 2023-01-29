@@ -17,6 +17,7 @@ import Language from "./pages/Language";
 import Admins from "./pages/Admins";
 import Banner from "./pages/Banner";
 import Recharge from "./pages/Recharge";
+import Specialization from "./pages/Specialization";
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
         </Route>
       </Routes> */}
 
-<Button variant="contained" color="info" > sandeep</Button>
+
       <Routes>
         <Route path="/" element={<AdminLogin />} />
         <Route path="Dashboard" element={<Dashboard />}>
@@ -61,6 +62,7 @@ function App() {
           <Route path="Banner" element={<Banner />} />
           <Route path="Recharge" element={<Recharge />} />
           <Route path="Users" element={<Users />} />
+          <Route path="Specialization" element={<Specialization/>} />
         </Route>
       </Routes>
 
