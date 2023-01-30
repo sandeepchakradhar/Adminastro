@@ -1,9 +1,30 @@
-import React from 'react'
+import { Button } from "@mui/material";
+import React from "react";
+import AddBanner from "../components/AddBanner";
 
 const Banner = () => {
-  return (
-    <div>Banner</div>
-  )
-}
+  const [open, setOpen] = React.useState(false);
 
-export default Banner
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          handleClickOpen();
+        }}
+      >
+        Add Banner
+      </Button>
+      <AddBanner open={open} handleClose={handleClose} />
+    </div>
+  );
+};
+
+export default Banner;

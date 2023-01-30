@@ -1,13 +1,29 @@
-import React from 'react'
-import CustomizedTables from "../components/Tabels"
+import { Button } from "@mui/material";
+import React from "react";
+import ExpertFilterBy from "../components/ExpertFilterBy";
 
 const Experts = () => {
-    return (
-        <>
-            <CustomizedTables />
+  const [open, setOpen] = React.useState(false);
 
-        </>
-    )
-}
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-export default Experts
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          handleClickOpen();
+        }}
+      >
+        Add Expert
+      </Button>
+      <ExpertFilterBy open={open} handleClose={handleClose} />
+    </div>
+  );
+};
+
+export default Experts;

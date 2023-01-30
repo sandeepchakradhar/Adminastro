@@ -47,7 +47,7 @@ const AddSpecializationDialog = ({open, handleClose}) => {
               <div className=" flex  gap-2">
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Title 

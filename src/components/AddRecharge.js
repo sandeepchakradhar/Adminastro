@@ -107,7 +107,7 @@
 //               <div className=" flex gap-2">
 //                 <div>
 //                   <label
-//                     for="price"
+//                     htmlFor="price"
 //                     className="block text-sm font-medium text-gray-700"
 //                   >
 //                     Amount
@@ -129,7 +129,7 @@
 //                 </div>
 //                 <div>
 //                   <label
-//                     for="price"
+//                     htmlFor="price"
 //                     className="block text-sm font-medium text-gray-700"
 //                   >
 //                     Amount
@@ -153,7 +153,7 @@
 
 //               <div>
 //                 <label
-//                   for="price"
+//                   htmlFor="price"
 //                   className="block text-sm font-medium text-gray-700"
 //                 >
 //                   Offer text (optional)
@@ -272,7 +272,7 @@ const AddRecharge = () => {
               <div className=" flex gap-2">
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Amount
@@ -294,7 +294,7 @@ const AddRecharge = () => {
                 </div>
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Amount
@@ -318,7 +318,7 @@ const AddRecharge = () => {
 
               <div>
                 <label
-                  for="price"
+                  htmlFor="price"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Offer text (optional)

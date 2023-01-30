@@ -78,15 +78,15 @@ const SideNav = () => {
               </Button>
             </Link>
           </Box>
-          <Box>
+          <Box >
             <Link
               onClick={(e) => {
                 buttonFunction2(e);
               }}
-              to="/Dashboard/Experts"
+              to="/Dashboard/Callhistory"
             >
-              <Button color="info" variants="text">
-                Call History
+              <Button  color="info" variants="text">
+              Conference History
               </Button>
             </Link>
           </Box>
@@ -97,7 +97,7 @@ const SideNav = () => {
               }}
               to="/Dashboard/Payout"
             >
-              <Button color="info" variants="text">
+              <Button className=" " color="info" variants="text">
                 Payout Requests
               </Button>
             </Link>

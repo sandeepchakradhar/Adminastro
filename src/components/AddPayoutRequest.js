@@ -8,8 +8,20 @@ import { Stack } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { Box } from "@mui/system";
 import Button2 from "../components/Button2";
+import dayjs from "dayjs";
+
+import TextField from "@mui/material/TextField";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 const AddPayoutRequest = ({ open, handleClose }) => {
+  const [value, setValue] = React.useState(dayjs(""));
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
   return (
     <div>
       <Dialog
@@ -23,7 +35,8 @@ const AddPayoutRequest = ({ open, handleClose }) => {
         </DialogTitle>
         <DialogContent className=" my-5">
           <DialogContentText id="alert-dialog-description">
-            <Stack className=" "
+            <Stack
+              className=" "
               direction="column"
               justifyContent="space-evenly"
               alignItems="flex-start"
@@ -32,15 +45,13 @@ const AddPayoutRequest = ({ open, handleClose }) => {
               <div className=" flex gap-2">
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
-                   Request Amount
+                    Request Amount
                   </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    
-                    </div>
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
                     <input
                       type="text"
                       name="price"
@@ -52,57 +63,62 @@ const AddPayoutRequest = ({ open, handleClose }) => {
                 </div>
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Date
                   </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                      
-                    </div>
-                    <input
-                      type="text"
-                      name="price"
-                      id="price"
-                      className="block py-2 text-sm w-full rounded-md border border-secondary pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      placeholder="0.00"
-                    />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DesktopDatePicker
+                        inputFormat="DD/MM/YYYY"
+                        value={value}
+                        onChange={handleChange}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            sx={{ ".MuiInputBase-input": { padding: 1 } }}
+                          />
+                        )}
+                      />
+                    </LocalizationProvider>
                   </div>
                 </div>
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Amount
                   </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                     
-                    </div>
-                    <input
-                      type="text"
-                      name="price"
-                      id="price"
-                      className="block py-2 text-sm w-full rounded-md border border-secondary pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      placeholder="0.00"
-                    />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <TimePicker
+                        value={value}
+                        onChange={handleChange}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            sx={{ ".MuiInputBase-input": { padding: 1 } }}
+                          />
+                        )}
+                      />
+                    </LocalizationProvider>
                   </div>
                 </div>
               </div>
               <div className=" flex gap-2">
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Amount
+                    Bank Holder Name
                   </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    
-                    </div>
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
                     <input
                       type="text"
                       name="price"
@@ -114,15 +130,13 @@ const AddPayoutRequest = ({ open, handleClose }) => {
                 </div>
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Amount
+                    Account Number
                   </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    
-                    </div>
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
                     <input
                       type="text"
                       name="price"
@@ -134,10 +148,10 @@ const AddPayoutRequest = ({ open, handleClose }) => {
                 </div>
                 <div>
                   <label
-                    for="price"
+                    htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Amount
+                    IFSC Code
                   </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
                     <input
@@ -148,16 +162,11 @@ const AddPayoutRequest = ({ open, handleClose }) => {
                       placeholder="0.00"
                     />
                     <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center pl-3">
-                      <span className="text-gray-500 sm:text-xm text-xs">
-                        ₹{" "}
-                      </span>
+                      
                     </div>
                   </div>
                 </div>
               </div>
-
-              
-              
             </Stack>
           </DialogContentText>
         </DialogContent>
