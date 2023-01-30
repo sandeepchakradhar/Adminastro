@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import AddExpert from "../components/AddExpert";
 import ExpertFilterBy from "../components/ExpertFilterBy";
 
 const Experts = () => {
@@ -19,8 +20,16 @@ const Experts = () => {
           handleClickOpen();
         }}
       >
+        Filter Expert
+      </Button>
+      <Button
+        onClick={() => {
+          handleClickOpen();
+        }}
+      >
         Add Expert
       </Button>
+      <AddExpert/>
       <ExpertFilterBy open={open} handleClose={handleClose} />
     </div>
   );
