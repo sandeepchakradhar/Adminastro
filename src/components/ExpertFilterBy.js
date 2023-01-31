@@ -13,10 +13,10 @@ import dayjs from "dayjs";
 import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
-const ExpertFilterBy = ({ open, handleClose }) => {
+const ExpertFilterBy = ({ open1, handleClose1 }) => {
   // for from Date
   const [value1, setValue1] = React.useState(dayjs(""));
 
@@ -71,8 +71,8 @@ console.log(convert2(value2))
   return (
     <div>
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={open1}
+        onClose={handleClose1}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -214,7 +214,7 @@ console.log(convert2(value2))
         </DialogContent>
         <DialogActions className=" bg-danger">
           <Box>
-            <Button2 handleClose={handleClose} color={"wite"} name={"Cancel"} />
+            <Button2 handleClose={handleClose1} color={"wite"} name={"Cancel"} />
           </Box>
           <Box>
             <Button2 name={"Add"} />

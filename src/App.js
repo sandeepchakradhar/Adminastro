@@ -20,7 +20,7 @@ import Recharge from "./pages/Recharge";
 import Specialization from "./pages/Specialization";
 import Payout from "./pages/Payout";
 import ConferenceHistory from "./pages/ConferenceHistory";
-import AddExpert from "./components/AddExpert";
+
 
 
 function App() {
@@ -68,7 +68,7 @@ function App() {
           <Route path="Specialization" element={<Specialization/>} />
           <Route path="Payout" element={<Payout/>} />
           <Route path="Callhistory" element={<ConferenceHistory/>}/>
-          <Route path="AddExpert" element={<AddExpert/>}/>
+        
         </Route>
       </Routes>
 
