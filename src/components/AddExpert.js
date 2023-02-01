@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {
   Avatar,
+  Button,
+  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
@@ -11,6 +13,7 @@ import {
 import { Box, Stack } from "@mui/system";
 import { useForm } from "react-hook-form";
 import Button2 from "./Button2";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
@@ -40,7 +43,6 @@ const AddExpert = ({ open2, handleClose2 }) => {
   return (
     <>
       <Dialog
-      
         open={open2}
         onClose={handleClose2}
         aria-labelledby="alert-dialog-title"
@@ -61,7 +63,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                 onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}
               >
                 <div className="flex  gap-2">
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
@@ -78,7 +80,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
 
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
@@ -94,22 +96,22 @@ const AddExpert = ({ open2, handleClose2 }) => {
                       />
                     </div>
                   </div>
-                  <div className="inputs  p-5">
-                    <Avatar
+                  <div className="inputs mt-3  p-5 ">
+                    <Avatar 
                       alt="Remy Sharp"
                       src="https://media.licdn.com/dms/image/C4D03AQGTVuPCGh2c-w/profile-displayphoto-shrink_100_100/0/1650885404610?e=1680134400&v=beta&t=dU06dR-eGZGvBS5lcm7CoG9Q_1aNp1MAGGljv6jJN1s"
-                      sx={{ width: 100, height: 100 }}
+                      sx={{ width: 100, height: 100,  }}
                     />
                   </div>
                 </div>
 
                 <div className=" flex gap-2">
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Farher's Name
+                      Father's Name
                     </label>
                     <div className="relative mt-1 rounded-md shadow-sm">
                       <input
@@ -121,7 +123,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
 
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
@@ -130,9 +132,9 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </label>
                     <div className="relative mt-1 rounded-md shadow-sm">
                       <select
-                        className="block py-2 text-sm w-52  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Father's Name"
-                        {...register("FathersName", { required: true })}
+                        className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Gender"
+                        {...register("Gender", { required: true })}
                       >
                         <option value="">Select</option>
                         <option value="Male">Male</option>
@@ -143,7 +145,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
@@ -161,7 +163,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                       />
                     </div>
                   </div>
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
@@ -177,7 +179,12 @@ const AddExpert = ({ open2, handleClose2 }) => {
                           renderInput={(params) => (
                             <TextField
                               {...params}
-                              sx={{ ".MuiInputBase-input": { padding: 1 } }}
+                              sx={{
+                                ".MuiInputBase-input": {
+                                  padding: 1,
+                                  width: "110px",
+                                },
+                              }}
                             />
                           )}
                         />
@@ -187,7 +194,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                 </div>
 
                 <div className="flex gap-2">
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
@@ -203,7 +210,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                       />
                     </div>
                   </div>
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
@@ -212,7 +219,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </label>
                     <div className="relative mt-1 rounded-md shadow-sm">
                       <select
-                        className="block py-2 text-sm w-52  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder=""
                         {...register("ReportingTypes", { required: true })}
                       >
@@ -223,7 +230,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                       </select>
                     </div>
                   </div>
-                  <div className="inputs">
+                  <div className="inputs mt-3">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
@@ -232,7 +239,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </label>
                     <div className="relative mt-1 rounded-md shadow-sm">
                       <select
-                        className="block py-2 text-sm w-52  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder=""
                         {...register("NewsPaperName", { required: true })}
                       >
@@ -244,6 +251,298 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
+                <div className=" flex gap-2">
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Language
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <select
+                        className="block py-2 text-sm w-64  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder=""
+                        {...register("Language", { required: true })}
+                      >
+                        <option value="">Select</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="English">English</option>
+                        <option value="Bengali">Bengali</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Specialization
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <select
+                        className="block py-2 text-sm w-64  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder=""
+                        {...register("Specialization", { required: true })}
+                      >
+                        <option value="">Select</option>
+                        <option value="Denik Bhaskar">Denik Bhaskar</option>
+                        <option value="Patrika">Patrika</option>
+                        <option value="Nav Dunia">Nav Dunia</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2 ">
+                  <div className=" flex gap-2 mt-5">
+                    <div className="inputs mt-3  ">
+                      <div className=" inline relative  mt-2 rounded-md shadow-sm">
+                        <Checkbox
+                          sx={{ paddingTop: 1.2 }}
+                          id="rni"
+                          {...register("RNI", {})}
+                        />
+                      </div>
+                      <label
+                        htmlFor="rni"
+                        className=" inline  text-sm font-medium text-gray-700"
+                      >
+                        RNI
+                      </label>
+                    </div>
+                    <div className="inputs mt-3">
+                      <div className="relative mt-1 rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          id="price"
+                          className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                          placeholder="RNI Registration Number"
+                          {...register("RNIRegistrationNumber")}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Current Reporting Area
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Current Reporting Area"
+                        {...register("CurrentReportingArea")}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Aadhar No
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        id="price"
+                        className=" py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Aadhar No"
+                        {...register("AadharNo")}
+                      />
+                      <span className=" ml-1">
+                        <Button variant="contained" component="label">
+                          <FileUploadIcon />
+                          <input
+                            type="file"
+                            hidden
+                            {...register("AadharDocument")}
+                          />
+                        </Button>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Pancard No
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        className=" py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Pancard No"
+                        {...register("PancardNo")}
+                      />
+                      <span className=" ml-1">
+                        <Button variant="contained" component="label">
+                          <FileUploadIcon />
+                          <input
+                            type="file"
+                            hidden
+                            {...register("PancardDocument")}
+                          />
+                        </Button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Bank Holder Name
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Bank Holder Name"
+                        {...register("BankHolderName")}
+                      />
+                    </div>
+                  </div>
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Account No
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="1234XXXXX1234"
+                        {...register("AccountNo")}
+                      />
+                    </div>
+                  </div>
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      IFSC Code
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="ABCDXXXXXXXX "
+                        {...register("IFSCcode")}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Conference Charge
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="number"
+                        className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Enter Amount in rupees"
+                        {...register("ConferenceCsharge")}
+                      />
+                    </div>
+                  </div>
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Reporting History
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <select
+                        className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder=""
+                        {...register("ReportingHistory", { required: true })}
+                      >
+                        <option value="">Select</option>
+                        <option value="Daily News Paper">
+                          Daily News Paper
+                        </option>
+                        <option value="Weekly News Paper">
+                          Weekly News Paper
+                        </option>
+                        <option value="Monthly Paper">Monthly Paper</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Additional Documents
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <span className=" ml-1">
+                        <Button variant="contained" component="label">
+                          <FileUploadIcon />
+                          <input
+                            type="file"
+                            hidden
+                            {...register("AdditionalDocument")}
+                          />
+                        </Button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Permanent Address
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        className=" py-2 text-sm w-128 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Address"
+                        {...register("ParmnentAddress")}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <div className="inputs mt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Current Address
+                    </label>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        className=" py-2 text-sm w-128 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Address"
+                        {...register("CurrentAddress")}
+                      />
+                    </div>
+                  </div>
+                </div>
+                
                 {/* button */}
                 <div className=" flex mt-4 ">
                   <input type="submit" />
