@@ -22,6 +22,9 @@ import Payout from "./pages/Payout";
 import ConferenceHistory from "./pages/ConferenceHistory";
 import Analytics from "./pages/Analytics";
 import LoginOne from "./pages/LoginOne";
+import ForgotPasswordOne from "./pages/ForgotPasswordOne";
+import ForgotPasswordTwo from "./pages/ForgotPasswordtwo";
+import ForgotPasswordThree from "./pages/ForgotPasswordThree";
 
 
 
@@ -29,6 +32,33 @@ function App() {
 
   return (
     <div>
+      <Routes>
+        <Route path="/" element={<LoginOne />} />
+        <Route path="/forgotp1" element={<ForgotPasswordOne />} />
+        <Route path="/forgotp2" element={<ForgotPasswordTwo />} />
+        <Route path="/forgotp3" element={<ForgotPasswordThree />} />
+        <Route path="Dashboard" element={<Dashboard />}>
+          <Route path="Experts" element={<Experts />} />
+          <Route path="Language" element={<Language />} />
+          <Route path="Admins" element={<Admins />} />
+          <Route path="Banner" element={<Banner />} />
+          <Route path="Recharge" element={<Recharge />} />
+          <Route path="Users" element={<Users />} />
+          <Route path="Specialization" element={<Specialization/>} />
+          <Route path="Payout" element={<Payout/>} />
+          <Route path="Callhistory" element={<ConferenceHistory/>}/>
+          <Route path="Analytics" element={<Analytics/>}/>
+        
+        </Route>
+      </Routes>
+
+      
+    </div >
+  );
+}
+
+export default App;
+
 
       {/* <Icons />
       <Button2 name={"cancel"} color={"primary"} />
@@ -56,28 +86,3 @@ function App() {
           <Route path="/Users" element={<Users />} />
         </Route>
       </Routes> */}
-
-
-      <Routes>
-        <Route path="/" element={<LoginOne />} />
-        <Route path="Dashboard" element={<Dashboard />}>
-          <Route path="Experts" element={<Experts />} />
-          <Route path="Language" element={<Language />} />
-          <Route path="Admins" element={<Admins />} />
-          <Route path="Banner" element={<Banner />} />
-          <Route path="Recharge" element={<Recharge />} />
-          <Route path="Users" element={<Users />} />
-          <Route path="Specialization" element={<Specialization/>} />
-          <Route path="Payout" element={<Payout/>} />
-          <Route path="Callhistory" element={<ConferenceHistory/>}/>
-          <Route path="Analytics" element={<Analytics/>}/>
-        
-        </Route>
-      </Routes>
-
-      
-    </div >
-  );
-}
-
-export default App;

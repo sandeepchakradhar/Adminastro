@@ -1,12 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import EmojiPeople from "@mui/icons-material/EmojiPeople";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import KeyIcon from "@mui/icons-material/Key";
 import Buttons from "../components/Buttons";
 
-const LoginOne = () => {
-  const navigate = useNavigate();
+const ForgotPasswordOne = () => {
   return (
     <div className="container">
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -21,6 +19,9 @@ const LoginOne = () => {
           </div>
 
           <div className=" mt-56">
+            <div className=" block text-center mb-10 ">
+              <h5 className=" text-info ">Forgot Password</h5>
+            </div>
             <div className="relative mt-3 mb-3 rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
                 <span className="text-gray sm:text-xm text-xs">
@@ -33,7 +34,7 @@ const LoginOne = () => {
                 placeholder="Email"
               />
             </div>
-            <div className="relative mt-3 mb-3 rounded-md shadow-sm">
+            {/* <div className="relative mt-3 mb-3 rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
                 <span className="text-gray sm:text-xm text-xs">
                   <KeyIcon />
@@ -44,22 +45,18 @@ const LoginOne = () => {
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Password"
               />
-            </div>
+            </div> */}
           </div>
-          <div className=" block float-right">
+          <div className=" pt-1 ">
+            <Buttons name={"verify OTP"} navigate={"/forgotp3"}></Buttons>
+          </div>
+          <div className=" block float-right pt-4">
             <h5
-              className=" text-info cursor-pointer"
-              onClick={() => navigate("/forgotp1")}
+              className=" text-primary cursor-pointer"
+            
             >
-              Forgot Password?
+              Resend OTP
             </h5>
-          </div>
-          <div className=" pt-10 ">
-            <Buttons
-              name={"Login"}
-              navigate={"/Dashboard"}
-              
-            ></Buttons>
           </div>
         </div>
       </div>
@@ -67,4 +64,4 @@ const LoginOne = () => {
   );
 };
 
-export default LoginOne;
+export default ForgotPasswordOne;

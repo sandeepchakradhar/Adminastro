@@ -1,18 +1,20 @@
 import React from "react";
 import { Button, Typography } from "@mui/material";
-
-const Buttons = ({ name,color }) => {
+import { useNavigate } from "react-router-dom";
+const Buttons = (props) => {
+  const navigate= useNavigate();
   return (
     <>
       <Button
         sx={{ width: "384px", height: "50px" }}
         variant="contained"
-        color={color}
+        color={props.color}
+        onClick={()=> navigate(props.navigate)}
         
       >
         <Typography variant="caption">
 
-        {name}
+        {props.name}
         </Typography>
       </Button>
 

@@ -1,12 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import EmojiPeople from "@mui/icons-material/EmojiPeople";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import KeyIcon from "@mui/icons-material/Key";
 import Buttons from "../components/Buttons";
 
 const LoginOne = () => {
-  const navigate = useNavigate();
   return (
     <div className="container">
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -21,6 +19,9 @@ const LoginOne = () => {
           </div>
 
           <div className=" mt-56">
+          <div className=" block text-center mb-10 ">
+              <h5 className=" text-info ">Set New Password</h5>
+            </div>
             <div className="relative mt-3 mb-3 rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
                 <span className="text-gray sm:text-xm text-xs">
@@ -46,20 +47,9 @@ const LoginOne = () => {
               />
             </div>
           </div>
-          <div className=" block float-right">
-            <h5
-              className=" text-info cursor-pointer"
-              onClick={() => navigate("/forgotp1")}
-            >
-              Forgot Password?
-            </h5>
-          </div>
-          <div className=" pt-10 ">
-            <Buttons
-              name={"Login"}
-              navigate={"/Dashboard"}
-              
-            ></Buttons>
+         
+          <div className=" pt-1 ">
+            <Buttons name={"UPDATE PASSWORD"} navigate={"/Dashboard"}></Buttons>
           </div>
         </div>
       </div>
