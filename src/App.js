@@ -20,6 +20,7 @@ import Recharge from "./pages/Recharge";
 import Specialization from "./pages/Specialization";
 import Payout from "./pages/Payout";
 import ConferenceHistory from "./pages/ConferenceHistory";
+import Analytics from "./pages/Analytics";
 
 
 
@@ -68,6 +69,7 @@ function App() {
           <Route path="Specialization" element={<Specialization/>} />
           <Route path="Payout" element={<Payout/>} />
           <Route path="Callhistory" element={<ConferenceHistory/>}/>
+          <Route path="Analytics" element={<Analytics/>}/>
         
         </Route>
       </Routes>

@@ -65,6 +65,13 @@ const SideNav = () => {
             </Link>
           </Box>
           <Box>
+            <Link to="/Dashboard/Analytics">
+              <Button color="info" variants="text">
+                Dashboard
+              </Button>
+            </Link>
+          </Box>
+          <Box>
             <Link to="/Dashboard/Users">
               <Button color="info" variants="text">
                 Users

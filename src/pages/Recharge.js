@@ -10,8 +10,8 @@ const Recharge = () => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
-          spacing={{ xs: 1, md: 3 }}
-          columns={{ xs: 3, sm: 8, md: 12 }}
+          spacing={{ xs: -1, md: -5 }}
+          columns={{ xs:3, sm: 8, md: 12  }}
         >
           {Array.from(Array(5)).map((_, index) => (
             <Grid xs={2} sm={4} md={4} key={index}>

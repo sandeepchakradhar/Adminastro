@@ -4,6 +4,8 @@ import { Outlet, Link } from "react-router-dom";
 import SideNav from "./SideNav";
 import AlertDialogSlide from "../components/Dialogs";
 import Header from "../components/Header";
+import "../components/Header.css";
+
 const Dashboard = () => {
   return (
     <>
@@ -16,11 +18,12 @@ const Dashboard = () => {
         name2={"cancel"}
         color1={"primary"}
     color2={"wite"} /> */}
-      <div>
-        
-        <Outlet />
-      </div>
 
+        <div className="header">
+          <Header />
+
+          <Outlet />
+        </div>
       </div>
     </>
   );
