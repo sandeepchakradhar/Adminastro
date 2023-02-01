@@ -40,6 +40,9 @@ const theme = createTheme({
     wite: {
       main: "#FFFFFF",
     },
+    gray: {
+      main: "#d1d5db",
+    },
   },
 });
 

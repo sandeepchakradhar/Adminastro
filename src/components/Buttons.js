@@ -5,7 +5,7 @@ const Buttons = ({ name,color }) => {
   return (
     <>
       <Button
-        sx={{ width: "400px", height: "50px" }}
+        sx={{ width: "384px", height: "50px" }}
         variant="contained"
         color={color}
         

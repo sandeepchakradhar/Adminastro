@@ -16,6 +16,7 @@ module.exports = {
       info: "#586D95",
       error: "#FCFCFC",
       wite: "#FFFFFF",
+      gray: "#d1d5db",
     },
     fontFamily: {
       sans: ["Graphik", "sans-serif"],

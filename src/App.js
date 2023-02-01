@@ -21,6 +21,7 @@ import Specialization from "./pages/Specialization";
 import Payout from "./pages/Payout";
 import ConferenceHistory from "./pages/ConferenceHistory";
 import Analytics from "./pages/Analytics";
+import LoginOne from "./pages/LoginOne";
 
 
 
@@ -58,7 +59,7 @@ function App() {
 
 
       <Routes>
-        <Route path="/" element={<AdminLogin />} />
+        <Route path="/" element={<LoginOne />} />
         <Route path="Dashboard" element={<Dashboard />}>
           <Route path="Experts" element={<Experts />} />
           <Route path="Language" element={<Language />} />
