@@ -3,9 +3,13 @@ import EmojiPeople from "@mui/icons-material/EmojiPeople";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import KeyIcon from "@mui/icons-material/Key";
 import Buttons from "../components/Buttons";
+import { Box } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPasswordOne = () => {
+  const navigate = useNavigate();
   return (
+
     <div className="container">
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className=" mt-10 ml-10">
@@ -48,7 +52,10 @@ const ForgotPasswordOne = () => {
             </div> */}
           </div>
           <div className=" pt-1 ">
-            <Buttons name={"verify OTP"} navigate={"/forgotp3"}></Buttons>
+          <Box onClick={() => navigate("/forgotp3")}>
+
+            <Buttons name={"verify OTP"} ></Buttons>
+            </Box>
           </div>
           <div className=" block float-right pt-4">
             <h5

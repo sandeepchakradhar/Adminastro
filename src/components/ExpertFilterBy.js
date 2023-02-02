@@ -65,8 +65,11 @@ function convert2(value2) {
   return [date.getFullYear(), mnth, day].join("-");
 }
 
-console.log(convert1(value1))
-console.log(convert2(value2))
+console.log(convert1(value1), " date from")
+console.log(convert2(value2), "Date to")
+console.log(age,"age" )
+console.log(status,"status" )
+console.log(gender,"gender" )
 
   return (
     <div>

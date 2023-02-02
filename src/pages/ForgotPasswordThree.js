@@ -49,7 +49,7 @@ const LoginOne = () => {
           </div>
          
           <div className=" pt-1 ">
-            <Buttons name={"UPDATE PASSWORD"} navigate={"/Dashboard"}></Buttons>
+            <Buttons name={"UPDATE PASSWORD"} navigate={"/"}></Buttons>
           </div>
         </div>
       </div>
