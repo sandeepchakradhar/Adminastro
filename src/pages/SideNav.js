@@ -60,7 +60,7 @@ const SideNav = () => {
           spacing={2}
         >
           <Box>
-            <Link to="/Dashboard">
+            <Link to="/Dashboard/Admins">
               <Button variants="text"> Home</Button>
             </Link>
           </Box>

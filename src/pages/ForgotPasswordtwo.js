@@ -5,6 +5,7 @@ import KeyIcon from "@mui/icons-material/Key";
 import Buttons from "../components/Buttons";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import { Dialpad } from "@mui/icons-material";
 
 const ForgotPasswordOne = () => {
   const navigate = useNavigate();
@@ -29,13 +30,13 @@ const ForgotPasswordOne = () => {
             <div className="relative mt-3 mb-3 rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
                 <span className="text-gray sm:text-xm text-xs">
-                  <DraftsIcon />
+                  {/* <Dialpad /> */}
                 </span>
               </div>
               <input
-                type="email"
+                type="tel"
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                placeholder="Email"
+                placeholder="Enter OTP"
               />
             </div>
             {/* <div className="relative mt-3 mb-3 rounded-md shadow-sm">

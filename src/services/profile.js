@@ -17,9 +17,20 @@ export const profileApi = createApi({
     }),
 
     getProfile: builder.query({
-      query: () => {
+      query: (token) => {
         return {
           url: "getProfile",
+          method: "GET",
+          headers: {
+            'authorization': `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    hello: builder.query({
+      query: () => {
+        return {
+          url: "hello",
           method: "GET",
         };
       },
@@ -41,4 +52,5 @@ export const profileApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetProfileQuery, useLoginMutation } = profileApi;
+export const { useGetProfileQuery, useLoginMutation, useHelloQuery } =
+  profileApi;

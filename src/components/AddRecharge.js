@@ -341,7 +341,7 @@ const AddRecharge = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions className=" bg-danger">
-          <Box>
+          <Box onClick={()=> handleClose()}>
             <Button2
             
               color={"wite"}

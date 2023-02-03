@@ -16,7 +16,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
-const ExpertFilterBy = ({ open1, handleClose1 }) => {
+const UserFilterBy = ({ open1, handleClose1 }) => {
   // for from Date
   const [value1, setValue1] = React.useState(dayjs(""));
 
@@ -88,7 +88,7 @@ const ExpertFilterBy = ({ open1, handleClose1 }) => {
               alignItems="flex-start"
               spacing={4}
             >
-              <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="   gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <div className="">
                   <label
                     htmlFor="demo-simple-select-label"
@@ -163,14 +163,14 @@ const ExpertFilterBy = ({ open1, handleClose1 }) => {
                   Member Since
                 </label>
               </div>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <label
+                  htmlFor="price"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  From
+                </label>
                 <div>
-                  <label
-                    htmlFor="price"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    From
-                  </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -233,4 +233,4 @@ const ExpertFilterBy = ({ open1, handleClose1 }) => {
   );
 };
 
-export default ExpertFilterBy;
+export default UserFilterBy;

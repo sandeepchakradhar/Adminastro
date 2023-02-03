@@ -2,10 +2,14 @@ import { Button } from "@mui/material";
 import React from "react";
 import AddExpert from "../components/AddExpert";
 import ExpertFilterBy from "../components/ExpertFilterBy";
+import { useHelloQuery } from "../services/profile";
 
 const Experts = () => {
-
   // for filter by
+
+  const { data } = useHelloQuery();
+
+  console.log(data, "jhbds");
   const [open1, setOpen1] = React.useState(false);
 
   const handleClickOpen1 = () => {
@@ -16,7 +20,7 @@ const Experts = () => {
     setOpen1(false);
   };
 
-// for Add Expert
+  // for Add Expert
   const [open2, setOpen2] = React.useState(false);
 
   const handleClickOpen2 = () => {
@@ -37,7 +41,6 @@ const Experts = () => {
       </Button>
       <ExpertFilterBy open1={open1} handleClose1={handleClose1} />
 
-
       <Button
         onClick={() => {
           handleClickOpen2();
@@ -45,7 +48,7 @@ const Experts = () => {
       >
         Add Expert
       </Button>
-      <AddExpert open2={open2} handleClose2={handleClose2}/>
+      <AddExpert open2={open2} handleClose2={handleClose2} />
     </div>
   );
 };
