@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import AddBanner from "../components/AddBanner";
+import HeaderTwo from "../components/HeaderTwo";
 
 const Banner = () => {
   const [open, setOpen] = React.useState(false);
@@ -15,6 +16,8 @@ const Banner = () => {
 
   return (
     <div>
+      <HeaderTwo header={"Banners"}/>
+
       <Button
         onClick={() => {
           handleClickOpen();

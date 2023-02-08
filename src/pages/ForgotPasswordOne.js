@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import EmojiPeople from "@mui/icons-material/EmojiPeople";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import KeyIcon from "@mui/icons-material/Key";
 import DialpadIcon from "@mui/icons-material/Dialpad";
 
 import Buttons from "../components/Buttons";
@@ -9,8 +7,10 @@ import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 
 const ForgotPasswordOne = () => {
-
+  const [number, setNumber] = useState("");
   const navigate = useNavigate();
+  console.log("number", number);
+
   return (
     <div className="container">
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -35,6 +35,7 @@ const ForgotPasswordOne = () => {
                 </span>
               </div>
               <input
+                onChange={(e) => setNumber(e.target.value)}
                 type="tel"
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Registered Number"
@@ -55,11 +56,9 @@ const ForgotPasswordOne = () => {
           </div>
           <div className=" pt-1 ">
             <Box onClick={() => navigate("/forgotp2")}>
-
-            <Buttons name={"Send OTP"}></Buttons>
+              <Buttons name={"Send OTP"}></Buttons>
             </Box>
           </div>
-          
         </div>
       </div>
     </div>

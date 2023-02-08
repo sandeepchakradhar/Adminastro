@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import React from "react";
 import AddLanguage from "../components/AddLanguage";
+import HeaderTwo from "../components/HeaderTwo";
 
 
 
@@ -22,6 +23,8 @@ const Language = () => {
 
   return (
     <div>
+      <HeaderTwo header={"Languages"}/>
+
       <Button
         onClick={() => {
           handleClickOpen();

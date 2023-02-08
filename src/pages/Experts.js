@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 import AddExpert from "../components/AddExpert";
 import ExpertFilterBy from "../components/ExpertFilterBy";
+import HeaderTwo from "../components/HeaderTwo";
 import { useHelloQuery } from "../services/profile";
 
 const Experts = () => {
@@ -32,6 +33,8 @@ const Experts = () => {
   };
   return (
     <div>
+      <HeaderTwo header={"Experts"}/>
+
       <Button
         onClick={() => {
           handleClickOpen1();

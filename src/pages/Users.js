@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import HeaderTwo from "../components/HeaderTwo";
 import CustomizedTables from "../components/Tabels";
 import UserFilterBy from "../components/UserFilterBy";
 
@@ -17,6 +18,7 @@ const Users = () => {
 
   return (
     <div>
+      <HeaderTwo header={"Users"}/>
          <Button
         onClick={() => {
           handleClickOpen1();

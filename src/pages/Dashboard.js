@@ -1,8 +1,6 @@
-import { Box } from "@mui/material";
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import SideNav from "./SideNav";
-import AlertDialogSlide from "../components/Dialogs";
 import Header from "../components/Header";
 import "../components/Header.css";
 

@@ -1,18 +1,10 @@
 import React, { useRef, useState } from "react";
 import EmojiPeople from "@mui/icons-material/EmojiPeople";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import KeyIcon from "@mui/icons-material/Key";
 import Buttons from "../components/Buttons";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import Dialpad from "@mui/icons-material/Dialpad";
 
-const LoginOne = () => {
-
-  
-
-
-
+const ForgotPasswordThree = () => {
   const navigate = useNavigate();
   const [confirm1, setConfirm1] = useState("");
   const [confirm2, setConfirm2] = useState("");
@@ -43,7 +35,6 @@ const LoginOne = () => {
                 </span>
               </div>
               <input
-              
                 type="tel"
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder=" New Password"
@@ -57,7 +48,6 @@ const LoginOne = () => {
                 </span>
               </div>
               <input
-            
                 type="Password"
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Confirm New Password"
@@ -77,4 +67,4 @@ const LoginOne = () => {
   );
 };
 
-export default LoginOne;
+export default ForgotPasswordThree;

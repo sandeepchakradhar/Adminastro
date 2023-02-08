@@ -45,6 +45,11 @@ const ExpertFilterBy = ({ open1, handleClose1 }) => {
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
   };
+  // For reporting Type
+  const [type, setType] = React.useState("");
+  const handleTypeChange = (event) => {
+    setType(event.target.value);
+  };
 
   console.log(value1.$d, "first");
 
@@ -67,6 +72,7 @@ const ExpertFilterBy = ({ open1, handleClose1 }) => {
   console.log(age, "age");
   console.log(status, "status");
   console.log(gender, "gender");
+  console.log(type, "Repoting Type");
 
   return (
     <div>
@@ -132,6 +138,30 @@ const ExpertFilterBy = ({ open1, handleClose1 }) => {
                       <MenuItem value={"Male"}>Male</MenuItem>
                       <MenuItem value={"Female"}>Female</MenuItem>
                       <MenuItem value={"Other"}>Others</MenuItem>
+                    </Select>
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="demo-simple-select-label"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Reporting Type
+                  </label>
+                  <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                    <Select
+                      className=" w-40  h-11"
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={type}
+                      label="Reporting Type"
+                      onChange={handleTypeChange}
+                    >
+                      <MenuItem value={"Crime"}>Crime</MenuItem>
+                      <MenuItem value={"Politics"}>Politics</MenuItem>
+                      <MenuItem value={"Civil"}>Civil</MenuItem>
                     </Select>
                   </div>
                 </div>

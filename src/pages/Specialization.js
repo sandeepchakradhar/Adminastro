@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import AddSpecializationDialog from "../components/AddSpecializationDialog";
+import HeaderTwo from "../components/HeaderTwo";
 
 const Specialization = () => {
   const [open, setOpen] = React.useState(false);
@@ -14,6 +15,8 @@ const Specialization = () => {
   };
   return (
     <div>
+      <HeaderTwo header={"Specialization"} />
+
       <Button
         onClick={() => {
           handleClickOpen();

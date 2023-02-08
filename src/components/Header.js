@@ -20,7 +20,7 @@ const Header = () => {
   };
   return (
     <div>
-      <div className=" border-b  border-secondary bg-danger   h-20 ">
+      <div className=" border-b  border-secondary bg-wite   h-20 ">
         
         <Button
           onClick={()=>handleLogout()}

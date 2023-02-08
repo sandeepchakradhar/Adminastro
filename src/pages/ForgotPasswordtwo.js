@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import EmojiPeople from "@mui/icons-material/EmojiPeople";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import KeyIcon from "@mui/icons-material/Key";
 import Buttons from "../components/Buttons";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import { Dialpad } from "@mui/icons-material";
 
-const ForgotPasswordOne = () => {
+const ForgotPasswordtwo = () => {
+  const [otp, setOtp] = useState("");
+  console.log("OTP ", otp);
+
   const navigate = useNavigate();
   return (
-
     <div className="container">
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className=" mt-10 ml-10">
@@ -34,6 +33,7 @@ const ForgotPasswordOne = () => {
                 </span>
               </div>
               <input
+                onChange={(e) => setOtp(e.target.value)}
                 type="tel"
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Enter OTP"
@@ -53,18 +53,12 @@ const ForgotPasswordOne = () => {
             </div> */}
           </div>
           <div className=" pt-1 ">
-          <Box onClick={() => navigate("/forgotp3")}>
-
-            <Buttons name={"verify OTP"} ></Buttons>
+            <Box onClick={() => navigate("/forgotp3")}>
+              <Buttons name={"verify OTP"}></Buttons>
             </Box>
           </div>
           <div className=" block float-right pt-4">
-            <h5
-              className=" text-primary cursor-pointer"
-            
-            >
-              Resend OTP
-            </h5>
+            <h5 className=" text-primary cursor-pointer">Resend OTP</h5>
           </div>
         </div>
       </div>
@@ -72,4 +66,4 @@ const ForgotPasswordOne = () => {
   );
 };
 
-export default ForgotPasswordOne;
+export default ForgotPasswordtwo;
