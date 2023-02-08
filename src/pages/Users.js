@@ -24,7 +24,7 @@ const Users = () => {
           handleClickOpen1();
         }}
       >
-        Filter Expert
+        Filter User
       </Button>
       <UserFilterBy open1={open1} handleClose1={handleClose1} />
 

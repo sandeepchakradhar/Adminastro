@@ -57,20 +57,20 @@ const AddExpert = ({ open2, handleClose2 }) => {
               direction="column"
               justifyContent="space-evenly"
               alignItems="flex-start"
-              spacing={4}
+              
             >
               <form
                 onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}
               >
-                <div className="flex  gap-2">
-                  <div className="inputs mt-3">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="inputs mt-3 ">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Full Name
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -80,14 +80,14 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
 
-                  <div className="inputs mt-3">
+                  <div className="inputs mt-3 ">
                     <label
                       htmlFor="price"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Contact
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="number"
                         className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -96,16 +96,16 @@ const AddExpert = ({ open2, handleClose2 }) => {
                       />
                     </div>
                   </div>
-                  <div className="inputs mt-3  p-5 ">
+                  <div className="inputs mt-3  pl-5  ">
                     <Avatar 
-                      alt="Remy Sharp"
+                      alt="Sandeep"
                       src="https://media.licdn.com/dms/image/C4D03AQGTVuPCGh2c-w/profile-displayphoto-shrink_100_100/0/1650885404610?e=1680134400&v=beta&t=dU06dR-eGZGvBS5lcm7CoG9Q_1aNp1MAGGljv6jJN1s"
                       sx={{ width: 100, height: 100,  }}
                     />
                   </div>
                 </div>
 
-                <div className=" flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -113,7 +113,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Father's Name
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -130,7 +130,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Gender
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <select
                         className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="Gender"
@@ -144,7 +144,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -152,7 +152,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Age
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         name="Age"
@@ -170,7 +170,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Experience Since
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DesktopDatePicker
                           inputFormat="DD/MM/YYYY"
@@ -193,7 +193,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -201,7 +201,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Email Id
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -217,7 +217,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Reporting Types
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <select
                         className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder=""
@@ -237,7 +237,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       News Paper Name
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <select
                         className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder=""
@@ -251,7 +251,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
-                <div className=" flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-2">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -259,7 +259,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Language
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <select
                         className="block py-2 text-sm w-64  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder=""
@@ -279,7 +279,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Specialization
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <select
                         className="block py-2 text-sm w-64  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder=""
@@ -293,10 +293,10 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2 ">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-2">
                   <div className=" flex gap-2 mt-5">
-                    <div className="inputs mt-3  ">
-                      <div className=" inline relative  mt-2 rounded-md shadow-sm">
+                    <div className=" flex gap-2 inputs mt-2">
+                      <div className=" inline relative   ">
                         <Checkbox
                           sx={{ paddingTop: 1.2 }}
                           id="rni"
@@ -305,13 +305,13 @@ const AddExpert = ({ open2, handleClose2 }) => {
                       </div>
                       <label
                         htmlFor="rni"
-                        className=" inline  text-sm font-medium text-gray-700"
+                        className=" my-auto text-sm font-medium text-gray-700"
                       >
                         RNI
                       </label>
                     </div>
                     <div className="inputs mt-3">
-                      <div className="relative mt-1 rounded-md shadow-sm">
+                      <div className="">
                         <input
                           type="text"
                           id="price"
@@ -329,7 +329,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Current Reporting Area
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -339,7 +339,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -347,7 +347,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Aadhar No
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         id="price"
@@ -374,7 +374,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Pancard No
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         className=" py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -394,7 +394,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -402,7 +402,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Bank Holder Name
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -418,7 +418,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Account No
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -434,7 +434,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       IFSC Code
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
                         className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -444,7 +444,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -452,12 +452,12 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Conference Charge
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="number"
                         className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="Enter Amount in rupees"
-                        {...register("ConferenceCsharge")}
+                        {...register("ConferenceCharge")}
                       />
                     </div>
                   </div>
@@ -468,7 +468,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Reporting History
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <select
                         className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder=""
@@ -492,7 +492,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Additional Documents
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <span className=" ml-1">
                         <Button variant="contained" component="label">
                           <FileUploadIcon />
@@ -506,7 +506,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -514,17 +514,17 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Permanent Address
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
-                        className=" py-2 text-sm w-128 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className=" py-2 text-sm lg:w-128 md:w-96 sm:w-80 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="Address"
                         {...register("ParmnentAddress")}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                   <div className="inputs mt-3">
                     <label
                       htmlFor="price"
@@ -532,10 +532,10 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     >
                       Current Address
                     </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="">
                       <input
                         type="text"
-                        className=" py-2 text-sm w-128 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className=" py-2 text-sm lg:w-128 md:w-96  sm:w-80 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="Address"
                         {...register("CurrentAddress")}
                       />

@@ -3,7 +3,8 @@ import HeaderTwo from "../components/HeaderTwo";
 
 const ConferenceHistory = () => {
   return <div>
-      <HeaderTwo header={"Conference History"}/>
+    
+      <HeaderTwo header={"History"}/>
     
     ConferenceHistory</div>;
 };

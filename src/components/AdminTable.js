@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -43,6 +43,9 @@ const rows = [
 ];
 
 const  AdminTable=({data})=> {
+  const [nobe, setNobe] = useState("")
+  console.log(nobe,"switch")
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -61,7 +64,7 @@ const  AdminTable=({data})=> {
               <StyledTableCell component="th" scope="row" >{data?.user?.name}</StyledTableCell>
               <StyledTableCell align="right">{new Date(data?.user?.updatedAt)?.toDateString()}</StyledTableCell>
               <StyledTableCell align="right"><EditIcon/></StyledTableCell>
-              <StyledTableCell align="right"> <Switch /></StyledTableCell>
+              <StyledTableCell align="right"> <Switch onChange={(e)=> setNobe(e.target.value)} /></StyledTableCell>
               
             
             </StyledTableRow>
