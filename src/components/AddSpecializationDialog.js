@@ -14,7 +14,19 @@ import Button2 from "../components/Button2";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const AddSpecializationDialog = ({open, handleClose}) => {
+
+   // For specialization change
+   const [specialization,setSpecialization] = React.useState("");
+   const handleSpecializationChange = (event) => {
+    setSpecialization(event.target.value);
+   };
  
+
+  
+ 
+ console.log(specialization ,"specialization")
+ 
+
 
   return (
 
@@ -59,6 +71,8 @@ const AddSpecializationDialog = ({open, handleClose}) => {
                       </span>
                     </div>
                     <input
+                    value={specialization}
+                    onChange={handleSpecializationChange}
                       type="text"
                       name="price"
                       id="price"
@@ -69,7 +83,9 @@ const AddSpecializationDialog = ({open, handleClose}) => {
                 </div>
                 
               <div className=" px-4 mt-5">
-                <Checkbox {...label} />
+                <Checkbox 
+                
+                 {...label} />
                 <span className="mt-3"> RCI</span>
               </div>
               </div>

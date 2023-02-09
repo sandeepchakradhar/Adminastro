@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -9,8 +8,14 @@ import Stack from "@mui/material/Stack";
 import React from "react";
 import Button2 from "./Button2";
 
-
 const AddLanguage = ({ open, handleClose }) => {
+  // For language change
+  const [language, setLanguage] = React.useState("");
+  const handleLanguageChange = (event) => {
+    setLanguage(event.target.value);
+  };
+
+  console.log(language,"lankjbsdskb")
   return (
     <div>
       <Dialog
@@ -36,7 +41,7 @@ const AddLanguage = ({ open, handleClose }) => {
                     htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Language
+                    Title
                   </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -45,6 +50,8 @@ const AddLanguage = ({ open, handleClose }) => {
                       </span>
                     </div>
                     <input
+                      value={language}
+                      onChange={handleLanguageChange}
                       type="text"
                       name="price"
                       id="price"
