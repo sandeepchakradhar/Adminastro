@@ -1,5 +1,5 @@
-import { Image } from "@mui/icons-material";
-import { Box, Button, Stack, Typography } from "@mui/material";
+// import { Image } from "@mui/icons-material";
+import { Box, Stack, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -24,7 +24,6 @@ const SideNav = () => {
   //   console.log("first", e);
   // };
 
-
   // for button hover
 
   //  const ButtonStyle= {
@@ -38,8 +37,6 @@ const SideNav = () => {
   //   },
   // }
 
-  
-
   //  for active navlink
 
   const navLinkStyles = ({ isActive }) => {
@@ -48,7 +45,6 @@ const SideNav = () => {
       textDecoration: isActive ? "none" : "",
       color: isActive ? "white" : "",
       backgroundColor: isActive ? "red" : "",
-      
     };
   };
 
@@ -86,74 +82,100 @@ const SideNav = () => {
           alignItems="flex-start"
           spacing={2}
         >
-          <Box className=" my-6">
-            <NavLink style={navLinkStyles}  className="  h-5 w-10   mb-6 bg-success  rounded-sm text-info  hover:text-primary"  to="/Dashboard/Admins">
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Admins"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
               Home
-            </NavLink>
-          </Box> 
-          <Box >
-            <NavLink  style={navLinkStyles}  className=" bg-success rounded-sm text-info  hover:text-primary"to="/Dashboard/Analytics">
-              
-                Dashboard
-            
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink  to="/Dashboard/Users">
-              
-                Users
-            
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink to="/Dashboard/Experts">
-              
-                Experts
-              
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink to="/Dashboard/Callhistory">
-              
-                Conference History
-            
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink to="/Dashboard/Payout">
-              
-                Payout Requests
-              
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink to="/Dashboard/Banner">
-              
-                Banner
-            
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink to="/Dashboard/Language">
-              
-                Language
-              
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink to="/Dashboard/Recharge">
-              
-                Recharge
-            
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink to="/Dashboard/Specialization">
-              
-                Specialization
-            
-            </NavLink>
-          </Box>
+            </Box>
+          </NavLink>
+
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Analytics"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Dashboard
+            </Box>
+          </NavLink>
+
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Users"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Users
+            </Box>
+          </NavLink>
+
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Experts"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Experts
+            </Box>
+          </NavLink>
+
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Callhistory"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Conference History
+            </Box>
+          </NavLink>
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Payout"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Payout Requests
+            </Box>
+          </NavLink>
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Banner"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Banner
+            </Box>
+          </NavLink>
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Language"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Language
+            </Box>
+          </NavLink>
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Recharge"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Recharge
+            </Box>
+          </NavLink>
+          <NavLink
+            style={navLinkStyles}
+            className=" bg-success rounded-lg text-info  hover:text-primary"
+            to="/Dashboard/Specialization"
+          >
+            <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
+              Specialization
+            </Box>
+          </NavLink>
 
           {/* <Box>
             <Button
