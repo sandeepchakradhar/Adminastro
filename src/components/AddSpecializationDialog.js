@@ -13,23 +13,16 @@ import Button2 from "../components/Button2";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-const AddSpecializationDialog = ({open, handleClose}) => {
-
-   // For specialization change
-   const [specialization,setSpecialization] = React.useState("");
-   const handleSpecializationChange = (event) => {
+const AddSpecializationDialog = ({ open, handleClose }) => {
+  // For specialization change
+  const [specialization, setSpecialization] = React.useState("");
+  const handleSpecializationChange = (event) => {
     setSpecialization(event.target.value);
-   };
- 
+  };
 
-  
- 
- console.log(specialization ,"specialization")
- 
-
+  console.log(specialization, "specialization");
 
   return (
-
     <div>
       {/* <Button
         onClick={() => {
@@ -62,7 +55,7 @@ const AddSpecializationDialog = ({open, handleClose}) => {
                     htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Title 
+                    Title
                   </label>
                   <div className="relative mt-1 rounded-md shadow-sm">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -71,8 +64,8 @@ const AddSpecializationDialog = ({open, handleClose}) => {
                       </span>
                     </div>
                     <input
-                    value={specialization}
-                    onChange={handleSpecializationChange}
+                      value={specialization}
+                      onChange={handleSpecializationChange}
                       type="text"
                       name="price"
                       id="price"
@@ -81,24 +74,18 @@ const AddSpecializationDialog = ({open, handleClose}) => {
                     />
                   </div>
                 </div>
-                
-              <div className=" px-4 mt-5">
-                <Checkbox 
-                
-                 {...label} />
-                <span className="mt-3"> RCI</span>
-              </div>
+
+                <div className=" px-4 mt-5">
+                  <Checkbox {...label} />
+                  <span className="mt-3"> RCI</span>
+                </div>
               </div>
             </Stack>
           </DialogContentText>
         </DialogContent>
         <DialogActions className=" bg-danger">
           <Box>
-            <Button2
-            handleClose={handleClose}
-            color={"wite"}
-            name={"Cancel"}
-            />
+            <Button2 handleClose={handleClose} color={"wite"} name={"Cancel"} />
           </Box>
           <Box>
             <Button2 name={"Add"} />
