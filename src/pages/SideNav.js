@@ -2,26 +2,54 @@ import { Image } from "@mui/icons-material";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // import Button from "../components/Button";
 import HumanIcon from "../components/HumanIcon";
 import Avatar from "@mui/material/Avatar";
 
 const SideNav = () => {
-  const buttonFunction = (e) => {
-    console.log("first", e.target);
-  };
-  const buttonFunction1 = (e) => {
-    console.log("first", e.target);
-  };
-  const buttonFunction2 = (e) => {
-    console.log("first", e.target);
-  };
-  const buttonFunction3 = (e) => {
-    console.log("first", e.target);
-  };
-  const buttonFunction4 = (e) => {
-    console.log("first", e);
+  // const buttonFunction = (e) => {
+  //   console.log("first", e.target);
+  // };
+  // const buttonFunction1 = (e) => {
+  //   console.log("first", e.target);
+  // };
+  // const buttonFunction2 = (e) => {
+  //   console.log("first", e.target);
+  // };
+  // const buttonFunction3 = (e) => {
+  //   console.log("first", e.target);
+  // };
+  // const buttonFunction4 = (e) => {
+  //   console.log("first", e);
+  // };
+
+
+  // for button hover
+
+  //  const ButtonStyle= {
+  //   '&:hover': {
+  //     backgroundColor: '#ffffff',
+  //     boxShadow: 'none',
+  //   },
+  //   '&:active': {
+  //     boxShadow: 'none',
+  //     backgroundColor: '#3c52b2',
+  //   },
+  // }
+
+  
+
+  //  for active navlink
+
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? "bold" : "normal",
+      textDecoration: isActive ? "none" : "",
+      color: isActive ? "white" : "",
+      backgroundColor: isActive ? "red" : "",
+      
+    };
   };
 
   return (
@@ -46,7 +74,6 @@ const SideNav = () => {
               variant="caption"
               sx={{ display: "block" }}
             >
-            
               Admin
             </Typography>
             <Typography sx={{ fontWeight: "bold" }}>Sandeep</Typography>
@@ -59,103 +86,73 @@ const SideNav = () => {
           alignItems="flex-start"
           spacing={2}
         >
-          <Box>
-            <Link to="/Dashboard/Admins">
-              <Button variants="text"> Home</Button>
-            </Link>
-          </Box>
-          <Box>
-            <Link to="/Dashboard/Analytics">
-              <Button color="info" variants="text">
-                Dashboard
-              </Button>
-            </Link>
-          </Box>
-          <Box>
-            <Link to="/Dashboard/Users">
-              <Button color="info" variants="text">
-                Users
-              </Button>
-            </Link>
-          </Box>
-          <Box>
-            <Link to="/Dashboard/Experts">
-              <Button color="info" variants="text">
-                Experts
-              </Button>
-            </Link>
-          </Box>
+          <Box className=" my-6">
+            <NavLink style={navLinkStyles}  className="  h-5 w-10   mb-6 bg-success  rounded-sm text-info  hover:text-primary"  to="/Dashboard/Admins">
+              Home
+            </NavLink>
+          </Box> 
           <Box >
-            <Link
-              onClick={(e) => {
-                buttonFunction2(e);
-              }}
-              to="/Dashboard/Callhistory"
-            >
-              <Button  color="info" variants="text">
-              Conference History
-              </Button>
-            </Link>
+            <NavLink  style={navLinkStyles}  className=" bg-success rounded-sm text-info  hover:text-primary"to="/Dashboard/Analytics">
+              
+                Dashboard
+            
+            </NavLink>
           </Box>
           <Box>
-            <Link
-              onClick={(e) => {
-                buttonFunction3(e);
-              }}
-              to="/Dashboard/Payout"
-            >
-              <Button className=" " color="info" variants="text">
+            <NavLink  to="/Dashboard/Users">
+              
+                Users
+            
+            </NavLink>
+          </Box>
+          <Box>
+            <NavLink to="/Dashboard/Experts">
+              
+                Experts
+              
+            </NavLink>
+          </Box>
+          <Box>
+            <NavLink to="/Dashboard/Callhistory">
+              
+                Conference History
+            
+            </NavLink>
+          </Box>
+          <Box>
+            <NavLink to="/Dashboard/Payout">
+              
                 Payout Requests
-              </Button>
-            </Link>
+              
+            </NavLink>
           </Box>
           <Box>
-            <Link
-              onClick={(e) => {
-                buttonFunction3(e);
-              }}
-              to="/Dashboard/Banner"
-            >
-              <Button color="info" variants="text">
+            <NavLink to="/Dashboard/Banner">
+              
                 Banner
-              </Button>
-            </Link>
+            
+            </NavLink>
           </Box>
           <Box>
-            <Link
-              onClick={(e) => {
-                buttonFunction3(e);
-              }}
-              to="/Dashboard/Language"
-            >
-              <Button color="info" variants="text">
+            <NavLink to="/Dashboard/Language">
+              
                 Language
-              </Button>
-            </Link>
+              
+            </NavLink>
           </Box>
           <Box>
-            <Link
-              onClick={(e) => {
-                buttonFunction3(e);
-              }}
-              to="/Dashboard/Recharge"
-            >
-              <Button color="info" variants="text">
+            <NavLink to="/Dashboard/Recharge">
+              
                 Recharge
-              </Button>
-            </Link>
+            
+            </NavLink>
           </Box>
           <Box>
-            <Link
-              onClick={(e) => {
-                buttonFunction3(e);
-              }}
-              to="/Dashboard/Specialization"
-            >
-              <Button color="info" variants="text">
+            <NavLink to="/Dashboard/Specialization">
+              
                 Specialization
-              </Button>
-            </Link>
+            
+            </NavLink>
           </Box>
 
           {/* <Box>
