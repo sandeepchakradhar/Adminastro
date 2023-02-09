@@ -80,11 +80,11 @@ const SideNav = () => {
           direction="column"
           justifyContent="space-evenly"
           alignItems="flex-start"
-          spacing={2}
+          spacing={1}
         >
           <NavLink
             style={navLinkStyles}
-            className=" bg-success rounded-lg text-info  hover:text-primary"
+            className="bg-success  rounded-lg text-info  hover:text-primary"
             to="/Dashboard/Admins"
           >
             <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
