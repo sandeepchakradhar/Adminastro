@@ -1,13 +1,11 @@
 import { Avatar, Box } from "@mui/material";
-import { Stack } from "@mui/system";
 import React from "react";
 import BasicTabs from "./BasicTabs";
 
 const UserDetails = () => {
   return (
     <div>
-      <div className="  bg-success h-32 mt-5 ml-5 rounded-sm flex  gap-40 mr-5 ">
-        
+      <div className="  bg-success h-32 mt-5 ml-5  rounded-sm flex  gap-40 mr-5 ">
         <div className="divs flex gap-10  ml-6 mt-8 ">
           <Avatar
             className=" "
@@ -33,7 +31,7 @@ const UserDetails = () => {
           <h1 className=" text-2xl">Male</h1>
         </div>
       </div>
-      <Box className="">
+      <Box className=" ml-5 mt-2">
         <BasicTabs />
       </Box>
     </div>
