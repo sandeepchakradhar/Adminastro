@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 import React from "react";
-import BasicTabs from "../components/BasicTabs";
 import HeaderTwo from "../components/HeaderTwo";
 import CustomizedTables from "../components/Tabels";
+import UserDetails from "../components/UserDetails";
 import UserFilterBy from "../components/UserFilterBy";
 
 const Users = () => {
@@ -20,8 +20,9 @@ const Users = () => {
   return (
     <div>
       <HeaderTwo header={"Users"}/>
-      <BasicTabs/>
-         <Button
+      <UserDetails/>
+      
+         {/* <Button
         onClick={() => {
           handleClickOpen1();
         }}
@@ -30,7 +31,7 @@ const Users = () => {
       </Button>
       <UserFilterBy open1={open1} handleClose1={handleClose1} />
 
-      <CustomizedTables />
+      <CustomizedTables /> */}
     </div>
   );
 };
