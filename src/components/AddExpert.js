@@ -10,10 +10,14 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
 import { Box, Stack } from "@mui/system";
 import { useForm } from "react-hook-form";
 import Button2 from "./Button2";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
+import EditIcon from "@mui/icons-material/Edit";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
@@ -57,7 +61,6 @@ const AddExpert = ({ open2, handleClose2 }) => {
               direction="column"
               justifyContent="space-evenly"
               alignItems="flex-start"
-              
             >
               <form
                 onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}
@@ -97,11 +100,12 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                   <div className="inputs mt-3  pl-5  ">
-                    <Avatar 
+                    <Avatar
                       alt="Sandeep"
                       src="https://media.licdn.com/dms/image/C4D03AQGTVuPCGh2c-w/profile-displayphoto-shrink_100_100/0/1650885404610?e=1680134400&v=beta&t=dU06dR-eGZGvBS5lcm7CoG9Q_1aNp1MAGGljv6jJN1s"
-                      sx={{ width: 100, height: 100,  }}
+                      sx={{ width: 100, height: 100 }}
                     />
+                    <EditIcon />
                   </div>
                 </div>
 
@@ -355,16 +359,24 @@ const AddExpert = ({ open2, handleClose2 }) => {
                         placeholder="Aadhar No"
                         {...register("AadharNo")}
                       />
-                      <span className=" ml-1">
-                        <Button variant="contained" component="label">
-                          <FileUploadIcon />
-                          <input
-                            type="file"
-                            hidden
-                            {...register("AadharDocument")}
-                          />
-                        </Button>
-                      </span>
+                      <div className=" mt-2">
+                        <label
+                          htmlFor="price"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Aadhar Card Upload
+                        </label>
+                        <span className=" ml-1">
+                          <Button variant="contained" component="label">
+                            <FileUploadIcon />
+                            <input
+                              type="file"
+                              hidden
+                              {...register("AadharDocument")}
+                            />
+                          </Button>
+                        </span>
+                      </div>
                     </div>
                   </div>
                   <div className="inputs mt-3">
@@ -381,16 +393,24 @@ const AddExpert = ({ open2, handleClose2 }) => {
                         placeholder="Pancard No"
                         {...register("PancardNo")}
                       />
-                      <span className=" ml-1">
-                        <Button variant="contained" component="label">
-                          <FileUploadIcon />
-                          <input
-                            type="file"
-                            hidden
-                            {...register("PancardDocument")}
-                          />
-                        </Button>
-                      </span>
+                      <div className=" mt-2">
+                        <label
+                          htmlFor="price"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Pancard Upload
+                        </label>
+                        <span className=" ml-1">
+                          <Button variant="contained" component="label">
+                            <FileUploadIcon />
+                            <input
+                              type="file"
+                              hidden
+                              {...register("PancardDocument")}
+                            />
+                          </Button>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -542,7 +562,7 @@ const AddExpert = ({ open2, handleClose2 }) => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* button */}
                 <div className=" flex mt-4 ">
                   <input type="submit" />

@@ -8,21 +8,22 @@ import UserFilterBy from "../components/UserFilterBy";
 const Users = () => {
   // for filter by
   const [open1, setOpen1] = React.useState(false);
-
+  
   const handleClickOpen1 = () => {
     setOpen1(true);
   };
-
+  
   const handleClose1 = () => {
     setOpen1(false);
   };
+  
 
   return (
     <div>
-      <HeaderTwo header={"Users"}/>
-      <UserDetails/>
-      
-         {/* <Button
+      <HeaderTwo header={"Users"} />
+      <UserDetails />
+
+      {/* <Button
         onClick={() => {
           handleClickOpen1();
         }}

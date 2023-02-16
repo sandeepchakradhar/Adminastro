@@ -34,6 +34,7 @@ const LoginOne = () => {
 
   const handleSubmit = async () => {
     const lol = { phonenumber, password };
+    
     const res = await login(lol);
     console.log(res.data, "data");
     if (res.data.status === "success") {

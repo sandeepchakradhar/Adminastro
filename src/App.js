@@ -25,11 +25,12 @@ import LoginOne from "./pages/LoginOne";
 import ForgotPasswordOne from "./pages/ForgotPasswordOne";
 import ForgotPasswordTwo from "./pages/ForgotPasswordtwo";
 import ForgotPasswordThree from "./pages/ForgotPasswordThree";
-
-
+import MultiStepper from "./components/MultiStepper";
+import UserDetails from "./components/UserDetails";
+import IndividualUser from "./components/IndividualUser";
+import News from "./pages/News";
 
 function App() {
-
   return (
     <div>
       <Routes>
@@ -39,28 +40,28 @@ function App() {
         <Route path="/forgotp3" element={<ForgotPasswordThree />} />
         <Route path="Dashboard" element={<Dashboard />}>
           <Route path="Experts" element={<Experts />} />
+          <Route path="Multistepper" element={<MultiStepper />} />
           <Route path="Language" element={<Language />} />
           <Route path="Admins" element={<Admins />} />
           <Route path="Banner" element={<Banner />} />
-          <Route path="Recharge" element={<Recharge />} />
+          <Route path="News" element={<News />} />
           <Route path="Users" element={<Users />} />
-          <Route path="Specialization" element={<Specialization/>} />
-          <Route path="Payout" element={<Payout/>} />
-          <Route path="Callhistory" element={<ConferenceHistory/>}/>
-          <Route path="Analytics" element={<Analytics/>}/>
-        
+          <Route path="Users/IndividualUser/:_id" element={<IndividualUser />} />
+
+          <Route path="Specialization" element={<Specialization />} />
+          <Route path="Payout" element={<Payout />} />
+          <Route path="Callhistory" element={<ConferenceHistory />} />
+          <Route path="Analytics" element={<Analytics />} />
         </Route>
       </Routes>
-
-      
-    </div >
+    </div>
   );
 }
 
 export default App;
 
-
-      {/* <Icons />
+{
+  /* <Icons />
       <Button2 name={"cancel"} color={"primary"} />
       <Typography sx={{ color: "info" }} color="info">khsbdvfkj</Typography>
       <DashboardBox />
@@ -75,14 +76,19 @@ export default App;
         name1={"accept"}
         name2={"cancel"}
         color1={"primary"}
-        color2={"danger"} /> */}
+        color2={"danger"} /> */
+}
 
-      {/* <Route path="/AdminLogin" element={<AdminLogin />} /> */}
+{
+  /* <Route path="/AdminLogin" element={<AdminLogin />} /> */
+}
 
-      {/* <Routes>
+{
+  /* <Routes>
         <Route path="/" element={<AdminLogin />} />
         <Route path="/Dashboard" element={<Dashboard />}>
           <Route path="/Experts" element={<Experts />} />
           <Route path="/Users" element={<Users />} />
         </Route>
-      </Routes> */}
+      </Routes> */
+}

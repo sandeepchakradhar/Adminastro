@@ -3,12 +3,18 @@ import React from "react";
 import AddExpert from "../components/AddExpert";
 import ExpertFilterBy from "../components/ExpertFilterBy";
 import HeaderTwo from "../components/HeaderTwo";
-import { useHelloQuery } from "../services/profile";
+import CustomizedTables from "../components/Tabels";
+// import { useHelloQuery } from "../services/profile";
+import ExpertDetails from "./ExpertDetails";
+import { useGetReportersQuery } from "../services/profile";
+import { getToken } from "../services/LocalStorage";
 
 const Experts = () => {
+  const token = getToken("token");
+  console.log(token, "token");
+  const { data } = useGetReportersQuery(token);
+  console.log(data, "data");
   // for filter by
-
-  const { data } = useHelloQuery();
 
   console.log(data, "jhbds");
   const [open1, setOpen1] = React.useState(false);
@@ -31,9 +37,10 @@ const Experts = () => {
   const handleClose2 = () => {
     setOpen2(false);
   };
+
   return (
     <div>
-      <HeaderTwo header={"Experts"}/>
+      <HeaderTwo header={"Experts"} />
 
       <Button
         onClick={() => {

@@ -161,10 +161,10 @@ const SideNav = () => {
           <NavLink
             style={navLinkStyles}
             className=" bg-success rounded-lg text-info  hover:text-primary"
-            to="/Dashboard/Recharge"
+            to="/Dashboard/News"
           >
             <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
-              Recharge
+              News
             </Box>
           </NavLink>
           <NavLink
