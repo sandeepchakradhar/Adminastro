@@ -1,6 +1,6 @@
-import { Avatar, Box } from "@mui/material";
+import { Avatar} from "@mui/material";
 import React from "react";
-import BasicTabs from "./BasicTabs";
+// import BasicTabs from "./BasicTabs";
 import { Link } from "react-router-dom";
 import { useGetUsersQuery } from "../services/profile";
 

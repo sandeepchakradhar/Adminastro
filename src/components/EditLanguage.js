@@ -7,31 +7,23 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Stack from "@mui/material/Stack";
 import React from "react";
 import Button2 from "./Button2";
-import { useAddLanguageMutation } from "../services/profile";
-import { getToken } from "../services/LocalStorage";
-const AddLanguage = ({ open, handleClose,name }) => {
+
+const EditLanguage = ({ open2, handleClose2, name }) => {
   // For language change
   const [language, setLanguage] = React.useState("");
   const handleLanguageChange = (event) => {
     setLanguage(event.target.value);
   };
-
-  const [addLanguage] = useAddLanguageMutation();
- const token =getToken("token");
-  const handleSubmit = async() => {
-    console.log("First");
-    console.log(language, "lankjbsdskb");
-
-    const data = {language}
-    const res= await addLanguage({data,token})
-    console.log(res,"res")
-
+  const handleSubmit = () => {
+    
+console.log("editLAguagessss")
   };
+
   return (
     <div>
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={open2}
+        onClose={handleClose2}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -77,10 +69,10 @@ const AddLanguage = ({ open, handleClose,name }) => {
         </DialogContent>
         <DialogActions className=" bg-danger">
           <Box>
-            <Button2 handleClose={handleClose} color={"wite"} name={"Cancel"} />
+            <Button2 handleClose={handleClose2} color={"wite"} name={"Cancel"} />
           </Box>
           <Box onClick={handleSubmit}>
-            <Button2 handleClose={handleClose} name={"Adds"} />
+            <Button2 name={"Add"} />
           </Box>
           {/* <Button onClick={handleClose}>Disagree</Button>
           <Button onClick={handleClose} autoFocus>
@@ -92,4 +84,4 @@ const AddLanguage = ({ open, handleClose,name }) => {
   );
 };
 
-export default AddLanguage;
+export default EditLanguage;

@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { getToken } from "../services/LocalStorage";
 import { useGetProfileByIdQuery } from "../services/profile";
 
-const IndividualUser = () => {
+const IndividualExpert = () => {
   const { _id } = useParams();
   console.log(_id, "ID");
   const token = getToken("token");
@@ -20,10 +20,10 @@ const IndividualUser = () => {
 
       <Box className=" ml-5 mt-2">
         {/* <BasicTabs data={data} /> */}
-        IndividualUser
+        IndividualExpert
       </Box>
     </div>
   );
 };
 
-export default IndividualUser;
+export default IndividualExpert;

@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import React from "react";
 import AddExpert from "../components/AddExpert";
 import ExpertFilterBy from "../components/ExpertFilterBy";
@@ -8,6 +8,7 @@ import CustomizedTables from "../components/Tabels";
 import ExpertDetails from "./ExpertDetails";
 import { useGetReportersQuery } from "../services/profile";
 import { getToken } from "../services/LocalStorage";
+import { Link } from "react-router-dom";
 
 const Experts = () => {
   const token = getToken("token");
@@ -16,32 +17,68 @@ const Experts = () => {
   console.log(data, "data");
   // for filter by
 
-  console.log(data, "jhbds");
-  const [open1, setOpen1] = React.useState(false);
 
-  const handleClickOpen1 = () => {
-    setOpen1(true);
-  };
+  // const [open1, setOpen1] = React.useState(false);
 
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
+  // const handleClickOpen1 = () => {
+  //   setOpen1(true);
+  // };
 
-  // for Add Expert
-  const [open2, setOpen2] = React.useState(false);
+  // const handleClose1 = () => {
+  //   setOpen1(false);
+  // };
 
-  const handleClickOpen2 = () => {
-    setOpen2(true);
-  };
+  // // for Add Expert
+  // const [open2, setOpen2] = React.useState(false);
 
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
+  // const handleClickOpen2 = () => {
+  //   setOpen2(true);
+  // };
+
+  // const handleClose2 = () => {
+  //   setOpen2(false);
+  // };
 
   return (
     <div>
       <HeaderTwo header={"Experts"} />
+{ data?.map(({name,phonenumber,_id,gender,pimage,email,updatedAt,dateOfBirth})=>{
+  return(
+<div key={_id}>
+        <Link className="  bg-success h-32 mt-5 ml-5 md:h-48  rounded-sm flex  md:gap-24 gap-40 mr-5 " to={`IndividualExpert/${_id}`}>
+          <div className="divs flex gap-10  ml-6 mt-8 ">
+            <Avatar
+              className=" "
+              sx={{ width: 60, height: 60 }}
+              alt="Sandeep"
+              src="https://media.licdn.com/dms/image/C4D03AQGTVuPCGh2c-w/profile-displayphoto-shrink_100_100/0/1650885404610?e=1680134400&v=beta&t=dU06dR-eGZGvBS5lcm7CoG9Q_1aNp1MAGGljv6jJN1s"
+            />
+            <div className=" ">
+              <p className=" text-info">Name</p>
+              <h1 className=" text-2xl">{name}</h1>
+            </div>
+          </div>
+          <div className=" divs mt-8">
+            <p className=" text-info">Contact</p>
+            <h1 className=" text-2xl">{phonenumber}</h1>
+          </div>
+          <div className=" divs mt-8">
+            <p className=" text-info">Date Of Birth</p>
+            <h1 className=" text-2xl">{dateOfBirth}</h1>
+          </div>
+          <div className=" divs mt-8">
+            <p className=" text-info">Gender</p>
+            <h1 className=" text-2xl">{gender}</h1>
+          </div>
+        </Link>
+      </div> 
 
+  )
+})
+
+       
+}
+      {/* 
       <Button
         onClick={() => {
           handleClickOpen1();
@@ -58,7 +95,7 @@ const Experts = () => {
       >
         Add Expert
       </Button>
-      <AddExpert open2={open2} handleClose2={handleClose2} />
+      <AddExpert open2={open2} handleClose2={handleClose2} /> */}
     </div>
   );
 };

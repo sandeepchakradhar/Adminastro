@@ -1,6 +1,6 @@
 // import { Box, Button } from "@mui/material";
 import "./App.css";
-import AdminLogin from "./components/login/AdminLogin";
+// import AdminLogin from "./components/login/AdminLogin";
 // import Icons from "./components/Icons";
 // import Button2 from "./components/Button2";
 // import { Button, Typography } from "@mui/material";
@@ -16,7 +16,7 @@ import Users from "./pages/Users";
 import Language from "./pages/Language";
 import Admins from "./pages/Admins";
 import Banner from "./pages/Banner";
-import Recharge from "./pages/Recharge";
+// import Recharge from "./pages/Recharge";
 import Specialization from "./pages/Specialization";
 import Payout from "./pages/Payout";
 import ConferenceHistory from "./pages/ConferenceHistory";
@@ -26,9 +26,11 @@ import ForgotPasswordOne from "./pages/ForgotPasswordOne";
 import ForgotPasswordTwo from "./pages/ForgotPasswordtwo";
 import ForgotPasswordThree from "./pages/ForgotPasswordThree";
 import MultiStepper from "./components/MultiStepper";
-import UserDetails from "./components/UserDetails";
+// import UserDetails from "./components/UserDetails";
 import IndividualUser from "./components/IndividualUser";
 import News from "./pages/News";
+import IndividualExpert from "./components/IndividualExpert";
+import NewsDetails from "./components/NewsDetails";
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
           <Route path="News" element={<News />} />
           <Route path="Users" element={<Users />} />
           <Route path="Users/IndividualUser/:_id" element={<IndividualUser />} />
+          <Route path="Experts/IndividualExpert/:_id" element={<IndividualExpert />} />
+          <Route path="News/NewsDetails/:_id" element={<NewsDetails />} />
 
           <Route path="Specialization" element={<Specialization />} />
           <Route path="Payout" element={<Payout />} />
@@ -60,7 +64,7 @@ function App() {
 
 export default App;
 
-{
+
   /* <Icons />
       <Button2 name={"cancel"} color={"primary"} />
       <Typography sx={{ color: "info" }} color="info">khsbdvfkj</Typography>
@@ -77,13 +81,13 @@ export default App;
         name2={"cancel"}
         color1={"primary"}
         color2={"danger"} /> */
-}
 
-{
+
+
   /* <Route path="/AdminLogin" element={<AdminLogin />} /> */
-}
 
-{
+
+
   /* <Routes>
         <Route path="/" element={<AdminLogin />} />
         <Route path="/Dashboard" element={<Dashboard />}>
@@ -91,4 +95,4 @@ export default App;
           <Route path="/Users" element={<Users />} />
         </Route>
       </Routes> */
-}
+

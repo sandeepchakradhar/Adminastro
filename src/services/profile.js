@@ -6,6 +6,8 @@ export const profileApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://pressvartaserver.umpteeninnovation.com/api",
   }),
+
+  tagTypes: ["User", "Language"],
   endpoints: (builder) => ({
     getProfile: builder.query({
       query: () => {
@@ -72,15 +74,13 @@ export const profileApi = createApi({
       },
     }),
     getLanguage: builder.query({
-      query: (token) => {
+      query: () => {
         return {
           url: "getLanguage",
           method: "GET",
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
         };
       },
+      providesTags: ["Language"],
     }),
     getCategory: builder.query({
       query: (token) => {
@@ -90,6 +90,14 @@ export const profileApi = createApi({
           headers: {
             authorization: `Bearer ${token}`,
           },
+        };
+      },
+    }),
+    getPaperName: builder.query({
+      query: (token) => {
+        return {
+          url: "getPaperName",
+          method: "GET",
         };
       },
     }),
@@ -113,17 +121,47 @@ export const profileApi = createApi({
 
       invalidatesTags: ["User"],
     }),
-
-    addLanguage: builder.mutation({
-      query(body) {
+    addTypeOfPaper: builder.mutation({
+      query({ Data, token }) {
         return {
-          url: "addLanguage",
+          url: "addTypeOfPaper",
           method: "POST",
-          body,
+          body: Data,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         };
       },
 
       invalidatesTags: ["User"],
+    }),
+    deleteLanguageById: builder.mutation({
+      query({ _id, token }) {
+        return {
+          url: `deleteLanguageById/${_id}`,
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["Language"],
+    }),
+
+    addLanguage: builder.mutation({
+      query({ data, token }) {
+        return {
+          url: "addLanguage",
+          method: "POST",
+          body: data,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["Language"],
     }),
   }),
 });
@@ -141,5 +179,7 @@ export const {
   useGetLanguageQuery,
   useGetCategoryQuery,
   useAddLanguageMutation,
-  
+  useDeleteLanguageByIdMutation,
+  useAddTypeOfPaperMutation,
+  useGetPaperNameQuery,
 } = profileApi;
