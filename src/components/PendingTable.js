@@ -36,6 +36,7 @@ function createData(name, calories, fat, carbs, protein) {
 
 const rows = [
   createData("Sandeep Chakradhar",8585858585 , 100000, "10 Oct 2022, 12:00 PM", "pay"),
+  createData("Sandeep Chakradhar",8585858585 , 100000, "10 Oct 2022, 12:00 PM", "pay"),
   
 ];
 

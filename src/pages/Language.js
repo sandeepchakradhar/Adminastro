@@ -41,6 +41,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
+
 // styling End//
 
 const Language = () => {
@@ -110,7 +111,7 @@ const Language = () => {
                   <StyledTableCell align="right">
                     <EditOutlinedIcon
                       className=" mx-2"
-                      color="primary"
+                      color="info"
                       onClick={handleEdit}
                     />
 
