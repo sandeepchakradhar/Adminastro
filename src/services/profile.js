@@ -109,6 +109,14 @@ export const profileApi = createApi({
         };
       },
     }),
+    getAllRepoter: builder.query({
+      query: () => {
+        return {
+          url: "getAllRepoter",
+          method: "GET",
+        };
+      },
+    }),
     hello: builder.query({
       query: () => {
         return {
@@ -191,4 +199,5 @@ export const {
   useAddTypeOfPaperMutation,
   useGetPaperNameQuery,
   useGetNewsByIdQuery,
+  useGetAllRepoterQuery,
 } = profileApi;

@@ -31,7 +31,7 @@ const NewsDetails = () => {
         <div>
           <p>Created At</p>
           <br />
-          <p>{new Date(data?.createdAt).toDateString()}</p>
+          <p>{new Date(data?.createdAt).toLocaleTimeString()}</p>
         </div>
         <div className="video">
           <video width="400" height="300" controls>
