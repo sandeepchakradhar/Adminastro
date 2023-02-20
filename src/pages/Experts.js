@@ -51,7 +51,7 @@ const Experts = () => {
               className=" "
               sx={{ width: 60, height: 60 }}
               alt="Sandeep"
-              src="https://media.licdn.com/dms/image/C4D03AQGTVuPCGh2c-w/profile-displayphoto-shrink_100_100/0/1650885404610?e=1680134400&v=beta&t=dU06dR-eGZGvBS5lcm7CoG9Q_1aNp1MAGGljv6jJN1s"
+              src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/pimage/${pimage}`}
             />
             <div className=" ">
               <p className=" text-info">Name</p>
@@ -64,7 +64,7 @@ const Experts = () => {
           </div>
           <div className=" divs mt-8">
             <p className=" text-info">Date Of Birth</p>
-            <h1 className=" text-2xl">{dateOfBirth}</h1>
+            <h1 className=" text-2xl">{new Date(dateOfBirth).toDateString()}</h1>
           </div>
           <div className=" divs mt-8">
             <p className=" text-info">Gender</p>

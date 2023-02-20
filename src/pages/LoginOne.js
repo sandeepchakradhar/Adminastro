@@ -11,6 +11,8 @@ import { Box } from "@mui/system";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import Image from "../assets/PressVartaIcon2(1).png"
+
 
 const LoginOne = () => {
   const navigate = useNavigate();
@@ -51,7 +53,8 @@ const LoginOne = () => {
       <ToastContainer />
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className=" mt-10 ml-10">
-          <EmojiPeople fontSize="large" />
+          <img src={Image} height="200" width="200" alt="Press Varta" />
+          
         </div>
         <div className="mx-auto">
           <div className=" mx-auto mt-11">

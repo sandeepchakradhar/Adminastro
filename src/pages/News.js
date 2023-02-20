@@ -11,7 +11,7 @@ const News = () => {
   return (
     <div>
       <HeaderTwo header={"News"} />
-      {data?.map(({ category, description, createdAt, _id, updatedAt }) => {
+      {data?.map(({ category, description, createdAt, _id, updatedAt ,video}) => {
         return (
           <div key={_id}>
             <Link
@@ -19,11 +19,11 @@ const News = () => {
               to={`NewsDetails/${_id}`}
             >
               <div className="divs flex gap-10  ml-6 mt-8 ">
-                <Avatar
+                <iframe
                   className=" "
-                  sx={{ width: 60, height: 60 }}
-                  alt="Sandeep"
-                  src="https://media.licdn.com/dms/image/C4D03AQGTVuPCGh2c-w/profile-displayphoto-shrink_100_100/0/1650885404610?e=1680134400&v=beta&t=dU06dR-eGZGvBS5lcm7CoG9Q_1aNp1MAGGljv6jJN1s"
+                 
+                  alt="video"
+                  src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${video}`}
                 />
                 <div className=" ">
                   <p className=" text-info">Category</p>
@@ -36,11 +36,11 @@ const News = () => {
               </div>
               <div className=" divs mt-8">
                 <p className=" text-info">Created At</p>
-                <h1 className=" text-2xl">{createdAt}</h1>
+                <h1 className=" text-2xl">{ new Date(createdAt).toDateString()}</h1>
               </div>
               <div className=" divs mt-8">
                 <p className=" text-info">Updated At</p>
-                <h1 className=" text-2xl">{updatedAt}</h1>
+                <h1 className=" text-2xl">{ new Date(updatedAt).toDateString()}</h1>
               </div>
             </Link>
           </div>

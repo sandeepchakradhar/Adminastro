@@ -62,6 +62,14 @@ export const profileApi = createApi({
         };
       },
     }),
+    getNewsById: builder.query({
+      query: (_id) => {
+        return {
+          url: `getNewsById/${_id}`,
+          method: "GET",
+        };
+      },
+    }),
     getNews: builder.query({
       query: (token) => {
         return {
@@ -182,4 +190,5 @@ export const {
   useDeleteLanguageByIdMutation,
   useAddTypeOfPaperMutation,
   useGetPaperNameQuery,
+  useGetNewsByIdQuery,
 } = profileApi;

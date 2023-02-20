@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 // import Button from "../components/Button";
 import HumanIcon from "../components/HumanIcon";
 import Avatar from "@mui/material/Avatar";
+import Image from "../assets/PressVartaIcon2(1).png"
 
 const SideNav = () => {
   // const buttonFunction = (e) => {
@@ -54,8 +55,8 @@ const SideNav = () => {
         className="bg-error border border-secondary"
         sx={{ maxWidth: "220px", height: "800px" }}
       >
-        <div className="mt-4 mb-8">
-          <HumanIcon />
+        <div className="mt-4 mb-8 ml-7">
+          <img src={Image} height="70" width="70" alt="Press Varta" />
         </div>
         <div className=" flex mb-10">
           <div>
