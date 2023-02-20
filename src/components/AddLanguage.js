@@ -80,7 +80,7 @@ const AddLanguage = ({ open, handleClose,name }) => {
             <Button2 handleClose={handleClose} color={"wite"} name={"Cancel"} />
           </Box>
           <Box onClick={handleSubmit}>
-            <Button2 handleClose={handleClose} name={"Adds"} />
+            <Button2 handleClose={handleClose} name={"Add"} />
           </Box>
           {/* <Button onClick={handleClose}>Disagree</Button>
           <Button onClick={handleClose} autoFocus>
