@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { store } from "../src/store";
 import { Provider } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   ThemeProvider,

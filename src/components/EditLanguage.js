@@ -5,18 +5,41 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Stack from "@mui/material/Stack";
-import React from "react";
+import React, { useEffect } from "react";
 import Button2 from "./Button2";
 
-const EditLanguage = ({ open2, handleClose2, name }) => {
+import { getToken } from "../services/LocalStorage";
+import { useEditLanguageByIdMutation } from "../services/profile";
+
+const EditLanguage = ({ open2, handleClose2, name, handleId: _id, lang }) => {
+  const token = getToken("token");
+  const [editLanguage] = useEditLanguageByIdMutation();
+
+  console.log(token, "tokennnnnnn");
   // For language change
-  const [language, setLanguage] = React.useState("");
+  console.log(lang,"langguiujkjkk")
+useEffect(() => {
+  if (lang) {
+    setLanguage(lang)
+  }
+
+ 
+}, [lang])
+
+
+  const [language, setLanguage] = React.useState(lang);
   const handleLanguageChange = (event) => {
     setLanguage(event.target.value);
   };
-  const handleSubmit = () => {
-    
-console.log("editLAguagessss")
+  const handleSubmit = async () => {
+    const value = { language };
+    const res = await editLanguage({ value, token, _id });
+    console.log(res, "6546465464");
+    if (res.data.status === "success") {
+      console.log(res.data.message, "first");
+    } else {
+      console.log(res.data.message, "first");
+    }
   };
 
   return (
@@ -69,10 +92,14 @@ console.log("editLAguagessss")
         </DialogContent>
         <DialogActions className=" bg-danger">
           <Box>
-            <Button2 handleClose={handleClose2} color={"wite"} name={"Cancel"} />
+            <Button2
+              handleClose={handleClose2}
+              color={"wite"}
+              name={"Cancel"}
+            />
           </Box>
           <Box onClick={handleSubmit}>
-            <Button2 name={"Add"} />
+            <Button2 handleClose={handleClose2} name={"Add"} />
           </Box>
           {/* <Button onClick={handleClose}>Disagree</Button>
           <Button onClick={handleClose} autoFocus>

@@ -9,7 +9,6 @@ import { useLoginMutation } from "../services/profile";
 import { storeToken } from "../services/LocalStorage";
 import { Box } from "@mui/system";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import Image from "../assets/PressVartaIcon2(1).png"
 

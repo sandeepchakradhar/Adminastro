@@ -1,4 +1,4 @@
-import { Avatar, Switch } from "@mui/material";
+import { Avatar, Button, Switch } from "@mui/material";
 import React, { useState } from "react";
 // import BasicTabs from "./BasicTabs";
 import { Link } from "react-router-dom";
@@ -55,6 +55,7 @@ const UserDetails = () => {
               <StyledTableCell align="right">Date Of Birth</StyledTableCell>
               <StyledTableCell align="right">Member Since</StyledTableCell>
               <StyledTableCell align="right">Gender</StyledTableCell>
+              <StyledTableCell align="right">View</StyledTableCell>
               <StyledTableCell align="right">Active</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -75,36 +76,29 @@ const UserDetails = () => {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <StyledTableCell component="th" scope="row">
-                      <Link to={`IndividualUser/${_id}`}>
-                        <Avatar
-                          className=" "
-                          sx={{ width: 60, height: 60 }}
-                          alt="Sandeep"
-                          src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/pimage/${pimage}`}
-                        />
-                      </Link>
+                      <Avatar
+                        className=" "
+                        sx={{ width: 60, height: 60 }}
+                        alt="Sandeep"
+                        src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/pimage/${pimage}`}
+                      />
+                    </StyledTableCell>
+                    <StyledTableCell align="right">{name}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {phonenumber}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      <Link to={`IndividualUser/${_id}`}>{name}</Link>
+                      {new Date(dateOfBirth).toDateString()}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      <Link to={`IndividualUser/${_id}`}>{phonenumber}</Link>
+                      {new Date(createdAt).toDateString()}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">{gender}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      <Link to={`IndividualUser/${_id}`}><Button>View</Button></Link>
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      <Link to={`IndividualUser/${_id}`}>
-                        {new Date(dateOfBirth).toLocaleTimeString()}
-                      </Link>
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      <Link to={`IndividualUser/${_id}`}>
-                        {new Date(createdAt).toLocaleTimeString()}
-                      </Link>
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      <Link to={`IndividualUser/${_id}`}>{gender}</Link>
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      <Switch color="primary" onChange={(e) => setNobe(e.target.value)} />
+                      <Switch onChange={(e) => setNobe(e.target.value)} />
                     </StyledTableCell>
                   </StyledTableRow>
                 </TableBody>

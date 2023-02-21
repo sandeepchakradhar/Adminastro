@@ -47,6 +47,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const Language = () => {
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
+  const [handleId, sethandleId] = React.useState("");
+  const [lang, setlang] = React.useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -56,8 +58,15 @@ const Language = () => {
     setOpen(false);
   };
 
-  const handleClickOpen2 = () => {
+  const handleClickOpen2 = (_id, language) => {
     setOpen2(true);
+    sethandleId(_id);
+
+    const newData = data.map((e) => {
+      if (e._id === _id) {
+        setlang(e.language);
+      }
+    });
   };
 
   const handleClose2 = () => {
@@ -71,13 +80,14 @@ const Language = () => {
 
   console.log(data, "added language");
 
-  const handleEdit = () => {
-    handleClickOpen2();
+  const handleEdit = (_id, language) => {
+    handleClickOpen2(_id, language);
   };
   // const handleDelete = (_id) => {
   //   const Data = _id;
   //   deleteLanguage({ token, Data });
   // };
+  console.log(lang, "jifdisdfisdfb");
   return (
     <div>
       <HeaderTwo header={"Languages"} />
@@ -112,7 +122,7 @@ const Language = () => {
                     <EditOutlinedIcon
                       className=" mx-2"
                       color="info"
-                      onClick={handleEdit}
+                      onClick={() => handleEdit(_id)}
                     />
 
                     <DeleteOutlineIcon
@@ -142,6 +152,8 @@ const Language = () => {
       <EditLanguage
         name={"Edit Language"}
         open2={open2}
+        handleId={handleId}
+        lang={lang}
         handleClose2={handleClose2}
       />
       <AddLanguage

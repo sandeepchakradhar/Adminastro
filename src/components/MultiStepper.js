@@ -40,7 +40,7 @@ const MultiStepper = () => {
           Back
         </Button>
 
-        <Button onClick={handleNext}> Next</Button>
+        <Button  onClick={handleNext}> Next</Button>
       </Box>
     </Box>
   );

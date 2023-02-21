@@ -109,10 +109,10 @@ export const profileApi = createApi({
         };
       },
     }),
-    getAllRepoter: builder.query({
+    getAllReporter: builder.query({
       query: () => {
         return {
-          url: "getAllRepoter",
+          url: "getAllReporter",
           method: "GET",
         };
       },
@@ -130,6 +130,17 @@ export const profileApi = createApi({
       query(body) {
         return {
           url: "login",
+          method: "POST",
+          body,
+        };
+      },
+
+      invalidatesTags: ["User"],
+    }),
+    register: builder.mutation({
+      query(body) {
+        return {
+          url: "register",
           method: "POST",
           body,
         };
@@ -179,6 +190,20 @@ export const profileApi = createApi({
 
       invalidatesTags: ["Language"],
     }),
+    editLanguageById: builder.mutation({
+      query({value, _id, token }) {
+        return {
+          url: `editLanguageById/${_id}`,
+          method: "PATCH",
+          body: value,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["Language"],
+    }),
   }),
 });
 
@@ -199,5 +224,7 @@ export const {
   useAddTypeOfPaperMutation,
   useGetPaperNameQuery,
   useGetNewsByIdQuery,
-  useGetAllRepoterQuery,
+  useGetAllReporterQuery,
+  useEditLanguageByIdMutation,
+  useRegisterMutation,
 } = profileApi;

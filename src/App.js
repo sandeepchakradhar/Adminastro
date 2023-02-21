@@ -42,14 +42,20 @@ function App() {
         <Route path="/forgotp3" element={<ForgotPasswordThree />} />
         <Route path="Dashboard" element={<Dashboard />}>
           <Route path="Experts" element={<Experts />} />
-          <Route path="Multistepper" element={<MultiStepper />} />
+          <Route path="Experts/MultiStepper" element={<MultiStepper />} />
           <Route path="Language" element={<Language />} />
           <Route path="Admins" element={<Admins />} />
           <Route path="Banner" element={<Banner />} />
           <Route path="News" element={<News />} />
           <Route path="Users" element={<Users />} />
-          <Route path="Users/IndividualUser/:_id" element={<IndividualUser />} />
-          <Route path="Experts/IndividualExpert/:_id" element={<IndividualExpert />} />
+          <Route
+            path="Users/IndividualUser/:_id"
+            element={<IndividualUser />}
+          />
+          <Route
+            path="Experts/IndividualExpert/:_id"
+            element={<IndividualExpert />}
+          />
           <Route path="News/NewsDetails/:_id" element={<NewsDetails />} />
 
           <Route path="Specialization" element={<Specialization />} />
@@ -64,8 +70,7 @@ function App() {
 
 export default App;
 
-
-  /* <Icons />
+/* <Icons />
       <Button2 name={"cancel"} color={"primary"} />
       <Typography sx={{ color: "info" }} color="info">khsbdvfkj</Typography>
       <DashboardBox />
@@ -82,17 +87,12 @@ export default App;
         color1={"primary"}
         color2={"danger"} /> */
 
+/* <Route path="/AdminLogin" element={<AdminLogin />} /> */
 
-
-  /* <Route path="/AdminLogin" element={<AdminLogin />} /> */
-
-
-
-  /* <Routes>
+/* <Routes>
         <Route path="/" element={<AdminLogin />} />
         <Route path="/Dashboard" element={<Dashboard />}>
           <Route path="/Experts" element={<Experts />} />
           <Route path="/Users" element={<Users />} />
         </Route>
       </Routes> */
-

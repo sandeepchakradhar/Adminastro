@@ -40,6 +40,22 @@ const Form2 = () => {
                 htmlFor="price"
                 className="block text-sm font-medium text-gray-700"
               >
+                Father's Name
+              </label>
+              <div className="">
+                <input
+                  type="text"
+                  className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Father's Name"
+                  {...register("FathersName")}
+                />
+              </div>
+            </div>
+            <div className="inputs mt-3">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Reporting Types
               </label>
               <div className="">
