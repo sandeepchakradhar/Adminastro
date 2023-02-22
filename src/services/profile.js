@@ -148,6 +148,17 @@ export const profileApi = createApi({
 
       invalidatesTags: ["User"],
     }),
+    form: builder.mutation({
+      query(body) {
+        return {
+          url: "form",
+          method: "POST",
+          body,
+        };
+      },
+
+      invalidatesTags: ["User"],
+    }),
     addTypeOfPaper: builder.mutation({
       query({ Data, token }) {
         return {
@@ -227,4 +238,5 @@ export const {
   useGetAllReporterQuery,
   useEditLanguageByIdMutation,
   useRegisterMutation,
+  useFormMutation,
 } = profileApi;

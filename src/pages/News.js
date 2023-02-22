@@ -1,5 +1,5 @@
-import { Avatar } from "@mui/material";
-import React from "react";
+import { Avatar, Button, Switch } from "@mui/material";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HeaderTwo from "../components/HeaderTwo";
 import { useGetNewsQuery } from "../services/profile";
@@ -41,11 +41,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const News = () => {
   const { data } = useGetNewsQuery();
   console.log(data, "news");
+// for Switch
+  const [nobe, setNobe] = useState("");
+  console.log(nobe, "switch");
 
   return (
     <div>
       <HeaderTwo header={"News"} />
-      {/* <TableContainer className=" mt-2" component={Paper}>
+      <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -56,6 +59,7 @@ const News = () => {
               <StyledTableCell align="right">Created Time</StyledTableCell>
               <StyledTableCell align="right">Updated At</StyledTableCell>
               <StyledTableCell align="right">View</StyledTableCell>
+              <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
           {data?.map(
@@ -71,17 +75,17 @@ const News = () => {
                         src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${video}`}
                       />
                     </StyledTableCell>
-                    <StyledTableCell align="right">{name}</StyledTableCell>
+                    <StyledTableCell align="right">{description}</StyledTableCell>
                     <StyledTableCell align="right">{category}</StyledTableCell>
                     <StyledTableCell align="right">
-                      {new Date(dateOfBirth).toLocaleTimeString()}
+                      {new Date(createdAt).toDateString()}
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {new Date(createdAt).toLocaleTimeString()}
                     </StyledTableCell>
-                    <StyledTableCell align="right">{gender}</StyledTableCell>
+                    <StyledTableCell align="right">{new Date(updatedAt).toDateString()}</StyledTableCell>
                     <StyledTableCell align="right">
-                      <Link to={`IndividualExpert/${_id}`}>
+                      <Link to={`NewsDetails/${_id}`}>
                         <Button>View</Button>
                       </Link>
                     </StyledTableCell>
@@ -94,7 +98,8 @@ const News = () => {
             }
           )}
         </Table>
-      </TableContainer> */}
+      </TableContainer> 
+{/*       
       {data?.map(
         ({ category, description, createdAt, _id, updatedAt, video }) => {
           return (
@@ -133,7 +138,7 @@ const News = () => {
             </div>
           );
         }
-      )}
+      )} */}
     </div>
   );
 };

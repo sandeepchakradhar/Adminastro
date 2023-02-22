@@ -135,10 +135,10 @@ const Experts = () => {
                       {phonenumber}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {new Date(dateOfBirth).toLocaleTimeString()}
+                      {new Date(dateOfBirth).toDateString()}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {new Date(createdAt).toLocaleTimeString()}
+                      {new Date(createdAt).toDateString()}
                     </StyledTableCell>
                     <StyledTableCell align="right">{gender}</StyledTableCell>
                     <StyledTableCell align="right">

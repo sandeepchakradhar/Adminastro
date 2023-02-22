@@ -1,5 +1,5 @@
 import { Avatar, Button, Switch } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import BasicTabs from "./BasicTabs";
 import { Link } from "react-router-dom";
 import { useGetUsersQuery } from "../services/profile";
@@ -40,8 +40,49 @@ const UserDetails = () => {
   const { data } = useGetUsersQuery();
   console.log(data, "data");
 
-  const [nobe, setNobe] = useState("");
-  console.log(nobe, "switch");
+  const [on, setOn] = useState(false);
+
+  const [Data, setData] = useState();
+
+  console.log(Data, "Data");
+  console.log(on, "on");
+  const updateSwitch = (e, id) => {
+    const ram = data?.filter((e) => e._id == id);
+    setData()
+    console.log(Data,"raam")
+    if (ram[0]?.status === "pending") {
+      const u = { ...ram[0], status: "active" };
+      const raja = data?.map((e, index) => (e._id !== id ? e : u));
+    setData([...raja])
+
+      console.log(raja, "raja2");
+    }
+   else {
+      setOn(!on);
+      const u = { ...ram[0], status: "pending" };
+      const raja = data?.map((e, index) => (e._id !== id ? e : u));
+      console.log(raja, "raja1");
+    }  
+
+
+// ternary
+// ram[0]?.status == "active"?
+//       const raja = data?.map((e, index) => (e._id !== id ? e : u));
+
+
+
+
+    // console.log(ram)
+    //   ram?.map(({_id,status})=>{
+    //     if (_id==id && status=="active") {
+    //       setOn(!on)
+    //       console.log("run")
+
+    //     }
+    // })
+
+    // console.log(_id,"iuasdfiasdnfni")
+  };
 
   return (
     <div>
@@ -95,10 +136,14 @@ const UserDetails = () => {
                     </StyledTableCell>
                     <StyledTableCell align="right">{gender}</StyledTableCell>
                     <StyledTableCell align="right">
-                      <Link to={`IndividualUser/${_id}`}><Button>View</Button></Link>
+                      <Link to={`IndividualUser/${_id}`}>
+                        <Button>View</Button>
+                      </Link>
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      <Switch onChange={(e) => setNobe(e.target.value)} />
+                      <Switch
+                        onChange={(e) => updateSwitch(e.target.value, _id)}
+                      />
                     </StyledTableCell>
                   </StyledTableRow>
                 </TableBody>

@@ -1,6 +1,8 @@
 import React from "react";
 import { useGetNewsByIdQuery } from "../services/profile";
 import { useParams } from "react-router-dom";
+import HeaderTwo from "./HeaderTwo";
+import { Box } from "@mui/system";
 const NewsDetails = () => {
   const { _id } = useParams();
 
@@ -11,37 +13,40 @@ const NewsDetails = () => {
 
   return (
     <div>
-      {/* <iframe
-       width="500"
-       height="350"
-       allowFullScreen
-       allow="accelerometer,autoplay; encrypted-media; gyroscope; picture-in-picture"
-        src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${data?.video}`}
-
-        frameborder="0"
-      ></iframe> */}
-
-      <div className=" bg-secondary w-full flex gap-5">
-        <div className="">
-          <p>Description</p>
-          <br />
-          <p>{data?.description}</p>
-        </div>
-        <div>{data?.category}</div>
+      <HeaderTwo header={"News Details"} />
+      <div className=" bg-secondary w-full  gap-5">
         <div>
-          <p>Created At</p>
-          <br />
-          <p>{new Date(data?.createdAt).toLocaleTimeString()}</p>
+          <span className=" text-primary">Category : &nbsp;</span>
+          <span>{data?.category}</span>
         </div>
-        <div className="video">
-          <video width="400" height="300" controls>
-            <source
-              src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${data?.video}`}
-              type="video/mp4"
-            />
-          </video>
+        <div>
+          <span>Created : </span>
+
+          <span>{new Date(data?.createdAt).toLocaleTimeString()}</span>
         </div>
+        <div className="">
+          <span>Description :</span>
+          
+          <span>{data?.description}</span>
+        </div>
+
       </div>
+     <div className=" bg-secondary float-right">
+
+        <Box className=" m-6">
+          <iframe
+            width="500"
+            height="350"
+            allowFullScreen
+            allow="accelerometer,autoplay; encrypted-media; gyroscope; picture-in-picture"
+            src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${data?.video}`}
+            frameborder="0"
+            >
+            {" "}
+            video
+          </iframe>
+        </Box>
+            </div>
     </div>
   );
 };
