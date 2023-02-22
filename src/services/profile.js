@@ -102,7 +102,7 @@ export const profileApi = createApi({
       },
     }),
     getPaperName: builder.query({
-      query: (token) => {
+      query: () => {
         return {
           url: "getPaperName",
           method: "GET",
@@ -125,6 +125,7 @@ export const profileApi = createApi({
         };
       },
     }),
+    
 
     login: builder.mutation({
       query(body) {
@@ -165,6 +166,20 @@ export const profileApi = createApi({
           url: "addTypeOfPaper",
           method: "POST",
           body: Data,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["User"],
+    }),
+    activeStausById: builder.mutation({
+      query({ value,_id, token }) {
+        return {
+          url: `activeStausById/${_id}`,
+          method: "POST",
+          body: value,
           headers: {
             authorization: `Bearer ${token}`,
           },
@@ -239,4 +254,5 @@ export const {
   useEditLanguageByIdMutation,
   useRegisterMutation,
   useFormMutation,
+  useActiveStausByIdMutation,
 } = profileApi;

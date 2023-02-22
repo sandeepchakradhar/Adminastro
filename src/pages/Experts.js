@@ -19,7 +19,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useGetAllReporterQuery } from "../services/profile";
+import { useGetAllReporterQuery, useActiveStausByIdMutation } from "../services/profile";
 import { Box } from "@mui/system";
 
 //styling start//
@@ -49,6 +49,7 @@ const Experts = () => {
   const token = getToken("token");
   console.log(token, "token");
   const { data } = useGetReportersQuery(token);
+  const [updateStatus ]= useActiveStausByIdMutation();
   console.log(data, "data");
   // for filter by
 
@@ -79,6 +80,16 @@ const Experts = () => {
   // const handleClose2 = () => {
   //   setOpen2(false);
   // };
+
+const updateSwitch= async(value,_id)=>{
+  console.log(value,_id,"kaushdfigasif")
+
+  
+//   const ram = data?.filter((e)=> e._id === _id)
+
+//   })
+// const res = await updateStatus({value,token,_id})
+}
 
   return (
     <div>
@@ -116,6 +127,7 @@ const Experts = () => {
               phonenumber,
               dateOfBirth,
               _id,
+              status,
             }) => {
               return (
                 <TableBody key={_id}>
@@ -147,7 +159,11 @@ const Experts = () => {
                       </Link>
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      <Switch onChange={(e) => setNobe(e.target.value)} />
+                      <Switch 
+                      checked={status === "active"?true:false}
+                      inputProps={{"aria-label":"controlled"}}
+
+                      onChange={(e) => updateSwitch(e.target.value,_id)} />
                     </StyledTableCell>
                   </StyledTableRow>
                 </TableBody>

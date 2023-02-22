@@ -9,16 +9,54 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import { Container } from "@mui/system";
+import { useFormMutation } from "../services/profile";
+import { useGetPaperNameQuery } from "../services/profile";
+import { useGetLanguageQuery } from "../services/profile";
+import { useGetCategoryQuery } from "../services/profile";
+
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+// import FormControl from "@mui/material/FormControl";
+// import FormLabel from "@mui/material/FormLabel";
 
 const Form2 = () => {
   const { register, handleSubmit } = useForm();
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   // for from Date
   const [value1, setValue1] = React.useState(dayjs(""));
 
   const handleDateOneChange = (newValue1) => {
     setValue1(newValue1);
+  };
+
+  const { data } = useGetPaperNameQuery();
+  const { data: lang } = useGetLanguageQuery();
+  const { data: specialization } = useGetCategoryQuery();
+
+  console.log(data, "data");
+
+  const [form2] = useFormMutation();
+
+  const onSubmit = async ({ FathersName, ReportingTypes }) => {
+    let data = new FormData();
+    data.append("FathersName", FathersName);
+    data.append("ReportingTypes", ReportingTypes);
+    data.append("FathersName", FathersName);
+    data.append("FathersName", FathersName);
+    data.append("FathersName", FathersName);
+
+    // if (pimage && dateOfBirth) {
+    //   const res = await register1(data);
+    //   if (res.data.status === "success") {
+    //     toast(res.data.message);
+    //   } else {
+    //     toast(res.data.message);
+    //   }
+    // } else {
+    //   toast("something went wrong");
+    // }
   };
 
   function convert1() {
@@ -28,12 +66,11 @@ const Form2 = () => {
     return [date.getFullYear(), mnth, day].join("-");
   }
 
-  console.log(data, "data");
   console.log(convert1(), "date");
   return (
     <div>
       <Container>
-        <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             <div className="inputs mt-3">
               <label
@@ -65,9 +102,15 @@ const Form2 = () => {
                   {...register("ReportingTypes", { required: true })}
                 >
                   <option value="">Select</option>
-                  <option value="Crime">Crime</option>
-                  <option value="Civil">Civil</option>
-                  <option value="Politics">Politics</option>
+
+                  {data?.map(({ _id, typeOfPaper }) => {
+                    return (
+                      <>
+                        {/* <option value="">Select</option> */}
+                        <option value={typeOfPaper}>{typeOfPaper}</option>
+                      </>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -79,16 +122,12 @@ const Form2 = () => {
                 News Paper Name
               </label>
               <div className="">
-                <select
-                  className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                  placeholder=""
-                  {...register("NewsPaperName", { required: true })}
-                >
-                  <option value="">Select</option>
-                  <option value="Denik Bhaskar">Denik Bhaskar</option>
-                  <option value="Patrika">Patrika</option>
-                  <option value="Nav Dunia">Nav Dunia</option>
-                </select>
+                <input
+                  type="text"
+                  className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="News Paper Name"
+                  {...register("newsPaperName")}
+                />
               </div>
             </div>
           </div>
@@ -107,9 +146,13 @@ const Form2 = () => {
                   {...register("Language", { required: true })}
                 >
                   <option value="">Select</option>
-                  <option value="Hindi">Hindi</option>
-                  <option value="English">English</option>
-                  <option value="Bengali">Bengali</option>
+                  {lang?.map(({ _id, language }) => {
+                    return (
+                      <option key={_id} value={language}>
+                        {language}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -127,9 +170,13 @@ const Form2 = () => {
                   {...register("Specialization", { required: true })}
                 >
                   <option value="">Select</option>
-                  <option value="Denik Bhaskar">Denik Bhaskar</option>
-                  <option value="Patrika">Patrika</option>
-                  <option value="Nav Dunia">Nav Dunia</option>
+                  {specialization?.map(({ _id, category }) => {
+                    return (
+                      <option key={_id} value={category}>
+                        {category}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -178,6 +225,42 @@ const Form2 = () => {
                   {...register("CurrentReportingArea")}
                 />
               </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <div className="inputs mt-3">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Designation
+              </label>
+              {/* <FormLabel id="demo-radio-buttons-group-label">
+                  Gender
+                </FormLabel> */}
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="female"
+                name="radio-buttons-group"
+              >
+                <div className=" flex">
+                  <FormControlLabel
+                    value="reporter"
+                    control={<Radio />}
+                    label="Reporter"
+                  />
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Male"
+                  />
+                  <FormControlLabel
+                    value="other"
+                    control={<Radio />}
+                    label="Other"
+                  />
+                </div>
+              </RadioGroup>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -398,7 +481,7 @@ const Form2 = () => {
 
           {/* button */}
           <div className=" flex mt-4 ">
-            <input type="submit" />
+            <Button type="submit">Submit</Button>
           </div>
         </form>
       </Container>
