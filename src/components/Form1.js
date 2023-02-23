@@ -39,9 +39,16 @@ const Form1 = () => {
 
     // setValue1(newValue1);
   };
+
   const onSubmit = async ({ name, password, email, gender, phonenumber }) => {
-    let role="reporter"
-    console.log(name,password,email,gender,phonenumber,"ibhdsibsdfbidsbibsidfks")
+    // console.log(
+    //   name,
+    //   password,
+    //   email,
+    //   gender,
+    //   phonenumber,
+    //   "ibhdsibsdfbidsbibsidfks"
+    // );
     const data = new FormData();
     data.append("name", name);
     data.append("password", password);
@@ -50,7 +57,7 @@ const Form1 = () => {
     data.append("phonenumber", phonenumber);
     data.append("pimage", pimage);
     data.append("dateOfBirth", dateOfBirth);
-    data.append("role", role);
+
     if (pimage && dateOfBirth) {
       const res = await register1(data);
       if (res.data.status === "success") {
@@ -82,7 +89,7 @@ const Form1 = () => {
 
   return (
     <div>
-        <ToastContainer />
+      <ToastContainer />
       <Container>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
