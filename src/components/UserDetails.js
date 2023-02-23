@@ -2,7 +2,10 @@ import { Avatar, Button, Switch } from "@mui/material";
 import React, { useEffect, useState } from "react";
 // import BasicTabs from "./BasicTabs";
 import { Link } from "react-router-dom";
-import { useGetUsersQuery } from "../services/profile";
+import {
+  useGetUsersQuery,
+  useActiveStausByIdMutation,
+} from "../services/profile";
 import { styled } from "@mui/material/styles";
 
 import Table from "@mui/material/Table";
@@ -12,6 +15,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { getToken } from "../services/LocalStorage";
+
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 //styling start//
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -34,43 +41,50 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-// styling End//
-
 const UserDetails = () => {
+  const token = getToken("token");
+  const [checked, setChecked] = useState(true);
+
   const { data } = useGetUsersQuery();
-  console.log(data, "data");
+  const [updateStatus] = useActiveStausByIdMutation();
+  // console.log(data, "data");
+
+  const [Mata, setMata] = useState();
+  // styling End//
+  useEffect(() => {
+    if (data) {
+      setMata(data);
+    }
+  }, [data]);
+  // console.log(Mata, "mata");
 
   const [on, setOn] = useState(false);
 
-  const [Data, setData] = useState();
-
-  console.log(Data, "Data");
   console.log(on, "on");
-  const updateSwitch = (e, id) => {
-    const ram = data?.filter((e) => e._id == id);
-    setData()
-    console.log(Data,"raam")
+  const updateSwitch = async (e, id) => {
+    const ram = Mata?.filter((e) => e._id === id);
+    console.log(ram, "ram");
     if (ram[0]?.status === "pending") {
-      const u = { ...ram[0], status: "active" };
-      const raja = data?.map((e, index) => (e._id !== id ? e : u));
-    setData([...raja])
+      let value = { ...ram[0], status: "active" };
 
-      console.log(raja, "raja2");
-    }
-   else {
+      const res = await updateStatus({ value, token, _id: id });
+      console.log(res);
+      const raja = Mata?.map((e, index) => (e._id !== id ? e : value));
+      console.log(raja, "raja");
+      setMata(raja);
+    } else {
       setOn(!on);
-      const u = { ...ram[0], status: "pending" };
-      const raja = data?.map((e, index) => (e._id !== id ? e : u));
-      console.log(raja, "raja1");
-    }  
+      const value = { ...ram[0], status: "pending" };
+      const res = await updateStatus({ value, token, _id: id });
+      console.log(res);
+      const raja2 = Mata?.map((e, index) => (e._id !== id ? e : value));
+      setMata(raja2);
+      console.log(raja2, "raja2");
+    }
 
-
-// ternary
-// ram[0]?.status == "active"?
-//       const raja = data?.map((e, index) => (e._id !== id ? e : u));
-
-
-
+    // ternary
+    // ram[0]?.status == "active"?
+    //       const raja = data?.map((e, index) => (e._id !== id ? e : u));
 
     // console.log(ram)
     //   ram?.map(({_id,status})=>{
@@ -100,7 +114,7 @@ const UserDetails = () => {
               <StyledTableCell align="right">Active</StyledTableCell>
             </TableRow>
           </TableHead>
-          {data?.map(
+          {Mata?.map(
             ({
               name,
               gender,
@@ -109,6 +123,7 @@ const UserDetails = () => {
               phonenumber,
               dateOfBirth,
               _id,
+              status,
             }) => {
               return (
                 <TableBody>
@@ -141,7 +156,32 @@ const UserDetails = () => {
                       </Link>
                     </StyledTableCell>
                     <StyledTableCell align="right">
+                      {/* <FormControlLabel
+                        control={
+                          status == "active" ? (
+                            <Switch
+                              defaultChecked
+                              onChange={(e) =>
+                                updateSwitch(e.target.value, _id)
+                              }
+                            />
+                          ) : (
+                            <Switch
+                              onChange={(e) =>
+                                updateSwitch(e.target.value, _id)
+                              }
+                            />
+                          )
+                        }
+                        label="Label"
+                      /> */}
+
+                      {/* 2nd switch */}
+
                       <Switch
+                        checked={status === "active" ? true : false}
+                        // onChange={handleChange}
+                        inputProps={{ "aria-label": "controlled" }}
                         onChange={(e) => updateSwitch(e.target.value, _id)}
                       />
                     </StyledTableCell>

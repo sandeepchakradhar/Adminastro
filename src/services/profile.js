@@ -61,6 +61,7 @@ export const profileApi = createApi({
           },
         };
       },
+      providesTags: ["User"],
     }),
     getNewsById: builder.query({
       query: (_id) => {
@@ -202,7 +203,7 @@ export const profileApi = createApi({
       invalidatesTags: ["Language"],
     }),
     editLanguageById: builder.mutation({
-      query({value, _id, token }) {
+      query({ value, _id, token }) {
         return {
           url: `editLanguageById/${_id}`,
           method: "PATCH",
@@ -214,6 +215,20 @@ export const profileApi = createApi({
       },
 
       invalidatesTags: ["Language"],
+    }),
+    activeStausById: builder.mutation({
+      query({ value, _id, token }) {
+        return {
+          url: `activeStausById/${_id}`,
+          method: "PATCH",
+          body: value,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["User"],
     }),
   }),
 });
@@ -239,4 +254,5 @@ export const {
   useEditLanguageByIdMutation,
   useRegisterMutation,
   useFormMutation,
+  useActiveStausByIdMutation,
 } = profileApi;
