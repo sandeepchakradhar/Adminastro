@@ -39,13 +39,35 @@ const Form2 = () => {
 
   const [form2] = useFormMutation();
 
-  const onSubmit = async ({ FathersName, ReportingTypes }) => {
+  const onSubmit = async ({
+    fathersName,
+    reporter,
+    experienceDay,
+    formOf,
+    experienceMonth,
+    experienceYear,
+    permanentAddress,
+    panImg,
+    adharImg,
+    panNumber,
+    adharNumber,
+    nationality,
+    currentAddress,
+    BankHolderName,
+    AccountNumber,
+    ReferenceContact,
+    IFSC,
+    profession,
+    UPI,
+    RNI,
+    paperType,
+    language,
+    category,
+    ownerOf,
+  }) => {
     let data = new FormData();
-    data.append("FathersName", FathersName);
-    data.append("ReportingTypes", ReportingTypes);
-    data.append("FathersName", FathersName);
-    data.append("FathersName", FathersName);
-    data.append("FathersName", FathersName);
+    data.append("fathersName", fathersName);
+  
 
     // if (pimage && dateOfBirth) {
     //   const res = await register1(data);
@@ -84,7 +106,7 @@ const Form2 = () => {
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Father's Name"
-                  {...register("FathersName")}
+                  {...register("fathersName")}
                 />
               </div>
             </div>
