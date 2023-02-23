@@ -64,10 +64,13 @@ export const profileApi = createApi({
       providesTags: ["User"],
     }),
     getNewsById: builder.query({
-      query: (_id) => {
+      query: ({ token, _id }) => {
         return {
           url: `getNewsById/${_id}`,
           method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         };
       },
     }),
@@ -126,7 +129,6 @@ export const profileApi = createApi({
         };
       },
     }),
-    
 
     login: builder.mutation({
       query(body) {
@@ -176,7 +178,7 @@ export const profileApi = createApi({
       invalidatesTags: ["User"],
     }),
     activeStausById: builder.mutation({
-      query({ value,_id, token }) {
+      query({ value, _id, token }) {
         return {
           url: `activeStausById/${_id}`,
           method: "POST",

@@ -67,7 +67,29 @@ const Form2 = () => {
   }) => {
     let data = new FormData();
     data.append("fathersName", fathersName);
-  
+    data.append("experienceDay", experienceDay);
+    data.append("formOf", formOf);
+    data.append("experienceMonth", experienceMonth);
+    data.append("experienceYear", experienceYear);
+    data.append("permanentAddress", permanentAddress);
+    data.append("panImg", panImg);
+    data.append("adharImg", adharImg);
+    data.append("panNumber", panNumber);
+    data.append("nationality", nationality);
+    data.append("adharNumber", adharNumber);
+    data.append("currentAddress", currentAddress);
+    data.append("BankHolderName", BankHolderName);
+    data.append("AccountNumber", AccountNumber);
+    data.append("ReferenceContact", ReferenceContact);
+    data.append("IFSC", IFSC);
+    data.append("profession", profession);
+    data.append("UPI", UPI);
+    data.append("RNI", RNI);
+    data.append("paperType", paperType);
+    data.append("paperType", paperType);
+    data.append("language", language);
+    data.append("category", category);
+    data.append("ownerOf", ownerOf);
 
     // if (pimage && dateOfBirth) {
     //   const res = await register1(data);
@@ -203,28 +225,18 @@ const Form2 = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             <div className=" flex gap-2 mt-5">
-              <div className=" flex gap-2 inputs mt-2">
-                <div className=" inline relative   ">
-                  <Checkbox
-                    sx={{ paddingTop: 1.2 }}
-                    id="rni"
-                    {...register("RNI", {})}
-                  />
-                </div>
-                <label
-                  htmlFor="rni"
-                  className=" my-auto text-sm font-medium text-gray-700"
-                >
-                  RNI
-                </label>
-              </div>
               <div className="inputs mt-3">
                 <div className="">
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    RNI
+                  </label>
                   <input
                     type="text"
-                    id="price"
                     className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="RNI Registration Number"
                     {...register("RNIRegistrationNumber")}
@@ -232,10 +244,10 @@ const Form2 = () => {
                 </div>
               </div>
             </div>
-            <div className="inputs mt-3">
+            <div className="inputs mt-5">
               <label
                 htmlFor="price"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700 mt-3"
               >
                 Current Reporting Area
               </label>
@@ -248,6 +260,75 @@ const Form2 = () => {
                 />
               </div>
             </div>
+            <div className="inputs mt-5">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700 mt-3"
+              >
+                Nationality
+              </label>
+              <div className="">
+                <input
+                  type="text"
+                  className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Nationality"
+                  {...register("nationality")}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <div className=" flex gap-2 mt-5">
+              <div className="inputs mt-3">
+                <div className="">
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Experience Year
+                  </label>
+                  <input
+                    type="text"
+                    className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Experience Year"
+                    {...register("experienceYear")}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="inputs mt-5">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700 mt-3"
+              >
+                Experience Month
+              </label>
+              <div className="">
+                <input
+                  type="text"
+                  className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Experience Month"
+                  
+                  {...register("experienceMonth")}
+                />
+              </div>
+            </div>
+            <div className="inputs mt-5">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700 mt-3"
+              >
+                Experience Day
+              </label>
+              <div className="">
+                <input
+                  type="text"
+                  className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Experience Day"
+                  {...register("experinceDay")}
+                />
+              </div>
+            </div>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             <div className="inputs mt-3">
@@ -257,12 +338,10 @@ const Form2 = () => {
               >
                 Designation
               </label>
-              {/* <FormLabel id="demo-radio-buttons-group-label">
-                  Gender
-                </FormLabel> */}
+
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="female"
+                defaultValue="reporter"
                 name="radio-buttons-group"
               >
                 <div className=" flex">
@@ -272,9 +351,15 @@ const Form2 = () => {
                     label="Reporter"
                   />
                   <FormControlLabel
-                    value="male"
+                    value="owner"
                     control={<Radio />}
-                    label="Male"
+                    label="Owner"
+                  />
+                  <FormControlLabel
+                    sx={{ width: 180 }}
+                    value="reporter&owner"
+                    control={<Radio />}
+                    label="Reporter & Owner"
                   />
                   <FormControlLabel
                     value="other"
@@ -296,7 +381,6 @@ const Form2 = () => {
               <div className="">
                 <input
                   type="text"
-                  id="price"
                   className=" py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Aadhar No"
                   {...register("AadharNo")}

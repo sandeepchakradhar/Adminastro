@@ -45,7 +45,7 @@ const UserDetails = () => {
   const token = getToken("token");
   const [checked, setChecked] = useState(true);
 
-  const { data } = useGetUsersQuery();
+  const { data } = useGetUsersQuery(token);
   const [updateStatus] = useActiveStausByIdMutation();
   // console.log(data, "data");
 

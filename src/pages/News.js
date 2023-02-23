@@ -13,7 +13,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+
 import { useGetAllReporterQuery } from "../services/profile";
+import { getToken } from "../services/LocalStorage";
 
 //styling start//
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -37,11 +39,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 // styling End//
-
+const token = getToken("token");
 const News = () => {
-  const { data } = useGetNewsQuery();
+  const { data } = useGetNewsQuery(token);
   console.log(data, "news");
-// for Switch
+  // for Switch
   const [nobe, setNobe] = useState("");
   console.log(nobe, "switch");
 
@@ -70,12 +72,39 @@ const News = () => {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <StyledTableCell component="th" scope="row">
-                      <iframe
+                      {/* <iframe
                         alt="video"
                         src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${video}`}
-                      />
+                      /> */}
+                      {video.split(".")[1] == "mp4" ? (
+                        <div
+                          style={{
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          <iframe
+                            alt="video"
+                            src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${video}`}
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          style={{
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width: 200,
+                          }}
+                        >
+                          <img
+                            src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${video}`}
+                          />
+                        </div>
+                      )}
                     </StyledTableCell>
-                    <StyledTableCell align="right">{description}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {description}
+                    </StyledTableCell>
                     <StyledTableCell align="right">{category}</StyledTableCell>
                     <StyledTableCell align="right">
                       {new Date(createdAt).toDateString()}
@@ -83,7 +112,9 @@ const News = () => {
                     <StyledTableCell align="right">
                       {new Date(createdAt).toLocaleTimeString()}
                     </StyledTableCell>
-                    <StyledTableCell align="right">{new Date(updatedAt).toDateString()}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {new Date(updatedAt).toDateString()}
+                    </StyledTableCell>
                     <StyledTableCell align="right">
                       <Link to={`NewsDetails/${_id}`}>
                         <Button>View</Button>
@@ -98,8 +129,8 @@ const News = () => {
             }
           )}
         </Table>
-      </TableContainer> 
-{/*       
+      </TableContainer>
+      {/*       
       {data?.map(
         ({ category, description, createdAt, _id, updatedAt, video }) => {
           return (

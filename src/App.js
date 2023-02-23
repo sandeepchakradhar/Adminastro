@@ -31,16 +31,19 @@ import IndividualUser from "./components/IndividualUser";
 import News from "./pages/News";
 import IndividualExpert from "./components/IndividualExpert";
 import NewsDetails from "./components/NewsDetails";
-
+import { getToken } from "./services/LocalStorage";
+import NoMatch from "./components/NoMatch";
 function App() {
+  const token = getToken("token");
   return (
     <div>
       <Routes>
+        <Route path="*" element={<NoMatch/>} />
         <Route path="/" element={<LoginOne />} />
         <Route path="/forgotp1" element={<ForgotPasswordOne />} />
         <Route path="/forgotp2" element={<ForgotPasswordTwo />} />
         <Route path="/forgotp3" element={<ForgotPasswordThree />} />
-        <Route path="Dashboard" element={<Dashboard />}>
+      <Route path="Dashboard" element={token?< Dashboard />:<LoginOne/>}>
           <Route path="Experts" element={<Experts />} />
           <Route path="Experts/MultiStepper" element={<MultiStepper />} />
           <Route path="Language" element={<Language />} />
