@@ -98,11 +98,11 @@ const LoginOne = () => {
             </div>
           </div>
           <div className=" block float-right">
-            <h5
+            <h5 
               className=" text-info cursor-pointer"
               onClick={() => navigate("/forgotp1")}
             >
-              Forgot Password?
+                  Forgot Password?
             </h5>
           </div>
           <div className=" pt-10 ">
