@@ -11,6 +11,8 @@ import dayjs from "dayjs";
 import { Container } from "@mui/system";
 import { useRegisterMutation } from "../services/profile";
 import { ToastContainer, toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "../features/userSlice";
 
 const Form1 = () => {
   const [pimage, setFile] = useState();
@@ -40,6 +42,8 @@ const Form1 = () => {
     // setValue1(newValue1);
   };
 
+  const dispatch = useDispatch();
+
   const onSubmit = async ({ name, password, email, gender, phonenumber }) => {
     // console.log(
     //   name,
@@ -59,7 +63,10 @@ const Form1 = () => {
     data.append("dateOfBirth", dateOfBirth);
 
     if (pimage && dateOfBirth) {
+      console.log("first");
+      dispatch(setUserInfo({ user: data.get("phonenumber") }));
       const res = await register1(data);
+console.log(res,"response")
       if (res.data.status === "success") {
         toast(res.data.message);
       } else {

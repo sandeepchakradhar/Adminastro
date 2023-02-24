@@ -11,7 +11,7 @@ import Form1 from "./Form1";
 import Form2 from "./Form2";
 // import AddExpert from "./AddExpert";
 
-const steps = ["Basic Details", "Personal Details", "Interview Information"];
+const steps = ["Basic Details", "Personal Details"];
 
 const MultiStepper = () => {
   const [activeStep, setactiveStep] = useState(0);

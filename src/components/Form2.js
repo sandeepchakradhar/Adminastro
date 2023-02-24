@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import EditIcon from "@mui/icons-material/Edit";
 
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
-import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import dayjs from "dayjs";
+// import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+// import dayjs from "dayjs";
 import { Container } from "@mui/system";
 import { useFormMutation } from "../services/profile";
 import { useGetPaperNameQuery } from "../services/profile";
@@ -17,20 +17,26 @@ import { useGetCategoryQuery } from "../services/profile";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { toast, ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 // import FormControl from "@mui/material/FormControl";
 // import FormLabel from "@mui/material/FormLabel";
 
 const Form2 = () => {
   const { register, handleSubmit } = useForm();
+  const [formOf, setFormOf] = useState();
+  console.log(formOf, "radioooooooo");
+
   // const [data, setData] = useState([]);
 
   // for from Date
-  const [value1, setValue1] = React.useState(dayjs(""));
+  // const [value1, setValue1] = React.useState(dayjs(""));
 
-  const handleDateOneChange = (newValue1) => {
-    setValue1(newValue1);
-  };
-
+  // const handleDateOneChange = (newValue1) => {
+  //   setValue1(newValue1);
+  // };
+  const { user:phonenumber } = useSelector((state) => state.user);
+  console.log(phonenumber,"numberssss")
   const { data } = useGetPaperNameQuery();
   const { data: lang } = useGetLanguageQuery();
   const { data: specialization } = useGetCategoryQuery();
@@ -39,16 +45,18 @@ const Form2 = () => {
 
   const [form2] = useFormMutation();
 
+  const [adharImg, setAdharImg] = useState();
+  const [panImg, setPanImg] = useState();
+
+  console.log(adharImg, " Adhar Image");
+  console.log(panImg, " Pan Image");
   const onSubmit = async ({
-    fathersName,
-    reporter,
+    fatherName,
     experienceDay,
     formOf,
     experienceMonth,
     experienceYear,
     permanentAddress,
-    panImg,
-    adharImg,
     panNumber,
     adharNumber,
     nationality,
@@ -64,9 +72,14 @@ const Form2 = () => {
     language,
     category,
     ownerOf,
+    siteVisitAvailability,
+    pressConferenceAvailability,
+    website,
+    conference,
+    visiting,
   }) => {
     let data = new FormData();
-    data.append("fathersName", fathersName);
+    data.append("fatherName", fatherName);
     data.append("experienceDay", experienceDay);
     data.append("formOf", formOf);
     data.append("experienceMonth", experienceMonth);
@@ -86,33 +99,42 @@ const Form2 = () => {
     data.append("UPI", UPI);
     data.append("RNI", RNI);
     data.append("paperType", paperType);
-    data.append("paperType", paperType);
     data.append("language", language);
     data.append("category", category);
     data.append("ownerOf", ownerOf);
+    data.append("siteVisitAvailability", siteVisitAvailability);
+    data.append("pressConferenceAvailability", pressConferenceAvailability);
+    data.append("website", website);
+    data.append("visiting", visiting);
+    data.append("conference", conference);
+    data.append("phonenumber", phonenumber);
 
-    // if (pimage && dateOfBirth) {
-    //   const res = await register1(data);
-    //   if (res.data.status === "success") {
-    //     toast(res.data.message);
-    //   } else {
-    //     toast(res.data.message);
-    //   }
-    // } else {
-    //   toast("something went wrong");
-    // }
+    if (adharImg && panImg) {
+      const res = await form2(data);
+console.log(res,"response")
+
+      if (res.data.status === "success") {
+
+        toast(res.data.message);
+      } else {
+        toast(res.data.message);
+      }
+    } else {
+      toast("something went wrong");
+    }
   };
 
-  function convert1() {
-    var date = new Date(value1),
-      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    return [date.getFullYear(), mnth, day].join("-");
-  }
+  // function convert1() {
+  //   var date = new Date(value1),
+  //     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+  //     day = ("0" + date.getDate()).slice(-2);
+  //   return [date.getFullYear(), mnth, day].join("-");
+  // }
 
-  console.log(convert1(), "date");
+  // console.log(convert1(), "date");
   return (
     <div>
+      <ToastContainer />
       <Container>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -128,7 +150,7 @@ const Form2 = () => {
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Father's Name"
-                  {...register("fathersName")}
+                  {...register("fatherName")}
                 />
               </div>
             </div>
@@ -143,14 +165,13 @@ const Form2 = () => {
                 <select
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder=""
-                  {...register("ReportingTypes", { required: true })}
+                  {...register("paperType", { required: true })}
                 >
                   <option value="">Select</option>
 
                   {data?.map(({ _id, typeOfPaper }) => {
                     return (
                       <>
-                        {/* <option value="">Select</option> */}
                         <option value={typeOfPaper}>{typeOfPaper}</option>
                       </>
                     );
@@ -187,7 +208,7 @@ const Form2 = () => {
                 <select
                   className="block py-2 text-sm w-64  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder=""
-                  {...register("Language", { required: true })}
+                  {...register("language", { required: true })}
                 >
                   <option value="">Select</option>
                   {lang?.map(({ _id, language }) => {
@@ -211,7 +232,7 @@ const Form2 = () => {
                 <select
                   className="block py-2 text-sm w-64  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder=""
-                  {...register("Specialization", { required: true })}
+                  {...register("category", { required: true })}
                 >
                   <option value="">Select</option>
                   {specialization?.map(({ _id, category }) => {
@@ -239,7 +260,7 @@ const Form2 = () => {
                     type="text"
                     className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="RNI Registration Number"
-                    {...register("RNIRegistrationNumber")}
+                    {...register("RNI")}
                   />
                 </div>
               </div>
@@ -308,7 +329,6 @@ const Form2 = () => {
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Experience Month"
-                  
                   {...register("experienceMonth")}
                 />
               </div>
@@ -325,7 +345,7 @@ const Form2 = () => {
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Experience Day"
-                  {...register("experinceDay")}
+                  {...register("experienceDay")}
                 />
               </div>
             </div>
@@ -343,6 +363,8 @@ const Form2 = () => {
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="reporter"
                 name="radio-buttons-group"
+                value={formOf}
+                onChange={(e) => setFormOf(e.target.value)}
               >
                 <div className=" flex">
                   <FormControlLabel
@@ -371,6 +393,68 @@ const Form2 = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {formOf === "other" ? (
+              <div className="inputs mt-3 mb-3">
+                <div className="">
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Profession
+                  </label>
+                  <input
+                    type="text"
+                    className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Profession"
+                    {...register("profession")}
+                  />
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+            {formOf === "owner" ? (
+              <div className="inputs mt-3 mb-3">
+                <div className="">
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Owner Of
+                  </label>
+                  <input
+                    type="text"
+                    className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    placeholder=" Comapny Or Firm Name"
+                    {...register("ownerOf")}
+                  />
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+            {formOf === "reporter&owner" ? (
+              <div className="inputs mt-3 mb-3">
+                <div className="">
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Reporter Owner Of
+                  </label>
+                  <input
+                    type="text"
+                    className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    placeholder=" Comapny Or Firm Name"
+                    {...register("ownerOf")}
+                  />
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             <div className="inputs mt-3">
               <label
                 htmlFor="price"
@@ -383,7 +467,7 @@ const Form2 = () => {
                   type="text"
                   className=" py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Aadhar No"
-                  {...register("AadharNo")}
+                  {...register("adharNumber")}
                 />
                 <div className=" mt-2">
                   <label
@@ -398,7 +482,8 @@ const Form2 = () => {
                       <input
                         type="file"
                         hidden
-                        {...register("AadharDocument")}
+                        onChange={(e) => setAdharImg(e.target.files[0])}
+                        // {...register("adharImg")}
                       />
                     </Button>
                   </span>
@@ -417,7 +502,7 @@ const Form2 = () => {
                   type="text"
                   className=" py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Pancard No"
-                  {...register("PancardNo")}
+                  {...register("panNumber")}
                 />
                 <div className=" mt-2">
                   <label
@@ -432,7 +517,8 @@ const Form2 = () => {
                       <input
                         type="file"
                         hidden
-                        {...register("PancardDocument")}
+                        onChange={(e) => setPanImg(e.target.files[0])}
+                        // {...register("panImg")}
                       />
                     </Button>
                   </span>
@@ -469,7 +555,7 @@ const Form2 = () => {
                   type="text"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="1234XXXXX1234"
-                  {...register("AccountNo")}
+                  {...register("AccountNumber")}
                 />
               </div>
             </div>
@@ -485,7 +571,57 @@ const Form2 = () => {
                   type="text"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="ABCDXXXXXXXX "
-                  {...register("IFSCcode")}
+                  {...register("IFSC")}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <div className="inputs mt-3">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700"
+              >
+                UPI
+              </label>
+              <div className="">
+                <input
+                  type="text"
+                  className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Enter UPI Id"
+                  {...register("UPI")}
+                />
+              </div>
+            </div>
+            <div className="inputs mt-3">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Reference Contact Number
+              </label>
+              <div className="">
+                <input
+                  type="text"
+                  className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Enter Reference Contact Number "
+                  {...register("ReferenceContect")}
+                />
+              </div>
+            </div>
+            <div className="inputs mt-3">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Website
+              </label>
+              <div className="">
+                <input
+                  type="text"
+                  className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Website "
+                  {...register("website")}
                 />
               </div>
             </div>
@@ -500,13 +636,34 @@ const Form2 = () => {
               </label>
               <div className="">
                 <input
-                  type="number"
+                  type="tel"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Enter Amount in rupees"
-                  {...register("ConferenceCharge")}
+                  {...register("conference")}
                 />
               </div>
             </div>
+            <div className="inputs mt-3">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Visiting Charge
+              </label>
+              <div className="">
+                <input
+                  type="tel"
+                  className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Enter Amount in rupees"
+                  {...register("visiting")}
+                />
+              </div>
+            </div>
+            {/* 
+             
+for Reporting History
+
+
             <div className="inputs mt-3">
               <label
                 htmlFor="price"
@@ -526,7 +683,13 @@ const Form2 = () => {
                   <option value="Monthly Paper">Monthly Paper</option>
                 </select>
               </div>
-            </div>
+            </div> */}
+
+            {/* for Additional documents */}
+
+            {/*
+             For Additional Documents
+            
             <div className="inputs mt-3">
               <label
                 htmlFor="price"
@@ -546,6 +709,34 @@ const Form2 = () => {
                   </Button>
                 </span>
               </div>
+            </div> */}
+          </div>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <div className="inputs mt-3">
+              <FormControlLabel
+                htmlFor="firstone"
+                control={
+                  <Checkbox
+                    id="firstone"
+                    {...register("siteVisitAvailability")}
+                    size={"medium"}
+                  />
+                }
+                label="Availability For Site Visit"
+              />
+            </div>
+            <div className="inputs mt-3">
+              <FormControlLabel
+                htmlFor="secondOne"
+                control={
+                  <Checkbox
+                    id="secondOne"
+                    {...register("pressConferenceAvailability")}
+                    size={"medium"}
+                  />
+                }
+                label="Availability For Conference"
+              />
             </div>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -561,11 +752,13 @@ const Form2 = () => {
                   type="text"
                   className=" py-2 text-sm lg:w-128 md:w-96 sm:w-80 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Address"
-                  {...register("ParmnentAddress")}
+                  {...register("permanentAddress")}
                 />
+                {/* <input type="checkbox" placeholder="RNI" {...register("RNI", {})} /> */}
               </div>
             </div>
           </div>
+
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             <div className="inputs mt-3">
               <label
@@ -579,7 +772,7 @@ const Form2 = () => {
                   type="text"
                   className=" py-2 text-sm lg:w-128 md:w-96  sm:w-80 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Address"
-                  {...register("CurrentAddress")}
+                  {...register("currentAddress")}
                 />
               </div>
             </div>
