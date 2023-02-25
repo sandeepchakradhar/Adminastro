@@ -74,6 +74,17 @@ export const profileApi = createApi({
         };
       },
     }),
+    getReporterDetailsById: builder.query({
+      query: ({ token, _id }) => {
+        return {
+          url: `getReporterDetailsById/${_id}`,
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
     getNews: builder.query({
       query: (token) => {
         return {
@@ -114,10 +125,13 @@ export const profileApi = createApi({
       },
     }),
     getAllReporter: builder.query({
-      query: () => {
+      query: (token) => {
         return {
           url: "getAllReporter",
           method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         };
       },
     }),
@@ -272,4 +286,5 @@ export const {
   useRegisterMutation,
   useFormMutation,
   useActiveStausByIdMutation,
+  useGetReporterDetailsByIdQuery,
 } = profileApi;

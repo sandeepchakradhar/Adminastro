@@ -19,7 +19,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useGetAllReporterQuery, useActiveStausByIdMutation } from "../services/profile";
+import {
+  useGetAllReporterQuery,
+  useActiveStausByIdMutation,
+} from "../services/profile";
 import { Box } from "@mui/system";
 
 //styling start//
@@ -47,16 +50,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Experts = () => {
   const token = getToken("token");
-  console.log(token, "token");
+
   const { data } = useGetReportersQuery(token);
-  const [updateStatus ]= useActiveStausByIdMutation();
+  const [updateStatus] = useActiveStausByIdMutation();
   console.log(data, "data");
   // for filter by
 
   const [nobe, setNobe] = useState("");
   console.log(nobe, "switch");
 
-  const { data: data2 } = useGetAllReporterQuery();
+  const { data: data2 } = useGetAllReporterQuery(token);
   console.log(data2, "all reporters");
 
   const navigate = useNavigate();
@@ -81,22 +84,18 @@ const Experts = () => {
   //   setOpen2(false);
   // };
 
-const updateSwitch= async(value,_id)=>{
-  console.log(value,_id,"kaushdfigasif")
-
-  
-//   const ram = data?.filter((e)=> e._id === _id)
-
-//   })
-// const res = await updateStatus({value,token,_id})
-}
+  const updateSwitch = async (value, _id) => {
+    // console.log(value, _id, "kaushdfigasif");
+    //   const ram = data?.filter((e)=> e._id === _id)
+    //   })
+    // const res = await updateStatus({ value, token, _id });
+  };
 
   return (
     <div>
       <HeaderTwo header={"Experts"} />
       <Box className=" float-right m-2">
         <Button
-          
           onClick={() => {
             navigate("MultiStepper");
           }}
@@ -159,11 +158,11 @@ const updateSwitch= async(value,_id)=>{
                       </Link>
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      <Switch 
-                      checked={status === "active"?true:false}
-                      inputProps={{"aria-label":"controlled"}}
-
-                      onChange={(e) => updateSwitch(e.target.value,_id)} />
+                      <Switch
+                        checked={status === "active" ? true : false}
+                        inputProps={{ "aria-label": "controlled" }}
+                        onChange={(e) => updateSwitch(e.target.value, _id)}
+                      />
                     </StyledTableCell>
                   </StyledTableRow>
                 </TableBody>
