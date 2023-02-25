@@ -56,7 +56,7 @@ const Experts = () => {
   const [nobe, setNobe] = useState("");
   console.log(nobe, "switch");
 
-  const { data: data2 } = useGetAllReporterQuery();
+  const { data: data2 } = useGetAllReporterQuery(token);
   console.log(data2, "all reporters");
 
   const navigate = useNavigate();

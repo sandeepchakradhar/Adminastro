@@ -43,7 +43,7 @@ const Form1 = () => {
   };
 
   const dispatch = useDispatch();
-
+const role= "reporter";
   const onSubmit = async ({ name, password, email, gender, phonenumber }) => {
     // console.log(
     //   name,
@@ -60,6 +60,7 @@ const Form1 = () => {
     data.append("gender", gender);
     data.append("phonenumber", phonenumber);
     data.append("pimage", pimage);
+    data.append("role", role);
     data.append("dateOfBirth", dateOfBirth);
 
     if (pimage && dateOfBirth) {
