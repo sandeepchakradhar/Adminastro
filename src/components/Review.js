@@ -7,12 +7,22 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import CloseIcon from "@mui/icons-material/Close";
 import { Rating } from "@mui/material";
+import { useGetRatingQuery, useGetRatingByIdQuery } from "../services/profile";
+import { getToken } from "../services/LocalStorage";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Review() {
+export default function Review({ _id }) {
+  const token = getToken("token");
+  console.log(_id, "id in review");
+  const { data: pata } = useGetRatingQuery(token);
+  const { data } = useGetRatingByIdQuery({ token, _id });
+
+  console.log(data, " data rating");
+  console.log(pata, " pata rating");
+
   const [open, setOpen] = React.useState(false);
 
   const [rating, setRating] = React.useState(1);
@@ -44,24 +54,28 @@ export default function Review() {
           <span className=" left-0">Reivew</span>
           <CloseIcon className=" float-right" onClick={handleClose} />
         </DialogTitle>
-        <DialogContent className=" my-8">
-          <DialogContentText id="alert-dialog-slide-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            ut erat eu magna aliquet lacinia non id arcu.
-          </DialogContentText>
-        </DialogContent>
 
-        <div className="px-3 py-3 ">
-          <Rating
-            name="simple-controlled"
-            value={rating}
-            onChange={(event, newRating) => {
-              setRating(newRating);
-            }}
-          />
+        {data?.map(({ star, description }) => {
+          return (
+            <>
+              <DialogContent className=" my-8">
+                <DialogContentText id="alert-dialog-slide-description">
+                {description}
+                </DialogContentText>
+              </DialogContent>
 
-          <span className="  text-info   float-right   ">{date}</span>
-        </div>
+              <div className="px-3 py-3 ">
+                <Rating
+                  name="simple-controlled"
+                  value={star}
+                  readOnly
+                />
+
+                <span className="  text-info   float-right   ">{date}</span>
+              </div>
+            </>
+          );
+        })}
       </Dialog>
     </div>
   );

@@ -29,6 +29,28 @@ export const profileApi = createApi({
         };
       },
     }),
+    getRating: builder.query({
+      query: (token) => {
+        return {
+          url: "getRating",
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    getRatingById: builder.query({
+      query: ({ token, _id }) => {
+        return {
+          url: `getRatingById/${_id}`,
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
     getProfileById: builder.query({
       query: ({ token, _id }) => {
         return {
@@ -287,4 +309,6 @@ export const {
   useFormMutation,
   useActiveStausByIdMutation,
   useGetReporterDetailsByIdQuery,
+  useGetRatingQuery,
+  useGetRatingByIdQuery,
 } = profileApi;

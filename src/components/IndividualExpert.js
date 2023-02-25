@@ -1,4 +1,4 @@
-import { Avatar, Box } from "@mui/material";
+import { Avatar, Box, Button } from "@mui/material";
 import React from "react";
 // import BasicTabs from "./BasicTabs";
 import { useParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import {
   useGetReporterDetailsByIdQuery,
 } from "../services/profile";
 import HeaderTwo from "./HeaderTwo";
+import Review from "./Review";
 
 const IndividualExpert = () => {
   const { _id } = useParams();
@@ -50,7 +51,13 @@ const IndividualExpert = () => {
           <p className=" text-info">Gender</p>
           <h1 className=" text-2xl">{data?.gender}</h1>
         </div>
+        <div className=" divs mt-8">
+          <p className=" text-info">Verify Expert </p>
+          <Button className=" mt-2" variant="contained"> Verified </Button>
+        </div>
       </div>
+      <Review _id={_id} />
+      {""}
       <div id="description" className=" mt-2 ">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 my-1">
           <div className="mt-3 mx-1 " id=" perticular">
@@ -78,6 +85,26 @@ const IndividualExpert = () => {
           <div className="mt-3 mx-1 " id=" perticular">
             <span className=" text-xl text-info ">Reference Contact:</span>
             <span className=" text-lg "> {Data?.ReferenceContact} </span>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 my-1">
+          <div className="mt-3 mx-1 " id=" perticular">
+            <span className=" text-xl text-info ">Email :</span>
+            <span className=" text-lg "> {Data?.reporter.email} </span>
+          </div>
+          <div className="mt-3 mx-1 " id=" perticular">
+            <span className=" text-xl text-info ">Created At :</span>
+            <span className=" text-lg ">
+              {" "}
+              {new Date(Data?.createdAt).toDateString()}{" "}
+            </span>
+          </div>
+          <div className="mt-3 mx-1 " id=" perticular">
+            <span className=" text-xl text-info ">Updated At :</span>
+            <span className=" text-lg ">
+              {" "}
+              {new Date(Data?.updatedAt).toDateString()}{" "}
+            </span>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 my-1">
@@ -141,26 +168,7 @@ const IndividualExpert = () => {
             <span className=" text-lg "> {Data?.website} </span>
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 my-1">
-          <div className="mt-3 mx-1 " id=" perticular">
-            <span className=" text-xl text-info ">Nationality :</span>
-            <span className=" text-lg "> {Data?.nationality} </span>
-          </div>
-          <div className="mt-3 mx-1 " id=" perticular">
-            <span className=" text-xl text-info ">Created At :</span>
-            <span className=" text-lg ">
-              {" "}
-              {new Date(Data?.createdAt).toDateString()}{" "}
-            </span>
-          </div>
-          <div className="mt-3 mx-1 " id=" perticular">
-            <span className=" text-xl text-info ">Updated At :</span>
-            <span className=" text-lg ">
-              {" "}
-              {new Date(Data?.updatedAt).toDateString()}{" "}
-            </span>
-          </div>
-        </div>
+
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 my-1">
           <div className="mt-3 mx-1 " id=" perticular">
             <span className=" text-xl text-info ">Profession (If Other) :</span>
@@ -195,10 +203,11 @@ const IndividualExpert = () => {
             </span>
           </div>
           <div className="mt-3 mx-1 " id=" perticular">
-            <span className=" text-xl text-info ">Visiting Charge :</span>
-            <span className=" text-lg "> {Data?.visiting} </span>
+            <span className=" text-xl text-info ">Nationality :</span>
+            <span className=" text-lg "> {Data?.nationality} </span>
           </div>
         </div>
+
         <div className="grid grid-cols-1 gap-10 md:grid-cols-1 lg:grid-cols-1 my-1">
           <div className="mt-3 mx-1 " id=" perticular">
             <span className=" text-xl text-info "> Current Address :</span>
@@ -211,6 +220,30 @@ const IndividualExpert = () => {
             <span className=" text-lg "> {Data?.permanentAddress} </span>
           </div>
         </div>
+        <div className=" grid grid-cols-1 gap-10 md:grid-cols-1 lg:grid-cols-2 my-5">
+          <div>
+            <span className=" text-xl text-info ml-2 ">Pancard Image :</span>
+
+            <img
+              className=" border-info p-2 border-2 rounded m-2"
+              width={500}
+              src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/panImg/${Data?.panImg}`}
+              alt={`pan card image of ${Data?.reporter.name}`}
+            />
+          </div>
+
+          <div>
+            <span className=" text-xl text-info ml-2 ">Adhar Card Image :</span>
+
+            <img
+              className=" border-info p-2 border-2 rounded m-2"
+              width={500}
+              src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/adharImg/${Data?.adharImg}`}
+              alt={`pan card image of ${Data?.reporter.name}`}
+            />
+          </div>
+        </div>
+
         {"   "}
       </div>
     </div>
