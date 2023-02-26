@@ -9,6 +9,8 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import EditIcon from "@mui/icons-material/Edit";
 import { Switch } from "@mui/material";
+import { useAdminChangePasswordMutation } from "../services/profile";
+import { getToken } from "../services/LocalStorage";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -31,7 +33,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const AdminTable = ({ data }) => {
+  const token = getToken("token");
+  const [chnagePassword, { isLoading }] = useAdminChangePasswordMutation();
+
   const [nobe, setNobe] = useState("");
+
+  const change = async () => {
+    // let value ={password}
+    const res = await chnagePassword({ token });
+    console.log("Change");
+  };
   console.log(nobe, "switch");
 
   return (

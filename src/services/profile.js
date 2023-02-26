@@ -10,15 +10,6 @@ export const profileApi = createApi({
   tagTypes: ["User", "Language", "News"],
   endpoints: (builder) => ({
     getProfile: builder.query({
-      query: () => {
-        return {
-          url: "getProfile",
-          method: "GET",
-        };
-      },
-    }),
-
-    getProfile: builder.query({
       query: (token) => {
         return {
           url: "getProfile",
@@ -237,20 +228,7 @@ export const profileApi = createApi({
 
       invalidatesTags: ["User"],
     }),
-    activeStausById: builder.mutation({
-      query({ value, _id, token }) {
-        return {
-          url: `activeStausById/${_id}`,
-          method: "POST",
-          body: value,
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        };
-      },
 
-      invalidatesTags: ["User"],
-    }),
     deleteLanguageById: builder.mutation({
       query({ _id, token }) {
         return {
@@ -293,6 +271,7 @@ export const profileApi = createApi({
 
       invalidatesTags: ["Language"],
     }),
+
     activeStausById: builder.mutation({
       query({ value, _id, token }) {
         return {
@@ -307,6 +286,22 @@ export const profileApi = createApi({
 
       invalidatesTags: ["User"],
     }),
+
+    adminChangePassword: builder.mutation({
+      query({ value, token }) {
+        return {
+          url: "adminChangePassword",
+          method: "PATCH",
+          body: value,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["User"],
+    }),
+
     activeNewsById: builder.mutation({
       query({ value, _id, token }) {
         return {
@@ -352,4 +347,5 @@ export const {
   useGetConferenceQuery,
   useActiveNewsByIdMutation,
   useGetDashBoardDataQuery,
+  useAdminChangePasswordMutation,
 } = profileApi;

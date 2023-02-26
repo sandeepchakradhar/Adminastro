@@ -16,7 +16,7 @@ const Banner = () => {
 
   return (
     <div>
-      <HeaderTwo header={"Banners"}/>
+      <HeaderTwo header={"Banners"} />
 
       <Button
         onClick={() => {

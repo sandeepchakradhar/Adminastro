@@ -24,7 +24,11 @@ const Analytics = () => {
             icon={"EmojiPeopleIcon"}
             name={"Reporters"}
           />
-          <AnalyticsCard number={"100"} icon={"Groups2Icon"} name={"Users"} />
+          <AnalyticsCard
+            number={data?.userCount}
+            icon={"Groups2Icon"}
+            name={"Users"}
+          />
           <AnalyticsCard
             number={data?.userCount}
             icon={"CurrencyRupeeIcon"}

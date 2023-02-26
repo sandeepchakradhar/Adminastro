@@ -1,6 +1,8 @@
 import { Avatar, Button, Switch } from "@mui/material";
 import React, { useEffect, useState } from "react";
 // import BasicTabs from "./BasicTabs";
+import CircularProgress from "@mui/material/CircularProgress";
+
 import { Link } from "react-router-dom";
 import {
   useGetUsersQuery,
@@ -45,7 +47,7 @@ const UserDetails = () => {
   const token = getToken("token");
   const [checked, setChecked] = useState(true);
 
-  const { data } = useGetUsersQuery(token);
+  const { data, isLoading } = useGetUsersQuery(token);
   const [updateStatus] = useActiveStausByIdMutation();
   // console.log(data, "data");
 
@@ -98,12 +100,19 @@ const UserDetails = () => {
     // console.log(_id,"iuasdfiasdnfni")
   };
 
+  const Loader = () => {
+    if (isLoading === true) {
+      return <CircularProgress />;
+    }
+  };
+
   return (
     <div>
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              {Loader()}
               <StyledTableCell>Image</StyledTableCell>
               <StyledTableCell align="right">Name</StyledTableCell>
               <StyledTableCell align="right">Conatct</StyledTableCell>

@@ -151,9 +151,9 @@ const Experts = () => {
       </Box>
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
-          {Loader()}
           <TableHead>
             <TableRow>
+              {Loader()}
               <StyledTableCell>Image</StyledTableCell>
               <StyledTableCell align="right">Name</StyledTableCell>
               <StyledTableCell align="right">Conatct</StyledTableCell>
