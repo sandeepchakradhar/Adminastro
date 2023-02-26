@@ -8,10 +8,11 @@ import DialpadIcon from "@mui/icons-material/Dialpad";
 import { useLoginMutation } from "../services/profile";
 import { storeToken } from "../services/LocalStorage";
 import { Box } from "@mui/system";
+import CircularProgress from "@mui/material/CircularProgress";
+
 import { ToastContainer, toast } from "react-toastify";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import Image from "../assets/PressVartaIcon2(1).png"
-
+import Image from "../assets/PressVartaIcon2(1).png";
 
 const LoginOne = () => {
   const navigate = useNavigate();
@@ -20,7 +21,6 @@ const LoginOne = () => {
   const [visibility, setVisibility] = useState(false);
   // const [token, setToken] = useState("");
 
-  
   const handleVisible = () => {
     if (visibility === true) {
       setVisibility(false);
@@ -31,14 +31,14 @@ const LoginOne = () => {
   console.log(phonenumber, "number");
   console.log(password, "password");
 
-  const [login] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
 
   const handleSubmit = async () => {
     const lol = { phonenumber, password };
-    
+
     const res = await login(lol);
-    console.log(res.data, "data");
-    if (res.data.status === "success") {
+
+    if (res?.data?.userLogin?.role === "admin") {
       storeToken(res?.data?.token);
       navigate("/Dashboard");
     } else if (res.data.status === "failed") {
@@ -53,7 +53,6 @@ const LoginOne = () => {
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className=" mt-10 ml-10">
           <img src={Image} height="200" width="200" alt="Press Varta" />
-          
         </div>
         <div className="mx-auto">
           <div className=" mx-auto mt-11">
@@ -98,16 +97,20 @@ const LoginOne = () => {
             </div>
           </div>
           <div className=" block float-right">
-            <h5 
+            <h5
               className=" text-info cursor-pointer"
               onClick={() => navigate("/forgotp1")}
             >
-                  Forgot Password?
+              Forgot Password?
             </h5>
           </div>
           <div className=" pt-10 ">
             <Box onClick={() => handleSubmit()}>
-              <Buttons name={"Login"}></Buttons>
+              {isLoading ? (
+                <CircularProgress />
+              ) : (
+                <Buttons name={"Login"}></Buttons>
+              )}
             </Box>
           </div>
         </div>
