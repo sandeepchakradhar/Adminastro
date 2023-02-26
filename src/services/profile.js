@@ -7,7 +7,7 @@ export const profileApi = createApi({
     baseUrl: "https://pressvartaserver.umpteeninnovation.com/api",
   }),
 
-  tagTypes: ["User", "Language"],
+  tagTypes: ["User", "Language", "News"],
   endpoints: (builder) => ({
     getProfile: builder.query({
       query: () => {
@@ -95,6 +95,7 @@ export const profileApi = createApi({
           },
         };
       },
+      providesTags: ["News"],
     }),
     getReporterDetailsById: builder.query({
       query: ({ token, _id }) => {
@@ -117,6 +118,7 @@ export const profileApi = createApi({
           },
         };
       },
+      providesTags: ["News"],
     }),
     getLanguage: builder.query({
       query: () => {
@@ -150,6 +152,28 @@ export const profileApi = createApi({
       query: (token) => {
         return {
           url: "getAllReporter",
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    getDashBoardData: builder.query({
+      query: (token) => {
+        return {
+          url: "getDashBoardData",
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    getConference: builder.query({
+      query: (token) => {
+        return {
+          url: "getConference",
           method: "GET",
           headers: {
             authorization: `Bearer ${token}`,
@@ -283,6 +307,20 @@ export const profileApi = createApi({
 
       invalidatesTags: ["User"],
     }),
+    activeNewsById: builder.mutation({
+      query({ value, _id, token }) {
+        return {
+          url: `activeNewsById/${_id}`,
+          method: "PATCH",
+          body: value,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["News"],
+    }),
   }),
 });
 
@@ -311,4 +349,7 @@ export const {
   useGetReporterDetailsByIdQuery,
   useGetRatingQuery,
   useGetRatingByIdQuery,
+  useGetConferenceQuery,
+  useActiveNewsByIdMutation,
+  useGetDashBoardDataQuery,
 } = profileApi;

@@ -1,10 +1,17 @@
 import { Avatar, Button, Switch } from "@mui/material";
 import React, { useState } from "react";
+import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import HeaderTwo from "../components/HeaderTwo";
-import { useGetNewsQuery } from "../services/profile";
+import { ToastContainer, toast } from "react-toastify";
+
+import {
+  useGetNewsQuery,
+  useActiveNewsByIdMutation,
+} from "../services/profile";
 
 import { styled } from "@mui/material/styles";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -41,19 +48,76 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 // styling End//
 const token = getToken("token");
 const News = () => {
-  const { data } = useGetNewsQuery(token);
+  const [count, setCount] = useState(0);
+
+  const { data, isLoading } = useGetNewsQuery(token);
+
+  const Mata = data?.slice(count, count + 5);
+  console.log(Mata);
+  console.log(isLoading);
+
+  const [updateStatus] = useActiveNewsByIdMutation();
   console.log(data, "news");
   // for Switch
   const [nobe, setNobe] = useState("");
   console.log(nobe, "switch");
 
+  const Loader = () => {
+    if (isLoading === true) {
+      return <CircularProgress />;
+    }
+  };
+
+  const updateSwitch = async (valu, _id) => {
+    console.log(valu, _id, "kaushdfigasif");
+    const ram = data?.filter((e) => e._id === _id);
+    console.log(ram);
+    if (ram[0].status === "pending") {
+      let value = { ...ram[0], status: "active" };
+      console.log(value, "value");
+      const res = await updateStatus({ value, token, _id });
+      if (res.data.status === "success") {
+        toast(res.data.message);
+      } else if (res.data.status === "failed") {
+        toast(res.data.message);
+      } else {
+        toast("something went wrong");
+      }
+    }
+    if (ram[0].status === "active") {
+      let value = { ...ram[0], status: "pending" };
+      console.log(value, "value");
+      const res = await updateStatus({ value, token, _id });
+      if (res.data.status === "success") {
+        toast(res.data.message);
+      } else if (res.data.status === "failed") {
+        toast(res.data.message);
+      } else {
+        toast("something went wrong");
+      }
+    }
+  };
+
+  const increment = () => {
+    //  if (!newData[count]) {
+    //    newData.splice(count, 1, " ");
+    //  }
+    setCount(data?.length - 1 > count ? count + 5 : count);
+  };
+  const decrement = () => {
+    setCount(count > 0 ? count - 5 : 0);
+  };
+
   return (
     <div>
+      <ToastContainer />
+
       <HeaderTwo header={"News"} />
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              {Loader()}
               <StyledTableCell>Image/Video</StyledTableCell>
               <StyledTableCell align="right">Description</StyledTableCell>
               <StyledTableCell align="right">Category</StyledTableCell>
@@ -64,8 +128,16 @@ const News = () => {
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
-          {data?.map(
-            ({ category, description, createdAt, _id, updatedAt, video }) => {
+          {Mata?.map(
+            ({
+              category,
+              description,
+              createdAt,
+              _id,
+              updatedAt,
+              video,
+              status,
+            }) => {
               return (
                 <TableBody key={_id}>
                   <StyledTableRow
@@ -121,7 +193,11 @@ const News = () => {
                       </Link>
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      <Switch onChange={(e) => setNobe(e.target.value)} />
+                      <Switch
+                        checked={status === "active" ? true : false}
+                        inputProps={{ "aria-label": "controlled" }}
+                        onChange={(e) => updateSwitch(e.target.value, _id)}
+                      />
                     </StyledTableCell>
                   </StyledTableRow>
                 </TableBody>
@@ -130,6 +206,38 @@ const News = () => {
           )}
         </Table>
       </TableContainer>
+
+      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+        {data?.length - 1 !== count ? (
+          <Button sx={{ order: 2 }} variant="contained" onClick={increment}>
+            next
+          </Button>
+        ) : (
+          <Button
+            sx={{ order: 2 }}
+            disabled
+            variant="contained"
+            onClick={increment}
+          >
+            next
+          </Button>
+        )}
+        {count !== 0 ? (
+          <Button sx={{ order: 1 }} variant="contained" onClick={decrement}>
+            previous
+          </Button>
+        ) : (
+          <Button
+            sx={{ order: 1 }}
+            disabled
+            variant="contained"
+            onClick={decrement}
+          >
+            previous
+          </Button>
+        )}
+      </Box>
+
       {/*       
       {data?.map(
         ({ category, description, createdAt, _id, updatedAt, video }) => {

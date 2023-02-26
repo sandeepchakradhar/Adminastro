@@ -2,7 +2,7 @@ import { Box, Button, Dialog } from "@mui/material";
 import React from "react";
 import AddSpecializationDialog from "../components/AddSpecializationDialog";
 import HeaderTwo from "../components/HeaderTwo";
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 //  for table

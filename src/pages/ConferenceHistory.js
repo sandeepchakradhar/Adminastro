@@ -1,12 +1,18 @@
 import React from "react";
 import HeaderTwo from "../components/HeaderTwo";
+import { useGetConferenceQuery } from "../services/profile";
+import { getToken } from "../services/LocalStorage";
 
 const ConferenceHistory = () => {
-  return <div>
-    
-      <HeaderTwo header={"History"}/>
-    
-    ConferenceHistory</div>;
+  const token = getToken("token");
+  const { data } = useGetConferenceQuery(token);
+  console.log(data);
+  return (
+    <div>
+      <HeaderTwo header={"History"} />
+      ConferenceHistory
+    </div>
+  );
 };
 
 export default ConferenceHistory;

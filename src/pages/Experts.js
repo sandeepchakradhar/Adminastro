@@ -1,5 +1,6 @@
 import { Avatar, Button, Switch } from "@mui/material";
 import React, { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 import AddExpert from "../components/AddExpert";
 // import ExpertFilterBy from "../components/ExpertFilterBy";
 import HeaderTwo from "../components/HeaderTwo";
@@ -9,6 +10,7 @@ import HeaderTwo from "../components/HeaderTwo";
 import { useGetReportersQuery } from "../services/profile";
 import { getToken } from "../services/LocalStorage";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 import { styled } from "@mui/material/styles";
 
@@ -49,19 +51,24 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 // styling End//
 
 const Experts = () => {
+  const [count, setCount] = useState(0);
+
   const token = getToken("token");
 
   const { data } = useGetReportersQuery(token);
   const [updateStatus] = useActiveStausByIdMutation();
-  console.log(data, "data");
+  // console.log(data, "data");
   // for filter by
 
   const [nobe, setNobe] = useState("");
   console.log(nobe, "switch");
 
-  const { data: data2 } = useGetAllReporterQuery(token);
-  console.log(data2, "all reporters");
+  const { data: data2, isLoading } = useGetAllReporterQuery(token);
+  // console.log(data2, "all reporters");
 
+  const Mata = data?.slice(count, count + 5);
+  console.log(Mata);
+  console.log(isLoading);
   const navigate = useNavigate();
   // const [open1, setOpen1] = React.useState(false);
 
@@ -84,15 +91,54 @@ const Experts = () => {
   //   setOpen2(false);
   // };
 
-  const updateSwitch = async (value, _id) => {
-    // console.log(value, _id, "kaushdfigasif");
-    //   const ram = data?.filter((e)=> e._id === _id)
-    //   })
-    // const res = await updateStatus({ value, token, _id });
+  const updateSwitch = async (valu, _id) => {
+    console.log(valu, _id, "kaushdfigasif");
+    const ram = data?.filter((e) => e._id === _id);
+
+    if (ram[0].status === "pending") {
+      let value = { ...ram[0], status: "active" };
+      console.log(value, "value");
+      const res = await updateStatus({ value, token, _id });
+      if (res.data.status === "success") {
+        toast(res.data.message);
+      } else if (res.data.status === "failed") {
+        toast(res.data.message);
+      } else {
+        toast("something went wrong");
+      }
+    }
+    if (ram[0].status === "active") {
+      let value = { ...ram[0], status: "pending" };
+      console.log(value, "value");
+      const res = await updateStatus({ value, token, _id });
+      if (res.data.status === "success") {
+        toast(res.data.message);
+      } else if (res.data.status === "failed") {
+        toast(res.data.message);
+      } else {
+        toast("something went wrong");
+      }
+    }
+  };
+
+  const Loader = () => {
+    if (isLoading === true) {
+      return <CircularProgress />;
+    }
+  };
+  const increment = () => {
+    //  if (!newData[count]) {
+    //    newData.splice(count, 1, " ");
+    //  }
+    setCount(data?.length - 1 > count ? count + 5 : count);
+  };
+  const decrement = () => {
+    setCount(count > 0 ? count - 5 : 0);
   };
 
   return (
     <div>
+      <ToastContainer />
       <HeaderTwo header={"Experts"} />
       <Box className=" float-right m-2">
         <Button
@@ -105,6 +151,7 @@ const Experts = () => {
       </Box>
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
+          {Loader()}
           <TableHead>
             <TableRow>
               <StyledTableCell>Image</StyledTableCell>
@@ -117,7 +164,7 @@ const Experts = () => {
               <StyledTableCell align="right">Active</StyledTableCell>
             </TableRow>
           </TableHead>
-          {data?.map(
+          {Mata?.map(
             ({
               name,
               gender,
@@ -172,6 +219,36 @@ const Experts = () => {
         </Table>
       </TableContainer>
 
+      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+        {data?.length - 1 !== count ? (
+          <Button sx={{ order: 2 }} variant="contained" onClick={increment}>
+            next
+          </Button>
+        ) : (
+          <Button
+            sx={{ order: 2 }}
+            disabled
+            variant="contained"
+            onClick={increment}
+          >
+            next
+          </Button>
+        )}
+        {count !== 0 ? (
+          <Button sx={{ order: 1 }} variant="contained" onClick={decrement}>
+            previous
+          </Button>
+        ) : (
+          <Button
+            sx={{ order: 1 }}
+            disabled
+            variant="contained"
+            onClick={decrement}
+          >
+            previous
+          </Button>
+        )}
+      </Box>
       {/* 
       <Button
         onClick={() => {
