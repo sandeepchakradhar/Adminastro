@@ -72,6 +72,7 @@ const LoginOne = () => {
                 type="tel"
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Number"
+                maxLength={10}
                 onChange={(e) => setPhonenumber(e.target.value)}
               />
             </div>
@@ -82,6 +83,7 @@ const LoginOne = () => {
                 </span>
               </div>
               <input
+                maxLength={10}
                 type={!visibility ? "password" : "tel"}
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Password"
