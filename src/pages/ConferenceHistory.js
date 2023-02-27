@@ -50,11 +50,11 @@ const ConferenceHistory = () => {
   return (
     <div>
       <HeaderTwo header={"History"} />
+      {Loader()}
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              {Loader()}
               <StyledTableCell>Requested By </StyledTableCell>
               <StyledTableCell align="right">Contact </StyledTableCell>
               <StyledTableCell align="right">Location</StyledTableCell>
@@ -73,7 +73,6 @@ const ConferenceHistory = () => {
               time,
               user,
               _id,
-              
             }) => {
               return (
                 <TableBody key={_id}>
@@ -81,24 +80,20 @@ const ConferenceHistory = () => {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <StyledTableCell component="th" scope="row">
-                      s
+                      {user.name}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                     d 
+                      {user.phonenumber}
                     </StyledTableCell>
                     <StyledTableCell align="right">{location}</StyledTableCell>
                     <StyledTableCell align="right">
                       {new Date(DateOfConfrence).toDateString()}
                     </StyledTableCell>
+                    <StyledTableCell align="right">{time}</StyledTableCell>
                     <StyledTableCell align="right">
-                      {time}
+                      {numberOfReporters}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
-                    {numberOfReporters}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                    {payment}
-                    </StyledTableCell>
+                    <StyledTableCell align="right">{payment}</StyledTableCell>
                   </StyledTableRow>
                 </TableBody>
               );

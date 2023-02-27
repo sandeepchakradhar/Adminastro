@@ -29,6 +29,7 @@ import { Box } from "@mui/system";
 import { IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import ExpertFilterBy from "../components/ExpertFilterBy";
 
 //styling start//
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -139,24 +140,53 @@ const Experts = () => {
     setCount(count > 0 ? count - 5 : 0);
   };
 
+  // for search query
+
+  const [search, setSearch] = useState();
+  console.log(search, "search1");
+
+  //
+  const noResult = () => {
+    let newData = data?.filter((e) => e.name.toLowerCase().includes(search));
+    console.log(newData, "new Data");
+    return newData?.length;
+  };
+
+  //
+  const [searching, setSearching] = useState();
+
+  const handleSearch = () => {
+    console.log("hbasdhb");
+    const searchData = data?.filter((e) =>
+      e.name.toLowerCase().includes(search)
+    );
+    setSearching(searchData);
+    console.log(searchData, "search dat");
+  };
+
   return (
     <div>
       <ToastContainer />
       <HeaderTwo header={"Experts"} />
       <Box className=" flex gap-10 m-5 ">
-        <form className=" flex gap-5">
+        <div className=" flex gap-5">
           <TextField
             id="search-bar"
             className="text"
             //   onInput={(e) => {
             //     setSearchQuery(e.target.value);
             //   }}
+            onChange={(e) => setSearch(e.target.value)}
             label="Search Expert Name"
             variant="outlined"
             placeholder="Search..."
             size="small"
           />
-          <IconButton type="submit" aria-label="search">
+          <IconButton
+            onClick={() => handleSearch()}
+            type="submit"
+            aria-label="search"
+          >
             <SearchIcon className=" ml-1" />
           </IconButton>
 
@@ -164,7 +194,7 @@ const Experts = () => {
             <FilterListIcon className="text-info" />
             <span className="text-info ml-1"> Filter</span>
           </Button>
-        </form>
+        </div>
         <Button
           onClick={() => {
             navigate("MultiStepper");
@@ -173,6 +203,13 @@ const Experts = () => {
           Add Expert
         </Button>
       </Box>
+      {search && noResult() === 0 ? (
+        <h1 className=" ml-10 my-10">No Result Found</h1>
+      ) : (
+        ""
+      )}
+
+      {/* <ExpertFilterBy open1={open1} handleClose1={handleClose1}/> */}
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
@@ -188,7 +225,113 @@ const Experts = () => {
               <StyledTableCell align="right">Active</StyledTableCell>
             </TableRow>
           </TableHead>
-          {Mata?.map(
+{
+search? (searching?.map(({name,
+  gender,
+  createdAt,
+  pimage,
+  phonenumber,
+  dateOfBirth,
+  _id,
+  status,})=>{
+  return(
+    <TableBody key={_id}>
+    <StyledTableRow
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      <StyledTableCell component="th" scope="row">
+        <Avatar
+          className=" "
+          sx={{ width: 60, height: 60 }}
+          alt="Sandeep"
+          src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/pimage/${pimage}`}
+        />
+      </StyledTableCell>
+      <StyledTableCell align="right">{name}</StyledTableCell>
+      <StyledTableCell align="right">
+        {phonenumber}
+      </StyledTableCell>
+      <StyledTableCell align="right">
+        {new Date(dateOfBirth).toDateString()}
+      </StyledTableCell>
+      <StyledTableCell align="right">
+        {new Date(createdAt).toDateString()}
+      </StyledTableCell>
+      <StyledTableCell align="right">{gender}</StyledTableCell>
+      <StyledTableCell align="right">
+        <Link to={`IndividualExpert/${_id}`}>
+          <Button>View</Button>
+        </Link>
+      </StyledTableCell>
+      <StyledTableCell align="right">
+        <Switch
+          checked={status === "active" ? true : false}
+          inputProps={{ "aria-label": "controlled" }}
+          onChange={(e) => updateSwitch(e.target.value, _id)}
+        />
+      </StyledTableCell>
+    </StyledTableRow>
+  </TableBody>
+  )
+})):
+(
+  Mata?.map(
+    ({
+      name,
+      gender,
+      createdAt,
+      pimage,
+      phonenumber,
+      dateOfBirth,
+      _id,
+      status,
+    }) => {
+      return (
+        <TableBody key={_id}>
+          <StyledTableRow
+            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+          >
+            <StyledTableCell component="th" scope="row">
+              <Avatar
+                className=" "
+                sx={{ width: 60, height: 60 }}
+                alt="Sandeep"
+                src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/pimage/${pimage}`}
+              />
+            </StyledTableCell>
+            <StyledTableCell align="right">{name}</StyledTableCell>
+            <StyledTableCell align="right">
+              {phonenumber}
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              {new Date(dateOfBirth).toDateString()}
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              {new Date(createdAt).toDateString()}
+            </StyledTableCell>
+            <StyledTableCell align="right">{gender}</StyledTableCell>
+            <StyledTableCell align="right">
+              <Link to={`IndividualExpert/${_id}`}>
+                <Button>View</Button>
+              </Link>
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <Switch
+                checked={status === "active" ? true : false}
+                inputProps={{ "aria-label": "controlled" }}
+                onChange={(e) => updateSwitch(e.target.value, _id)}
+              />
+            </StyledTableCell>
+          </StyledTableRow>
+        </TableBody>
+      );
+    }
+  )
+)
+
+}
+{/* 
+          {Mata.map(
             ({
               name,
               gender,
@@ -239,7 +382,7 @@ const Experts = () => {
                 </TableBody>
               );
             }
-          )}
+          )} */}
         </Table>
       </TableContainer>
 

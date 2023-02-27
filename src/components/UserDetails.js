@@ -26,6 +26,19 @@ import { IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
 
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { MenuItem, Select, Stack } from "@mui/material";
+import Button2 from "../components/Button2";
+import dayjs from "dayjs";
+
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 //styling start//
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -107,6 +120,70 @@ const UserDetails = () => {
     // console.log(_id,"iuasdfiasdnfni")
   };
 
+  //  for dialog states start
+
+  const [open1, setOpen1] = React.useState(false);
+
+  const handleClickOpen1 = () => {
+    setOpen1(true);
+  };
+
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
+  // for from Date
+  const [value1, setValue1] = React.useState(dayjs(""));
+
+  const handleDateOneChange = (newValue1) => {
+    setValue1(newValue1);
+  };
+  // for to Date
+  const [value2, setValue2] = React.useState(dayjs(""));
+
+  const handleDateTwoChange = (newValue2) => {
+    setValue2(newValue2);
+  };
+
+  // For age
+  const [age, setAge] = React.useState("");
+  const handleAgeChange = (event) => {
+    setAge(event.target.value);
+  };
+  // For gender
+  const [gender, setGender] = React.useState("");
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
+  // For status
+  const [status, setStatus] = React.useState("");
+  const handleStatusChange = (event) => {
+    setStatus(event.target.value);
+  };
+
+  console.log(value1.$d, "first");
+
+  function convert1(value1) {
+    var date = new Date(value1),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+
+  function convert2(value2) {
+    var date = new Date(value2),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+
+  console.log(convert1(value1), " date from");
+  console.log(convert2(value2), "Date to");
+  console.log(age, "age");
+  console.log(status, "status");
+  console.log(gender, "gender");
+  //  for dialog states end
+
   const Loader = () => {
     if (isLoading === true) {
       return <CircularProgress />;
@@ -122,17 +199,32 @@ const UserDetails = () => {
     setCount(count > 0 ? count - 5 : 0);
   };
 
+  // for search query
+
+  const [search, setSearch] = useState("");
+  console.log(search, "search");
+
+  //
+  const noResult = () => {
+    let newData = Mata?.filter((e) => e.name.toLowerCase().includes(search));
+    console.log(newData, "new Data");
+    return newData?.length;
+  };
+
+  console.log(noResult());
   return (
     <div>
       <Box className=" flex gap-10 m-5 ">
-        <form className=" flex gap-5">
+        <div className=" flex gap-5">
           <TextField
+            value={search}
             id="search-bar"
             className="text"
             //   onInput={(e) => {
             //     setSearchQuery(e.target.value);
             //   }}
-            label="Search Expert Name"
+            onChange={(e) => setSearch(e.target.value)}
+            label="Search User Name"
             variant="outlined"
             placeholder="Search..."
             size="small"
@@ -141,11 +233,11 @@ const UserDetails = () => {
             <SearchIcon className=" ml-1" />
           </IconButton>
 
-          <Button variant="outlined" color="info">
+          <Button onClick={handleClickOpen1} variant="outlined" color="info">
             <FilterListIcon className="text-info" />
             <span className="text-info ml-1"> Filter</span>
           </Button>
-        </form>
+        </div>
         {/* <Button
           onClick={() => {
             navigate("MultiStepper");
@@ -154,6 +246,170 @@ const UserDetails = () => {
           Add Expert
         </Button> */}
       </Box>
+      {/* user Filter dialog box open */}
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle className=" bg-danger" id="alert-dialog-title">
+          {"Filter By"}
+        </DialogTitle>
+        <DialogContent className=" my-5">
+          <DialogContentText id="alert-dialog-description">
+            <Stack
+              className=" "
+              direction="column"
+              justifyContent="space-evenly"
+              alignItems="flex-start"
+              spacing={4}
+            >
+              <div className="   gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className="">
+                  <label
+                    htmlFor="demo-simple-select-label"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Age
+                  </label>
+                  <div className="relative mt-1 rounded-md  shadow-sm">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                    <Select
+                      className=" w-40 h-11"
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={age}
+                      label="Age"
+                      onChange={handleAgeChange}
+                    >
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem>
+                    </Select>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="demo-simple-select-label"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Gender
+                  </label>
+                  <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                    <Select
+                      className=" w-40 h-11"
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={gender}
+                      label="Gender"
+                      onChange={handleGenderChange}
+                    >
+                      <MenuItem value={"Male"}>Male</MenuItem>
+                      <MenuItem value={"Female"}>Female</MenuItem>
+                      <MenuItem value={"Other"}>Others</MenuItem>
+                    </Select>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="demo-simple-select-label"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Status
+                  </label>
+                  <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                    <Select
+                      className=" w-40  h-11"
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={status}
+                      label="Age"
+                      onChange={handleStatusChange}
+                    >
+                      <MenuItem value={"Active"}>Active</MenuItem>
+                      <MenuItem value={"Inactive"}>Inactive</MenuItem>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Member Since
+                </label>
+              </div>
+              <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div>
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    From
+                  </label>
+                  <div>
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DesktopDatePicker
+                          inputFormat="DD/MM/YYYY"
+                          value={value1}
+                          onChange={handleDateOneChange}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              sx={{ ".MuiInputBase-input": { padding: 1 } }}
+                            />
+                          )}
+                        />
+                      </LocalizationProvider>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    To
+                  </label>
+                  <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DesktopDatePicker
+                        inputFormat="DD/MM/YYYY"
+                        value={value2}
+                        onChange={handleDateTwoChange}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            sx={{ ".MuiInputBase-input": { padding: 1 } }}
+                          />
+                        )}
+                      />
+                    </LocalizationProvider>
+                  </div>
+                </div>
+              </div>
+            </Stack>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions className=" bg-danger">
+          <Box>
+            <Button2
+              handleClose={handleClose1}
+              color={"wite"}
+              name={"Cancel"}
+            />
+          </Box>
+          <Box>
+            <Button2 name={"Add"} />
+          </Box>
+        </DialogActions>
+      </Dialog>
+      {/* user Filter dialog box close */}
+      {noResult() === 0 ? <h1 className=" ml-10 my-10">No Result Found</h1> : ""}
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
@@ -169,7 +425,7 @@ const UserDetails = () => {
               <StyledTableCell align="right">Active</StyledTableCell>
             </TableRow>
           </TableHead>
-          {Mata?.map(
+          {Mata?.filter((e) => e.name.toLowerCase().includes(search)).map(
             ({
               name,
               gender,
@@ -248,8 +504,10 @@ const UserDetails = () => {
         </Table>
       </TableContainer>
 
-
-      <Box className=" m-3" sx={{ display: "flex", justifyContent: "space-around" }}>
+      <Box
+        className=" m-3"
+        sx={{ display: "flex", justifyContent: "space-around" }}
+      >
         {data?.length - 1 !== count ? (
           <Button sx={{ order: 2 }} variant="contained" onClick={increment}>
             next

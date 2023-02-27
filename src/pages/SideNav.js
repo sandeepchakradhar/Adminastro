@@ -52,13 +52,13 @@ const SideNav = () => {
   return (
     <div>
       <Container
-        className="bg-error border border-secondary"
-        sx={{ maxWidth: "220px", height: "800px" }}
+        className="bg-error border border-secondary rounded-b-xl"
+        sx={{ maxWidth: "220px", }}
       >
         <div className="mt-4 mb-8 ml-7">
           <img src={Image} height="70" width="70" alt="Press Varta" />
         </div>
-        <div className=" flex mb-10">
+        <div className=" flex mb-7">
           <div>
             <Avatar
               alt="Sandeep"
@@ -82,6 +82,7 @@ const SideNav = () => {
           justifyContent="space-evenly"
           alignItems="flex-start"
           spacing={1}
+          className=" mb-3"
         >
           <NavLink
             style={navLinkStyles}
@@ -132,7 +133,7 @@ const SideNav = () => {
               Conference History
             </Box>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             style={navLinkStyles}
             className=" bg-success rounded-lg text-info  hover:text-primary"
             to="/Dashboard/Payout"
@@ -140,7 +141,7 @@ const SideNav = () => {
             <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
               Payout Requests
             </Box>
-          </NavLink>
+          </NavLink> */}
           <NavLink
             style={navLinkStyles}
             className=" bg-success rounded-lg text-info  hover:text-primary"
