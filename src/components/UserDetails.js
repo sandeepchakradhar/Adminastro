@@ -21,6 +21,11 @@ import { getToken } from "../services/LocalStorage";
 
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { Box } from "@mui/system";
+import { IconButton, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import FilterListIcon from "@mui/icons-material/FilterList";
+
 
 //styling start//
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -44,6 +49,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const UserDetails = () => {
+  const [count, setCount] = useState(0);
+
   const token = getToken("token");
   const [checked, setChecked] = useState(true);
 
@@ -105,9 +112,48 @@ const UserDetails = () => {
       return <CircularProgress />;
     }
   };
+  const increment = () => {
+    //  if (!newData[count]) {
+    //    newData.splice(count, 1, " ");
+    //  }
+    setCount(data?.length - 1 > count ? count + 5 : count);
+  };
+  const decrement = () => {
+    setCount(count > 0 ? count - 5 : 0);
+  };
 
   return (
     <div>
+      <Box className=" flex gap-10 m-5 ">
+        <form className=" flex gap-5">
+          <TextField
+            id="search-bar"
+            className="text"
+            //   onInput={(e) => {
+            //     setSearchQuery(e.target.value);
+            //   }}
+            label="Search Expert Name"
+            variant="outlined"
+            placeholder="Search..."
+            size="small"
+          />
+          <IconButton type="submit" aria-label="search">
+            <SearchIcon className=" ml-1" />
+          </IconButton>
+
+          <Button variant="outlined" color="info">
+            <FilterListIcon className="text-info" />
+            <span className="text-info ml-1"> Filter</span>
+          </Button>
+        </form>
+        {/* <Button
+          onClick={() => {
+            navigate("MultiStepper");
+          }}
+        >
+          Add Expert
+        </Button> */}
+      </Box>
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
@@ -202,6 +248,37 @@ const UserDetails = () => {
         </Table>
       </TableContainer>
 
+
+      <Box className=" m-3" sx={{ display: "flex", justifyContent: "space-around" }}>
+        {data?.length - 1 !== count ? (
+          <Button sx={{ order: 2 }} variant="contained" onClick={increment}>
+            next
+          </Button>
+        ) : (
+          <Button
+            sx={{ order: 2 }}
+            disabled
+            variant="contained"
+            onClick={increment}
+          >
+            next
+          </Button>
+        )}
+        {count !== 0 ? (
+          <Button sx={{ order: 1 }} variant="contained" onClick={decrement}>
+            previous
+          </Button>
+        ) : (
+          <Button
+            sx={{ order: 1 }}
+            disabled
+            variant="contained"
+            onClick={decrement}
+          >
+            previous
+          </Button>
+        )}
+      </Box>
       {/* {data?.map(
         ({ name, gender, pimage, phonenumber, dateOfBirth, _id }) => {
           return (

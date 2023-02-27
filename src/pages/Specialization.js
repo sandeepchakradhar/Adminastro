@@ -90,15 +90,15 @@ const Specialization = () => {
         </Button>
       </Box>
 
-      <AddSpecializationDialog open={open} handleClose={handleClose} />
+      {/* <AddSpecializationDialog open={open} handleClose={handleClose} /> */}
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell>Title</StyledTableCell>
-              <StyledTableCell align="right">Calories</StyledTableCell>
-              <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
+              {/* <StyledTableCell align="right">Calories</StyledTableCell>
+              <StyledTableCell align="right"></StyledTableCell> */}
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -108,8 +108,8 @@ const Specialization = () => {
                 <StyledTableCell component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                {/* <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                <StyledTableCell align="right">{row.fat}</StyledTableCell> */}
                 <StyledTableCell align="right">
                   <EditOutlinedIcon
                     className=" mx-2"
@@ -171,10 +171,7 @@ const Specialization = () => {
                   </div>
                 </div>
 
-                <div className=" px-4 mt-5">
-                  <Checkbox {...label} />
-                  <span className="mt-3"> RCI</span>
-                </div>
+                
               </div>
             </Stack>
           </DialogContentText>

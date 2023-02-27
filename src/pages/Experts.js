@@ -26,6 +26,9 @@ import {
   useActiveStausByIdMutation,
 } from "../services/profile";
 import { Box } from "@mui/system";
+import { IconButton, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import FilterListIcon from "@mui/icons-material/FilterList";
 
 //styling start//
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -140,7 +143,28 @@ const Experts = () => {
     <div>
       <ToastContainer />
       <HeaderTwo header={"Experts"} />
-      <Box className=" float-right m-2">
+      <Box className=" flex gap-10 m-5 ">
+        <form className=" flex gap-5">
+          <TextField
+            id="search-bar"
+            className="text"
+            //   onInput={(e) => {
+            //     setSearchQuery(e.target.value);
+            //   }}
+            label="Search Expert Name"
+            variant="outlined"
+            placeholder="Search..."
+            size="small"
+          />
+          <IconButton type="submit" aria-label="search">
+            <SearchIcon className=" ml-1" />
+          </IconButton>
+
+          <Button variant="outlined" color="info">
+            <FilterListIcon className="text-info" />
+            <span className="text-info ml-1"> Filter</span>
+          </Button>
+        </form>
         <Button
           onClick={() => {
             navigate("MultiStepper");
@@ -219,7 +243,10 @@ const Experts = () => {
         </Table>
       </TableContainer>
 
-      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+      <Box
+        className=" m-3"
+        sx={{ display: "flex", justifyContent: "space-around" }}
+      >
         {data?.length - 1 !== count ? (
           <Button sx={{ order: 2 }} variant="contained" onClick={increment}>
             next

@@ -41,10 +41,10 @@ const AddBanner = ({ open, handleClose }) => {
                   >
                     Add Banner
                   </label>
-                  <div className="block py-2 text-sm w-auto rounded-md border border-secondary pl-7 pr-12 mr-40 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                  <div className=" block py-2 text-sm w-auto rounded-md border border-secondary pl-7 pr-12 mr-40 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     <Input type="file" />
 
-                    <div className="pointer-events-none absolute inset-y-0  flex right-32 items-center pt-2 ">
+                    <div className="pointer-events-none absolute inset-y-0 ml-96 flex ri items-center pt-2 ">
                     <span className=" ml-1">
                         <Button variant="contained" component="label">
                           <FileUploadIcon />

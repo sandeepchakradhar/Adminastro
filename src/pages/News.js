@@ -53,7 +53,7 @@ const News = () => {
   const { data, isLoading } = useGetNewsQuery(token);
 
   const Mata = data?.slice(count, count + 5);
-  console.log(Mata);
+  console.log(Mata, "mata");
   console.log(isLoading);
 
   const [updateStatus] = useActiveNewsByIdMutation();
@@ -175,7 +175,7 @@ const News = () => {
                       )}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {description}
+                      {description?.slice(0 ,50)}
                     </StyledTableCell>
                     <StyledTableCell align="right">{category}</StyledTableCell>
                     <StyledTableCell align="right">
@@ -207,7 +207,10 @@ const News = () => {
         </Table>
       </TableContainer>
 
-      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+      <Box
+        className=" m-3"
+        sx={{ display: "flex", justifyContent: "space-around" }}
+      >
         {data?.length - 1 !== count ? (
           <Button sx={{ order: 2 }} variant="contained" onClick={increment}>
             next

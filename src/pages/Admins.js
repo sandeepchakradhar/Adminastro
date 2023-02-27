@@ -3,7 +3,7 @@ import AdminTable from "../components/AdminTable";
 import { useGetProfileQuery } from "../services/profile";
 import { getToken } from "../services/LocalStorage";
 import HeaderTwo from "../components/HeaderTwo";
-import Review from "../components/Review";
+// import Review from "../components/Review";
 
 const Admins = () => {
   const token = getToken("token");
@@ -14,7 +14,7 @@ const Admins = () => {
   return (
     <div>
       <HeaderTwo header={"Admin"} />
-      <Review />
+      {/* <Review /> */}
 
       <AdminTable data={data} />
     </div>
