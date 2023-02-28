@@ -121,7 +121,7 @@ const News = () => {
               <StyledTableCell>Image/Video</StyledTableCell>
               <StyledTableCell align="right">Description</StyledTableCell>
               <StyledTableCell align="right">Category</StyledTableCell>
-              <StyledTableCell align="right">Created At</StyledTableCell>
+              <StyledTableCell align="right">Created Date</StyledTableCell>
               <StyledTableCell align="right">Created Time</StyledTableCell>
               <StyledTableCell align="right">Updated At</StyledTableCell>
               <StyledTableCell align="right">View</StyledTableCell>

@@ -1,10 +1,17 @@
 import { Box, Button, Dialog } from "@mui/material";
-import React from "react";
+import React, { useState,useEffect } from "react";
 import AddSpecializationDialog from "../components/AddSpecializationDialog";
 import HeaderTwo from "../components/HeaderTwo";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import {
+  useAddSpecializationMutation,
+  useDeleteSpecializationByIdMutation,
+  useEditSpecializationByIdMutation,
+  useGetSpecializationQuery,
+} from "../services/profile";
 
+import { getToken } from "../services/LocalStorage";
 //  for table
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -62,14 +69,65 @@ const rows = [
 ];
 
 const Specialization = () => {
-  const [open, setOpen] = React.useState(false);
+  
+  const [ID, setID] = useState();
+  const [NewSpec, setNewSpec] = useState();
+  // apiii
+  const token = getToken("token");
+
+  const [addSpecialization] = useAddSpecializationMutation();
+
+  const handleSubmit = async () => {
+    console.log(specialization, "lankjbsdskb");
+
+    const data = { specialization };
+    const res = await addSpecialization({ data, token });
+    console.log(res, "res");
+  };
+  //
+  const { data: mata } = useGetSpecializationQuery();
+
+  console.log(mata, "mataaaa");
+  //
+  const [deleteSpecialization] = useDeleteSpecializationByIdMutation();
+  //
+  const [editSpecialization] = useEditSpecializationByIdMutation();
+
+  const [editSpec, setEditSpec] = useState(NewSpec);
+  useEffect(() => {
+    setEditSpec(NewSpec)
+  }, [NewSpec])
+  
+
+  console.log(editSpec, "mjnnknkn");
+  const handleEditSubmit = async () => {
+    const value = { specialization: editSpec };
+    const _id = ID;
+
+    console.log(_id, editSpec, "ijijijiijioij");
+    const res = await editSpecialization({ value, token, _id });
+    console.log(res, "6546465464");
+    if (res.data.status === "success") {
+      console.log(res.data.message, "first");
+    } else {
+      console.log(res.data.message, "first");
+    }
+  };
+
+  // set Specialization
   const [specialization, setSpecialization] = React.useState("");
   const handleSpecializationChange = (event) => {
     setSpecialization(event.target.value);
   };
+  const handleEditChange = (event) => {
+    setEditSpec(event.target.value);
+  };
 
   console.log(specialization, "specialization");
 
+  // to open Addspecialization
+
+  const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -77,57 +135,96 @@ const Specialization = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  // to open EditSpecialization
+  const [open2, setOpen2] = React.useState(false);
+
+  const handleClickOpen2 = () => {
+    setOpen2(true);
+  };
+
+  const handleEdit = (_id, index) => {
+    setID(_id);
+    setNewSpec(mata[index].specialization);
+    console.log("hhg", _id, mata[index].specialization);
+
+    // handleClickOpen2(_id, specialization);
+    // setEditSpec(specialization)
+    setOpen2(true);
+  };
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+
   return (
     <div>
       <HeaderTwo header={"Specialization"} />
-      <Box className=" float-right m-2">
-        <Button
-          onClick={() => {
-            handleClickOpen();
-          }}
-        >
-          Add Specialization
-        </Button>
-      </Box>
 
-      {/* <AddSpecializationDialog open={open} handleClose={handleClose} /> */}
-
+      {/* specialization table */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell>Title</StyledTableCell>
-              {/* <StyledTableCell align="right">Calories</StyledTableCell>
-              <StyledTableCell align="right"></StyledTableCell> */}
+              <StyledTableCell align="right">Created Date</StyledTableCell>
+              <StyledTableCell align="right">Created Time</StyledTableCell>
+              <StyledTableCell align="right">Updated Date</StyledTableCell>
+              <StyledTableCell align="right">Updated Time</StyledTableCell>
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
-                </StyledTableCell>
-                {/* <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell> */}
-                <StyledTableCell align="right">
-                  <EditOutlinedIcon
-                    className=" mx-2"
-                    color="info"
-                    // onClick={() => handleEdit(_id)}
-                  />
+            {mata?.map(
+              ({ specialization, createdAt, updatedAt, _id }, index) => (
+                <StyledTableRow key={_id}>
+                  <StyledTableCell component="th" scope="row">
+                    {specialization}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {new Date(createdAt).toDateString()}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {new Date(createdAt).toLocaleTimeString()}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {new Date(updatedAt).toDateString()}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {new Date(updatedAt).toLocaleTimeString()}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <EditOutlinedIcon
+                      className=" mx-2"
+                      color="info"
+                      onClick={() => handleEdit(_id, index)}
+                    />
 
-                  <DeleteOutlineIcon
-                    className=" mx-2"
-                    color="primary"
-                    // onClick={() => deleteLanguage({ token, _id })}
-                  />
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
+                    <DeleteOutlineIcon
+                      className=" mx-2"
+                      color="primary"
+                      onClick={() => deleteSpecialization({ token, _id })}
+                    />
+                  </StyledTableCell>
+                </StyledTableRow>
+              )
+            )}
           </TableBody>
         </Table>
       </TableContainer>
+
+      <Box className="  m-3">
+        
+        <Button
+        variant="contained"
+          onClick={() => {
+            handleClickOpen();
+          }}
+        >
+          Add Specialization +
+        </Button>
+      </Box>
+      {/* Add Specialization Dialog Box */}
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -153,7 +250,7 @@ const Specialization = () => {
                   >
                     Title
                   </label>
-                  <div className="relative mt-1 rounded-md shadow-sm">
+                  <div className="relative mt-1 mr-10 rounded-md shadow-sm">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                       <span className="text-gray-500 sm:text-xm text-xs">
                         {/* ₹{" "} */}
@@ -170,8 +267,6 @@ const Specialization = () => {
                     />
                   </div>
                 </div>
-
-                
               </div>
             </Stack>
           </DialogContentText>
@@ -180,8 +275,70 @@ const Specialization = () => {
           <Box>
             <Button2 handleClose={handleClose} color={"wite"} name={"Cancel"} />
           </Box>
+          <Box onClick={handleSubmit}>
+            <Button2 handleClose={handleClose} name={"Add"} />
+          </Box>
+        </DialogActions>
+      </Dialog>
+
+      {/* for edit Specialization Dialog box */}
+
+      <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle className=" bg-danger" id="alert-dialog-title">
+          {"Edit Specialization"}
+        </DialogTitle>
+        <DialogContent className=" my-5">
+          <DialogContentText id="alert-dialog-description">
+            <Stack
+              direction="column"
+              justifyContent="space-evenly"
+              alignItems="flex-start"
+              spacing={4}
+            >
+              <div className=" flex  gap-2">
+                <div>
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Title
+                  </label>
+                  <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                      <span className="text-gray-500 sm:text-xm text-xs">
+                        {/* ₹{" "} */}
+                      </span>
+                    </div>
+                    <input
+                      value={editSpec}
+                      onChange={(e) => setEditSpec(e.target.value)}
+                      type="text"
+                      name="price"
+                      id="price"
+                      className="block py-2 text-sm w-full rounded-md border border-secondary pl-7 pr-12 mr-40 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      placeholder="specialization"
+                    />
+                  </div>
+                </div>
+              </div>
+            </Stack>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions className=" bg-danger">
           <Box>
-            <Button2 name={"Add"} />
+            <Button2
+              handleClose={handleClose2}
+              color={"wite"}
+              name={"Cancel"}
+            />
+          </Box>
+          <Box onClick={handleEditSubmit}>
+            <Button2 handleClose={handleClose2} name={"Add"} />
           </Box>
           {/* <Button onClick={handleClose}>Disagree</Button>
           <Button onClick={handleClose} autoFocus>

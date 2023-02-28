@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Stack from "@mui/material/Stack";
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Button2 from "./Button2";
 
 import { getToken } from "../services/LocalStorage";
@@ -18,6 +18,7 @@ const EditLanguage = ({ open2, handleClose2, name, handleId: _id, lang }) => {
   console.log(token, "tokennnnnnn");
   // For language change
   console.log(lang,"langguiujkjkk")
+
 useEffect(() => {
   if (lang) {
     setLanguage(lang)
@@ -27,7 +28,7 @@ useEffect(() => {
 }, [lang])
 
 
-  const [language, setLanguage] = React.useState(lang);
+  const [language, setLanguage] = useState(lang);
   const handleLanguageChange = (event) => {
     setLanguage(event.target.value);
   };

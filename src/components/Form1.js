@@ -43,7 +43,7 @@ const Form1 = () => {
   };
 
   const dispatch = useDispatch();
-const role= "reporter";
+  const role = "reporter";
   const onSubmit = async ({ name, password, email, gender, phonenumber }) => {
     // console.log(
     //   name,
@@ -67,7 +67,7 @@ const role= "reporter";
       console.log("first");
       dispatch(setUserInfo({ user: data.get("phonenumber") }));
       const res = await register1(data);
-console.log(res,"response")
+      console.log(res, "response");
       if (res.data.status === "success") {
         toast(res.data.message);
       } else {
@@ -135,20 +135,21 @@ console.log(res,"response")
               </div>
             </div>
             <div className="inputs mt-3  pl-5  ">
-              <Avatar
-                variant="rounded"
-                alt="Sandeep"
-                src="https://media.licdn.com/dms/image/C4D03AQGTVuPCGh2c-w/profile-displayphoto-shrink_100_100/0/1650885404610?e=1680134400&v=beta&t=dU06dR-eGZGvBS5lcm7CoG9Q_1aNp1MAGGljv6jJN1s"
-                sx={{ width: 60, height: 60 }}
-              />
+            <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700"
+              > Upload Image
+              </label>
+              
               <Button component="label">
                 <EditIcon></EditIcon>
                 <input
                   type="file"
                   hidden
-                  onChange={(e) => setFile(e.target.files[0])}
+                  onChange={(e) => setFile(e.target.files)}
                 />
               </Button>
+              <>{pimage?.name}</>
             </div>
           </div>
 

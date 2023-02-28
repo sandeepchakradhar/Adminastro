@@ -40,7 +40,7 @@ const Analytics = () => {
             name={"Languages"}
           />
           <AnalyticsCard
-            number={"100"}
+            number={data?.specializationCount}
             icon={"LocalPoliceIcon"}
             name={"Specialization"}
           />

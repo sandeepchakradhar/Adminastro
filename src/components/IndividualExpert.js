@@ -239,7 +239,7 @@ const IndividualExpert = () => {
               className=" border-info p-2 border-2 rounded m-2"
               width={500}
               src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/adharImg/${Data?.adharImg}`}
-              alt={`pan card image of ${Data?.reporter.name}`}
+              alt={`adhar card image of ${Data?.reporter.name}`}
             />
           </div>
         </div>

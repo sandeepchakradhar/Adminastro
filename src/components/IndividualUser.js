@@ -17,7 +17,7 @@ const IndividualUser = () => {
 
   return (
     <div>
-      <HeaderTwo header={"User Details"}/>
+      <HeaderTwo header={"User Details"} />
 
       <div key={_id}>
         <div className="  bg-success h-32 mt-5 ml-5 md:h-48  rounded-sm flex  md:gap-24 gap-40 mr-5 ">
@@ -49,10 +49,45 @@ const IndividualUser = () => {
           </div>
         </div>
       </div>
+
+      <div id="description" className=" mt-2 ">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 my-1">
+          <div className="mt-3 mx-1 " id=" perticular">
+            <span className=" text-xl text-info ">Email :</span>
+            <span className=" text-lg "> {data?.email} </span>
+          </div>
+          <div className="mt-3 mx-1 " id=" perticular">
+            <span className=" text-xl text-info ">Created At :</span>
+            <span className=" text-lg ">
+              {" "}
+              {new Date(data?.createdAt).toDateString()}{" "}
+            </span>
+          </div>
+          <div className="mt-3 mx-1 " id=" perticular">
+            <span className=" text-xl text-info ">Updated At :</span>
+            <span className=" text-lg ">
+              {" "}
+              {new Date(data?.updatedAt).toDateString()}{" "}
+            </span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 my-1">
+          <div className="mt-3 mx-1 " id=" perticular">
+            <span className=" text-xl text-info ">Role :</span>
+            <span className=" text-lg "> {data?.role} </span>
+          </div>
+          <div className="mt-3 mx-1 " id=" perticular">
+            <span className=" text-xl text-info ">Status :</span>
+            <span className=" text-lg "> {data?.status} </span>
+          </div>
+        </div>
+        {"   "}
+      </div>
     </div>
 
     // <div>
-    //   {data?.name}
+      // {data?.name}
 
     //   <Box className=" ml-5 mt-2">
     //     {/* <BasicTabs data={data} /> */}

@@ -20,6 +20,10 @@ const NewsDetails = () => {
       <div className=" grid lg:grid-cols-2  w-full  gap-10 ml-3 mt-2">
         <div className=" div2">
           <div className="my-1">
+            <span className=" text-primary">Created By : &nbsp;</span>
+            <span>{data?.user.name}</span>
+          </div>
+          <div className="my-1">
             <span className=" text-primary">Category : &nbsp;</span>
             <span>{data?.category}</span>
           </div>

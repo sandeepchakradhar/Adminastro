@@ -9,9 +9,7 @@ import EditIcon from "@mui/icons-material/Edit";
 // import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 // import dayjs from "dayjs";
 import { Container } from "@mui/system";
-import { useFormMutation } from "../services/profile";
-import { useGetPaperNameQuery } from "../services/profile";
-import { useGetLanguageQuery } from "../services/profile";
+import { useGetLanguageQuery,useGetSpecializationQuery ,useGetPaperNameQuery,useFormMutation} from "../services/profile";
 import { useGetCategoryQuery } from "../services/profile";
 
 import Radio from "@mui/material/Radio";
@@ -39,7 +37,7 @@ const Form2 = () => {
   console.log(phonenumber,"numberssss")
   const { data } = useGetPaperNameQuery();
   const { data: lang } = useGetLanguageQuery();
-  const { data: specialization } = useGetCategoryQuery();
+  const { data: specialization } = useGetSpecializationQuery();
 
   console.log(data, "data");
 
@@ -235,10 +233,10 @@ console.log(res,"response")
                   {...register("category", { required: true })}
                 >
                   <option value="">Select</option>
-                  {specialization?.map(({ _id, category }) => {
+                  {specialization?.map(({ _id, specialization }) => {
                     return (
-                      <option key={_id} value={category}>
-                        {category}
+                      <option key={_id} value={specialization}>
+                        {specialization}
                       </option>
                     );
                   })}

@@ -242,6 +242,19 @@ export const profileApi = createApi({
 
       invalidatesTags: ["Language"],
     }),
+    deleteSpecializationById: builder.mutation({
+      query({ _id, token }) {
+        return {
+          url: `deleteSpecializationById/${_id}`,
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["Specialization"],
+    }),
 
     addLanguage: builder.mutation({
       query({ data, token }) {
@@ -257,6 +270,30 @@ export const profileApi = createApi({
 
       invalidatesTags: ["Language"],
     }),
+
+    getSpecialization: builder.query({
+      query: () => {
+        return {
+          url: "getSpecialization",
+          method: "GET",
+        };
+      },
+      providesTags: ["Specialization"],
+    }),
+    addSpecialization: builder.mutation({
+      query({ data, token }) {
+        return {
+          url: "addSpecialization",
+          method: "POST",
+          body: data,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["Specialization"],
+    }),
     editLanguageById: builder.mutation({
       query({ value, _id, token }) {
         return {
@@ -270,6 +307,20 @@ export const profileApi = createApi({
       },
 
       invalidatesTags: ["Language"],
+    }),
+    editSpecializationById: builder.mutation({
+      query({ value, _id, token }) {
+        return {
+          url: `editSpecializationById/${_id}`,
+          method: "PATCH",
+          body: value,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["Specialization"],
     }),
 
     activeStausById: builder.mutation({
@@ -348,4 +399,8 @@ export const {
   useActiveNewsByIdMutation,
   useGetDashBoardDataQuery,
   useAdminChangePasswordMutation,
+  useAddSpecializationMutation,
+  useDeleteSpecializationByIdMutation,
+  useEditSpecializationByIdMutation,
+  useGetSpecializationQuery,
 } = profileApi;

@@ -26,7 +26,7 @@ const Header = () => {
           onClick={()=>handleLogout()}
           className=" float-right   "
           style={{ marginTop: "20px", marginRight: "25px" }}
-          variant="text"
+          variant="contained"
         >
           LOGOUT
         </Button>

@@ -99,10 +99,12 @@ const Language = () => {
               <StyledTableCell>Title</StyledTableCell>
               <StyledTableCell align="right">Created Date</StyledTableCell>
               <StyledTableCell align="right">Created Time</StyledTableCell>
+              <StyledTableCell align="right">Updated Date</StyledTableCell>
+              <StyledTableCell align="right">Updated Time</StyledTableCell>
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
-          {data?.map(({ _id, language, createdAt }) => {
+          {data?.map(({ _id, language,createdAt, updatedAt }) => {
             return (
               <TableBody>
                 <StyledTableRow
@@ -117,6 +119,12 @@ const Language = () => {
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     {new Date(createdAt).toLocaleTimeString()}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {new Date(updatedAt).toDateString()}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {new Date(updatedAt).toLocaleTimeString()}
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <EditOutlinedIcon
@@ -140,13 +148,14 @@ const Language = () => {
 
       <br />
       <Box className=" m-3">
-        To Add Language Click Here <br />
+      
         <Button
+        variant="contained"
           onClick={() => {
             handleClickOpen();
           }}
         >
-          Add Language
+          Add Language +
         </Button>
       </Box>
       <EditLanguage
