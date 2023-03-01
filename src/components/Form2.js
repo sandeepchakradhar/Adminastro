@@ -9,7 +9,12 @@ import EditIcon from "@mui/icons-material/Edit";
 // import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 // import dayjs from "dayjs";
 import { Container } from "@mui/system";
-import { useGetLanguageQuery,useGetSpecializationQuery ,useGetPaperNameQuery,useFormMutation} from "../services/profile";
+import {
+  useGetLanguageQuery,
+  useGetSpecializationQuery,
+  useGetPaperNameQuery,
+  useFormMutation,
+} from "../services/profile";
 import { useGetCategoryQuery } from "../services/profile";
 
 import Radio from "@mui/material/Radio";
@@ -33,8 +38,8 @@ const Form2 = () => {
   // const handleDateOneChange = (newValue1) => {
   //   setValue1(newValue1);
   // };
-  const { user:phonenumber } = useSelector((state) => state.user);
-  console.log(phonenumber,"numberssss")
+  const { user: phonenumber } = useSelector((state) => state.user);
+  console.log(phonenumber, "numberssss");
   const { data } = useGetPaperNameQuery();
   const { data: lang } = useGetLanguageQuery();
   const { data: specialization } = useGetSpecializationQuery();
@@ -46,7 +51,7 @@ const Form2 = () => {
   const [adharImg, setAdharImg] = useState();
   const [panImg, setPanImg] = useState();
 
-  console.log(adharImg, " Adhar Image");
+  console.log(adharImg?.name, " Adhar Image");
   console.log(panImg, " Pan Image");
   const onSubmit = async ({
     fatherName,
@@ -109,10 +114,9 @@ const Form2 = () => {
 
     if (adharImg && panImg) {
       const res = await form2(data);
-console.log(res,"response")
+      console.log(res, "response");
 
       if (res.data.status === "success") {
-
         toast(res.data.message);
       } else {
         toast(res.data.message);
@@ -145,6 +149,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Father's Name"
@@ -161,6 +166,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <select
+                  required
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder=""
                   {...register("paperType", { required: true })}
@@ -186,6 +192,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="News Paper Name"
@@ -204,6 +211,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <select
+                  required
                   className="block py-2 text-sm w-64  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder=""
                   {...register("language", { required: true })}
@@ -228,6 +236,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <select
+                  required
                   className="block py-2 text-sm w-64  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder=""
                   {...register("category", { required: true })}
@@ -255,6 +264,7 @@ console.log(res,"response")
                     RNI
                   </label>
                   <input
+                    required
                     type="text"
                     className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="RNI Registration Number"
@@ -272,6 +282,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Current Reporting Area"
@@ -288,6 +299,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Nationality"
@@ -307,6 +319,8 @@ console.log(res,"response")
                     Experience Year
                   </label>
                   <input
+                    required
+                    maxLength={2}
                     type="text"
                     className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="Experience Year"
@@ -324,6 +338,8 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
+                  maxLength={2}
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Experience Month"
@@ -340,6 +356,8 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
+                  maxLength={2}
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Experience Day"
@@ -358,6 +376,7 @@ console.log(res,"response")
               </label>
 
               <RadioGroup
+                required
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="reporter"
                 name="radio-buttons-group"
@@ -401,6 +420,7 @@ console.log(res,"response")
                     Profession
                   </label>
                   <input
+                    required
                     type="text"
                     className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="Profession"
@@ -421,6 +441,7 @@ console.log(res,"response")
                     Owner Of
                   </label>
                   <input
+                    required
                     type="text"
                     className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder=" Comapny Or Firm Name"
@@ -441,6 +462,7 @@ console.log(res,"response")
                     Reporter Owner Of
                   </label>
                   <input
+                    required
                     type="text"
                     className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder=" Comapny Or Firm Name"
@@ -462,6 +484,8 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
+                  maxLength={12}
                   type="text"
                   className=" py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Aadhar No"
@@ -484,6 +508,7 @@ console.log(res,"response")
                         // {...register("adharImg")}
                       />
                     </Button>
+                    <span className="ml-2 text-primary">{adharImg?.name}</span>
                   </span>
                 </div>
               </div>
@@ -497,6 +522,8 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
+                  maxLength={10}
                   type="text"
                   className=" py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Pancard No"
@@ -519,6 +546,7 @@ console.log(res,"response")
                         // {...register("panImg")}
                       />
                     </Button>
+                    <span className="ml-2 text-primary">{panImg?.name}</span>
                   </span>
                 </div>
               </div>
@@ -534,6 +562,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Bank Holder Name"
@@ -550,6 +579,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="1234XXXXX1234"
@@ -566,6 +596,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="ABCDXXXXXXXX "
@@ -584,6 +615,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Enter UPI Id"
@@ -600,6 +632,8 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
+                  maxLength={10}
                   type="text"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Enter Reference Contact Number "
@@ -616,6 +650,7 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Website "
@@ -634,6 +669,8 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
+                  maxLength={4}
                   type="tel"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Enter Amount in rupees"
@@ -650,6 +687,8 @@ console.log(res,"response")
               </label>
               <div className="">
                 <input
+                  required
+                  maxLength={4}
                   type="tel"
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Enter Amount in rupees"
@@ -747,6 +786,7 @@ for Reporting History
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className=" py-2 text-sm lg:w-128 md:w-96 sm:w-80 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Address"
@@ -767,6 +807,7 @@ for Reporting History
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className=" py-2 text-sm lg:w-128 md:w-96  sm:w-80 rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Address"

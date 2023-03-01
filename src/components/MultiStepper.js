@@ -6,6 +6,7 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 
 import Form1 from "./Form1";
 import Form2 from "./Form2";
@@ -22,12 +23,15 @@ const MultiStepper = () => {
   const handleNext = () => {
     setactiveStep(activeStep + 1);
   };
+
+  const { user: phonenumber } = useSelector((state) => state.user);
+  console.log(phonenumber, "khjsdbiugsdfisdhih");
   return (
     <Box>
       <Stepper activeStep={activeStep}>
-        {steps.map((e) => {
+        {steps.map((e, index) => {
           return (
-            <Step>
+            <Step key={index}>
               <StepLabel>{e}</StepLabel>
             </Step>
           );
@@ -36,11 +40,15 @@ const MultiStepper = () => {
       {activeStep === 0 ? <Form1 /> : <Form2 />}
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Button disabled={activeStep === 0} onClick={handleBack}>
-          {" "}
           Back
         </Button>
-
-        <Button  onClick={handleNext}> Next</Button>
+        
+          <Button  onClick={handleNext}>
+          {phonenumber?"Next":""}
+          </Button>
+        
+          {/* <Button onClick={handleNext}>Next</Button> */}
+      
       </Box>
     </Box>
   );

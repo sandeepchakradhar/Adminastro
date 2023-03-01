@@ -232,11 +232,11 @@ const UserDetails = () => {
           <IconButton type="submit" aria-label="search">
             <SearchIcon className=" ml-1" />
           </IconButton>
-
+{/* 
           <Button onClick={handleClickOpen1} variant="outlined" color="info">
             <FilterListIcon className="text-info" />
             <span className="text-info ml-1"> Filter</span>
-          </Button>
+          </Button> */}
         </div>
         {/* <Button
           onClick={() => {
@@ -463,7 +463,7 @@ const UserDetails = () => {
                     <StyledTableCell align="right">{gender}</StyledTableCell>
                     <StyledTableCell align="right">
                       <Link to={`IndividualUser/${_id}`}>
-                        <Button>View</Button>
+                        <Button variant="contained">View</Button>
                       </Link>
                     </StyledTableCell>
                     <StyledTableCell align="right">

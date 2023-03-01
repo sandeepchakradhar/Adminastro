@@ -16,10 +16,26 @@ import { setUserInfo } from "../features/userSlice";
 
 const Form1 = () => {
   const [pimage, setFile] = useState();
+  // const [Image, setImage] = useState();
   const [dateOfBirth, setDateOfBirth] = useState("");
   const { register, handleSubmit } = useForm();
   // const [data, setData] = useState([]);
-  console.log(pimage, "image");
+  console.log(pimage?.name, "image Name");
+
+  // const image = pimage?.map(({ name, _id }) => {
+  //   console.log(name, "image name");
+  //   return (
+  //     <>
+  //       <span key={_id}>{name}</span>
+  //     </>
+  //   );
+  // });
+  // const handleImage = (e) => {
+  //   setFile(e.target.files);
+  //   setImage(e.target.files);
+  // };
+  // console.log(Image?.name, "new Image")
+
   const [register1] = useRegisterMutation();
 
   // const lol = { register};
@@ -45,14 +61,6 @@ const Form1 = () => {
   const dispatch = useDispatch();
   const role = "reporter";
   const onSubmit = async ({ name, password, email, gender, phonenumber }) => {
-    // console.log(
-    //   name,
-    //   password,
-    //   email,
-    //   gender,
-    //   phonenumber,
-    //   "ibhdsibsdfbidsbibsidfks"
-    // );
     const data = new FormData();
     data.append("name", name);
     data.append("password", password);
@@ -63,7 +71,13 @@ const Form1 = () => {
     data.append("role", role);
     data.append("dateOfBirth", dateOfBirth);
 
-    if (pimage && dateOfBirth) {
+if (!dateOfBirth) {
+  toast("please fill Date Of Birth");
+  
+}
+
+
+    if (pimage ) {
       console.log("first");
       dispatch(setUserInfo({ user: data.get("phonenumber") }));
       const res = await register1(data);
@@ -74,7 +88,7 @@ const Form1 = () => {
         toast(res.data.message);
       }
     } else {
-      toast("something went wrong");
+      toast("please Upload Image");
     }
 
     // console.log(data, "data");
@@ -110,6 +124,7 @@ const Form1 = () => {
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Full Name"
@@ -127,7 +142,9 @@ const Form1 = () => {
               </label>
               <div className="">
                 <input
-                  type="number"
+                  required
+                  maxLength={10}
+                  type="tel"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Contact"
                   {...register("phonenumber")}
@@ -135,21 +152,23 @@ const Form1 = () => {
               </div>
             </div>
             <div className="inputs mt-3  pl-5  ">
-            <label
+              <label
                 htmlFor="price"
                 className="block text-sm font-medium text-gray-700"
-              > Upload Image
+              >
+                {" "}
+                Upload Image
               </label>
-              
+
               <Button component="label">
                 <EditIcon></EditIcon>
                 <input
                   type="file"
                   hidden
-                  onChange={(e) => setFile(e.target.files)}
+                  onChange={(e) => setFile(e.target.files[0])}
                 />
               </Button>
-              <>{pimage?.name}</>
+              <span className="ml-2 text-primary">{pimage?.name}</span>
             </div>
           </div>
 
@@ -163,6 +182,7 @@ const Form1 = () => {
               </label>
               <div className="">
                 <select
+                  required
                   className="block py-2 text-sm w-44  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Gender"
                   {...register("gender", { required: true })}
@@ -215,7 +235,8 @@ const Form1 = () => {
               </label>
               <div className="">
                 <input
-                  type="text"
+                  required
+                  type="email"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Email Id"
                   {...register("email")}
@@ -231,6 +252,7 @@ const Form1 = () => {
               </label>
               <div className="">
                 <input
+                  required
                   type="text"
                   className="block py-2 text-sm  rounded-md border border-secondary pl-1 pr-1  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="Password"
@@ -239,7 +261,7 @@ const Form1 = () => {
               </div>
             </div>
           </div>
-          <Button type="submit">Submit</Button>
+          <Button variant="contained" type="submit">Submit</Button>
         </form>
       </Container>
     </div>

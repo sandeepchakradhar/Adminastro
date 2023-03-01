@@ -56,7 +56,10 @@ const IndividualExpert = () => {
           <Button className=" mt-2" variant="contained"> Verified </Button>
         </div>
       </div>
-      <Review _id={_id} />
+      <Box className="ml-5 my-2">
+
+      <Review  _id={_id} />
+      </Box>
       {""}
       <div id="description" className=" mt-2 ">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 my-1">

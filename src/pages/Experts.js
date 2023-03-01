@@ -190,12 +190,12 @@ const Experts = () => {
             <SearchIcon className=" ml-1" />
           </IconButton>
 
-          <Button variant="outlined" color="info">
+          {/* <Button variant="outlined" color="info">
             <FilterListIcon className="text-info" />
             <span className="text-info ml-1"> Filter</span>
-          </Button>
+          </Button> */}
         </div>
-        <Button
+        <Button variant="contained"
           onClick={() => {
             navigate("MultiStepper");
           }}
@@ -260,7 +260,7 @@ search? (searching?.map(({name,
       <StyledTableCell align="right">{gender}</StyledTableCell>
       <StyledTableCell align="right">
         <Link to={`IndividualExpert/${_id}`}>
-          <Button>View</Button>
+          <Button variant="contained" >View</Button>
         </Link>
       </StyledTableCell>
       <StyledTableCell align="right">
@@ -312,7 +312,7 @@ search? (searching?.map(({name,
             <StyledTableCell align="right">{gender}</StyledTableCell>
             <StyledTableCell align="right">
               <Link to={`IndividualExpert/${_id}`}>
-                <Button>View</Button>
+                <Button variant="contained">View</Button>
               </Link>
             </StyledTableCell>
             <StyledTableCell align="right">

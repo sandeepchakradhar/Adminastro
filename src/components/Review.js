@@ -40,7 +40,7 @@ export default function Review({ _id }) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="contained" onClick={handleClickOpen}>
         Open Review
       </Button>
       <Dialog
