@@ -75,21 +75,23 @@ const UserDetails = () => {
   // styling End//
   useEffect(() => {
     if (data) {
-      setMata(data);
+      const tata = data?.slice(count, count + 5);
+
+      setMata(tata);
     }
-  }, [data]);
-  
+  }, [data && count]);
+
   const [on, setOn] = useState(false);
-  
+
   const updateSwitch = async (e, id) => {
     const ram = Mata?.filter((e) => e._id === id);
     if (ram[0]?.status === "pending") {
       let value = { ...ram[0], status: "active" };
-      
+
       const res = await updateStatus({ value, token, _id: id });
       const raja = Mata?.map((e, index) => (e._id !== id ? e : value));
       setMata(raja);
-      
+
       if (res.data.status === "success") {
         toast(res.data.message);
       } else {
@@ -204,7 +206,6 @@ const UserDetails = () => {
 
   const [result, setResult] = useState();
   const handleSearch = () => {
-
     const newData = data.filter((e) => e.name.toLowerCase().includes(search));
     setMata(newData);
     setResult(newData);
