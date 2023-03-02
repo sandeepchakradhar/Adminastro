@@ -4,7 +4,7 @@ import { Container } from "@mui/system";
 import React from "react";
 import { NavLink } from "react-router-dom";
 // import Button from "../components/Button";
-import HumanIcon from "../components/HumanIcon";
+// import HumanIcon from "../components/HumanIcon";
 import Avatar from "@mui/material/Avatar";
 import Image from "../assets/PressVartaIcon2(1).png"
 
@@ -84,7 +84,7 @@ const SideNav = () => {
           spacing={1}
           className=" mb-3"
         >
-          <NavLink
+          {/* <NavLink
             style={navLinkStyles}
             className="bg-success  rounded-lg text-info  hover:text-primary"
             to="/Dashboard/Admins"
@@ -92,7 +92,7 @@ const SideNav = () => {
             <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
               Home
             </Box>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             style={navLinkStyles}
@@ -142,7 +142,7 @@ const SideNav = () => {
               Payout Requests
             </Box>
           </NavLink> */}
-          <NavLink
+          {/* <NavLink
             style={navLinkStyles}
             className=" bg-success rounded-lg text-info  hover:text-primary"
             to="/Dashboard/Banner"
@@ -150,7 +150,7 @@ const SideNav = () => {
             <Box className=" pl-2 pt-3" sx={{ width: "165px", height: "50px" }}>
               Banner
             </Box>
-          </NavLink>
+          </NavLink> */}
           <NavLink
             style={navLinkStyles}
             className=" bg-success rounded-lg text-info  hover:text-primary"

@@ -19,26 +19,27 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { getToken } from "../services/LocalStorage";
 
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+// import FormGroup from "@mui/material/FormGroup";
+// import FormControlLabel from "@mui/material/FormControlLabel";
 import { Box } from "@mui/system";
 import { IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import FilterListIcon from "@mui/icons-material/FilterList";
+import { toast, ToastContainer } from "react-toastify";
+// import FilterListIcon from "@mui/icons-material/FilterList";
 
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import { MenuItem, Select, Stack } from "@mui/material";
-import Button2 from "../components/Button2";
-import dayjs from "dayjs";
+// import Dialog from "@mui/material/Dialog";
+// import DialogActions from "@mui/material/DialogActions";
+// import DialogContent from "@mui/material/DialogContent";
+// import DialogContentText from "@mui/material/DialogContentText";
+// import DialogTitle from "@mui/material/DialogTitle";
+// import { MenuItem, Select, Stack } from "@mui/material";
+// import Button2 from "../components/Button2";
+// import dayjs from "dayjs";
 
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+// import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 //styling start//
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -65,11 +66,10 @@ const UserDetails = () => {
   const [count, setCount] = useState(0);
 
   const token = getToken("token");
-  const [checked, setChecked] = useState(true);
+  // const [checked, setChecked] = useState(true);
 
   const { data, isLoading } = useGetUsersQuery(token);
   const [updateStatus] = useActiveStausByIdMutation();
-  // console.log(data, "data");
 
   const [Mata, setMata] = useState();
   // styling End//
@@ -78,111 +78,104 @@ const UserDetails = () => {
       setMata(data);
     }
   }, [data]);
-  // console.log(Mata, "mata");
-
+  
   const [on, setOn] = useState(false);
-
-  console.log(on, "on");
+  
   const updateSwitch = async (e, id) => {
     const ram = Mata?.filter((e) => e._id === id);
-    console.log(ram, "ram");
     if (ram[0]?.status === "pending") {
       let value = { ...ram[0], status: "active" };
-
+      
       const res = await updateStatus({ value, token, _id: id });
-      console.log(res);
       const raja = Mata?.map((e, index) => (e._id !== id ? e : value));
-      console.log(raja, "raja");
       setMata(raja);
+      
+      if (res.data.status === "success") {
+        toast(res.data.message);
+      } else {
+        toast(res.data.message);
+      }
     } else {
       setOn(!on);
       const value = { ...ram[0], status: "pending" };
       const res = await updateStatus({ value, token, _id: id });
-      console.log(res);
       const raja2 = Mata?.map((e, index) => (e._id !== id ? e : value));
       setMata(raja2);
-      console.log(raja2, "raja2");
+      if (res.data.status === "success") {
+        toast(res.data.message);
+      } else {
+        toast(res.data.message);
+      }
     }
 
     // ternary
     // ram[0]?.status == "active"?
     //       const raja = data?.map((e, index) => (e._id !== id ? e : u));
 
-    // console.log(ram)
     //   ram?.map(({_id,status})=>{
     //     if (_id==id && status=="active") {
     //       setOn(!on)
-    //       console.log("run")
 
     //     }
     // })
-
-    // console.log(_id,"iuasdfiasdnfni")
   };
 
   //  for dialog states start
 
-  const [open1, setOpen1] = React.useState(false);
+  // const [open1, setOpen1] = React.useState(false);
 
-  const handleClickOpen1 = () => {
-    setOpen1(true);
-  };
+  // const handleClickOpen1 = () => {
+  //   setOpen1(true);
+  // };
 
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
+  // const handleClose1 = () => {
+  //   setOpen1(false);
+  // };
 
-  // for from Date
-  const [value1, setValue1] = React.useState(dayjs(""));
+  // // for from Date
+  // const [value1, setValue1] = React.useState(dayjs(""));
 
-  const handleDateOneChange = (newValue1) => {
-    setValue1(newValue1);
-  };
-  // for to Date
-  const [value2, setValue2] = React.useState(dayjs(""));
+  // const handleDateOneChange = (newValue1) => {
+  //   setValue1(newValue1);
+  // };
+  // // for to Date
+  // const [value2, setValue2] = React.useState(dayjs(""));
 
-  const handleDateTwoChange = (newValue2) => {
-    setValue2(newValue2);
-  };
+  // const handleDateTwoChange = (newValue2) => {
+  //   setValue2(newValue2);
+  // };
 
-  // For age
-  const [age, setAge] = React.useState("");
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
-  };
-  // For gender
-  const [gender, setGender] = React.useState("");
-  const handleGenderChange = (event) => {
-    setGender(event.target.value);
-  };
-  // For status
-  const [status, setStatus] = React.useState("");
-  const handleStatusChange = (event) => {
-    setStatus(event.target.value);
-  };
+  // // For age
+  // const [age, setAge] = React.useState("");
+  // const handleAgeChange = (event) => {
+  //   setAge(event.target.value);
+  // };
+  // // For gender
+  // const [gender, setGender] = React.useState("");
+  // const handleGenderChange = (event) => {
+  //   setGender(event.target.value);
+  // };
+  // // For status
+  // const [status, setStatus] = React.useState("");
+  // const handleStatusChange = (event) => {
+  //   setStatus(event.target.value);
+  // };
 
-  console.log(value1.$d, "first");
+  // function convert1(value1) {
+  //   var date = new Date(value1),
+  //     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+  //     day = ("0" + date.getDate()).slice(-2);
+  //   return [date.getFullYear(), mnth, day].join("-");
+  // }
 
-  function convert1(value1) {
-    var date = new Date(value1),
-      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    return [date.getFullYear(), mnth, day].join("-");
-  }
+  // function convert2(value2) {
+  //   var date = new Date(value2),
+  //     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+  //     day = ("0" + date.getDate()).slice(-2);
+  //   return [date.getFullYear(), mnth, day].join("-");
+  // }
 
-  function convert2(value2) {
-    var date = new Date(value2),
-      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    return [date.getFullYear(), mnth, day].join("-");
-  }
-
-  console.log(convert1(value1), " date from");
-  console.log(convert2(value2), "Date to");
-  console.log(age, "age");
-  console.log(status, "status");
-  console.log(gender, "gender");
-  //  for dialog states end
+  // //  for dialog states end
 
   const Loader = () => {
     if (isLoading === true) {
@@ -202,18 +195,25 @@ const UserDetails = () => {
   // for search query
 
   const [search, setSearch] = useState("");
-  console.log(search, "search");
 
   //
   const noResult = () => {
-    let newData = Mata?.filter((e) => e.name.toLowerCase().includes(search));
-    console.log(newData, "new Data");
+    let newData = data?.filter((e) => e.name.toLowerCase().includes(search));
     return newData?.length;
   };
 
-  console.log(noResult());
+  const [result, setResult] = useState();
+  const handleSearch = () => {
+
+    const newData = data.filter((e) => e.name.toLowerCase().includes(search));
+    setMata(newData);
+    setResult(newData);
+  };
+
   return (
     <div>
+      <ToastContainer />
+
       <Box className=" flex gap-10 m-5 ">
         <div className=" flex gap-5">
           <TextField
@@ -229,10 +229,10 @@ const UserDetails = () => {
             placeholder="Search..."
             size="small"
           />
-          <IconButton type="submit" aria-label="search">
+          <IconButton onClick={() => handleSearch()} aria-label="search">
             <SearchIcon className=" ml-1" />
           </IconButton>
-{/* 
+          {/* 
           <Button onClick={handleClickOpen1} variant="outlined" color="info">
             <FilterListIcon className="text-info" />
             <span className="text-info ml-1"> Filter</span>
@@ -247,7 +247,7 @@ const UserDetails = () => {
         </Button> */}
       </Box>
       {/* user Filter dialog box open */}
-      <Dialog
+      {/* <Dialog
         open={open1}
         onClose={handleClose1}
         aria-labelledby="alert-dialog-title"
@@ -407,9 +407,13 @@ const UserDetails = () => {
             <Button2 name={"Add"} />
           </Box>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
       {/* user Filter dialog box close */}
-      {noResult() === 0 ? <h1 className=" ml-10 my-10">No Result Found</h1> : ""}
+      {result && noResult() === 0 ? (
+        <h1 className=" ml-10 my-10">No Result Found</h1>
+      ) : (
+        ""
+      )}
       <TableContainer className=" mt-2" component={Paper}>
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
@@ -425,7 +429,7 @@ const UserDetails = () => {
               <StyledTableCell align="right">Active</StyledTableCell>
             </TableRow>
           </TableHead>
-          {Mata?.filter((e) => e.name.toLowerCase().includes(search)).map(
+          {Mata?.map(
             ({
               name,
               gender,

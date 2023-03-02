@@ -1,7 +1,7 @@
 import { Avatar, Button, Switch } from "@mui/material";
 import React, { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import AddExpert from "../components/AddExpert";
+// import AddExpert from "../components/AddExpert";
 // import ExpertFilterBy from "../components/ExpertFilterBy";
 import HeaderTwo from "../components/HeaderTwo";
 // import CustomizedTables from "../components/Tabels";
@@ -28,8 +28,8 @@ import {
 import { Box } from "@mui/system";
 import { IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import ExpertFilterBy from "../components/ExpertFilterBy";
+// import FilterListIcon from "@mui/icons-material/FilterList";
+// import ExpertFilterBy from "../components/ExpertFilterBy";
 
 //styling start//
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -64,11 +64,11 @@ const Experts = () => {
   // console.log(data, "data");
   // for filter by
 
-  const [nobe, setNobe] = useState("");
-  console.log(nobe, "switch");
+  // const [nobe, setNobe] = useState("");
+  // console.log(nobe, "switch");
 
   const { data: data2, isLoading } = useGetAllReporterQuery(token);
-  // console.log(data2, "all reporters");
+  console.log(data2, "all reporters");
 
   const Mata = data?.slice(count, count + 5);
   console.log(Mata);
@@ -203,7 +203,7 @@ const Experts = () => {
           Add Expert
         </Button>
       </Box>
-      {search && noResult() === 0 ? (
+      {searching && noResult() === 0 ? (
         <h1 className=" ml-10 my-10">No Result Found</h1>
       ) : (
         ""
@@ -226,7 +226,7 @@ const Experts = () => {
             </TableRow>
           </TableHead>
 {
-search? (searching?.map(({name,
+searching? (searching?.map(({name,
   gender,
   createdAt,
   pimage,

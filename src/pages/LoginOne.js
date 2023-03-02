@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import EmojiPeople from "@mui/icons-material/EmojiPeople";
-import DraftsIcon from "@mui/icons-material/Drafts";
+// import EmojiPeople from "@mui/icons-material/EmojiPeople";
+// import DraftsIcon from "@mui/icons-material/Drafts";
 import KeyIcon from "@mui/icons-material/Key";
 import Buttons from "../components/Buttons";
 import DialpadIcon from "@mui/icons-material/Dialpad";
@@ -40,7 +40,7 @@ const LoginOne = () => {
 
     if (res?.data?.userLogin?.role === "admin") {
       storeToken(res?.data?.token);
-      navigate("/Dashboard");
+      navigate("/Dashboard/Analytics");
     } else if (res.data.status === "failed") {
       toast(res.data.message);
     } else {
@@ -54,7 +54,7 @@ const LoginOne = () => {
         <div className=" mt-10 ml-10">
           <img src={Image} height="200" width="200" alt="Press Varta" />
         </div>
-        <div className="mx-auto">
+        <div className=" mx-auto">
           <div className=" mx-auto mt-11">
             <h1 className=" text-4xl  text-center">
               Welcome to <span className=" text-primary">App</span>
@@ -98,14 +98,14 @@ const LoginOne = () => {
               </div>
             </div>
           </div>
-          <div className=" block float-right">
+          {/* <div className=" block float-right">
             <h5
               className=" text-info cursor-pointer"
               onClick={() => navigate("/forgotp1")}
             >
               Forgot Password?
             </h5>
-          </div>
+          </div> */}
           <div className=" pt-10 ">
             <Box onClick={() => handleSubmit()}>
               {isLoading ? (
