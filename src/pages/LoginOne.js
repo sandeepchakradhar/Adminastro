@@ -51,7 +51,7 @@ const LoginOne = () => {
     <div className="container">
       <ToastContainer />
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className=" mt-10 ml-10">
+        <div className=" mt-10 mx-auto">
           <img src={Image} height="200" width="200" alt="Press Varta" />
         </div>
         <div className=" mx-auto">
@@ -62,7 +62,7 @@ const LoginOne = () => {
           </div>
 
           <div className=" mt-56">
-            <div className="relative mt-3 mb-3 rounded-md shadow-sm">
+            <div className="relative ml-2 mr-2  mt-3 mb-3 rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
                 <span className="text-gray sm:text-xm text-xs">
                   <DialpadIcon />
@@ -70,13 +70,13 @@ const LoginOne = () => {
               </div>
               <input
                 type="tel"
-                className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                className="block py-2  text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Number"
                 maxLength={10}
                 onChange={(e) => setPhonenumber(e.target.value)}
               />
             </div>
-            <div className="relative mt-3 mb-3 rounded-md shadow-sm">
+            <div className="relative ml-2 mr-2 mt-3 mb-3 rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
                 <span className="text-gray sm:text-xm text-xs">
                   <KeyIcon />
@@ -98,15 +98,15 @@ const LoginOne = () => {
               </div>
             </div>
           </div>
-          {/* <div className=" block float-right">
+          <div className=" my-3 mr-2 block float-right">
             <h5
               className=" text-info cursor-pointer"
-              onClick={() => navigate("/forgotp1")}
+              onClick={() => navigate("/forgotp3")}
             >
-              Forgot Password?
+              Set New Password
             </h5>
-          </div> */}
-          <div className=" pt-10 ">
+          </div>
+          <div className=" pt-10 mx-2 mb-5 ">
             <Box onClick={() => handleSubmit()}>
               {isLoading ? (
                 <CircularProgress />

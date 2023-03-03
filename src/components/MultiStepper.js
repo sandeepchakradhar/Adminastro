@@ -4,12 +4,13 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { useForm } from "react-hook-form";
+// import Typography from "@mui/material/Typography";
+// import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 
 import Form1 from "./Form1";
 import Form2 from "./Form2";
+import HeaderTwo from "./HeaderTwo";
 // import AddExpert from "./AddExpert";
 
 const steps = ["Basic Details", "Personal Details"];
@@ -28,6 +29,7 @@ const MultiStepper = () => {
   console.log(phonenumber, "khjsdbiugsdfisdhih");
   return (
     <Box>
+      <HeaderTwo header={"Add Expert"} />
       <Stepper activeStep={activeStep}>
         {steps.map((e, index) => {
           return (
