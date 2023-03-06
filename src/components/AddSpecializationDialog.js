@@ -20,7 +20,7 @@ const AddSpecializationDialog = ({ open, handleClose }) => {
     setSpecialization(event.target.value);
   };
 
-  console.log(specialization, "specialization");
+  // console.log(specialization, "specialization");
 
   return (
     <div>

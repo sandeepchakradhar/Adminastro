@@ -15,9 +15,9 @@ const EditLanguage = ({ open2, handleClose2, name, handleId: _id, lang }) => {
   const token = getToken("token");
   const [editLanguage] = useEditLanguageByIdMutation();
 
-  console.log(token, "tokennnnnnn");
+  // console.log(token, "tokennnnnnn");
   // For language change
-  console.log(lang,"langguiujkjkk")
+  // console.log(lang,"langguiujkjkk")
 
 useEffect(() => {
   if (lang) {
@@ -35,11 +35,11 @@ useEffect(() => {
   const handleSubmit = async () => {
     const value = { language };
     const res = await editLanguage({ value, token, _id });
-    console.log(res, "6546465464");
+    // console.log(res, "6546465464");
     if (res.data.status === "success") {
-      console.log(res.data.message, "first");
+      // console.log(res.data.message, "first");
     } else {
-      console.log(res.data.message, "first");
+      // console.log(res.data.message, "first");
     }
   };
 

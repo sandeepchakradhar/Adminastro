@@ -42,8 +42,6 @@ const AddExpert = ({ open2, handleClose2 }) => {
     return [date.getFullYear(), mnth, day].join("-");
   }
 
-  console.log(data, "data");
-  console.log(convert1(), "date");
   return (
     <>
       <Dialog

@@ -43,7 +43,7 @@ function App() {
         <Route path="/forgotp1" element={<ForgotPasswordOne />} />
         <Route path="/forgotp2" element={<ForgotPasswordTwo />} />
         <Route path="/forgotp3" element={<ForgotPasswordThree />} />
-        <Route path="/Dashboard" element={token ? <Dashboard /> : <LoginOne />}>
+        <Route path="Dashboard" element={token ? <Dashboard /> : <LoginOne />}>
           <Route path="Experts" element={<Experts />} />
           <Route path="Experts/MultiStepper" element={<MultiStepper />} />
           <Route path="Language" element={<Language />} />

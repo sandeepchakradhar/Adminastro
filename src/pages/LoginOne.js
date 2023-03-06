@@ -28,8 +28,6 @@ const LoginOne = () => {
       setVisibility(true);
     }
   };
-  console.log(phonenumber, "number");
-  console.log(password, "password");
 
   const [login, { isLoading }] = useLoginMutation();
 
@@ -101,9 +99,9 @@ const LoginOne = () => {
           <div className=" my-3 mr-2 block float-right">
             <h5
               className=" text-info cursor-pointer"
-              onClick={() => navigate("/forgotp3")}
+              onClick={() => navigate("/forgotp1")}
             >
-              Set New Password
+            Forget Password
             </h5>
           </div>
           <div className=" pt-10 mx-2 mb-5 ">

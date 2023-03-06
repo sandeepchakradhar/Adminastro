@@ -51,7 +51,7 @@ const ExpertFilterBy = ({ open1, handleClose1 }) => {
     setType(event.target.value);
   };
 
-  console.log(value1.$d, "first");
+  // console.log(value1.$d, "first");
 
   function convert1(value1) {
     var date = new Date(value1),
@@ -67,12 +67,12 @@ const ExpertFilterBy = ({ open1, handleClose1 }) => {
     return [date.getFullYear(), mnth, day].join("-");
   }
 
-  console.log(convert1(value1), " date from");
-  console.log(convert2(value2), "Date to");
-  console.log(age, "age");
-  console.log(status, "status");
-  console.log(gender, "gender");
-  console.log(type, "Repoting Type");
+  // console.log(convert1(value1), " date from");
+  // console.log(convert2(value2), "Date to");
+  // console.log(age, "age");
+  // console.log(status, "status");
+  // console.log(gender, "gender");
+  // console.log(type, "Repoting Type");
 
   return (
     <div>

@@ -1,21 +1,42 @@
 import React, { useState } from "react";
-import EmojiPeople from "@mui/icons-material/EmojiPeople";
 import DialpadIcon from "@mui/icons-material/Dialpad";
+import Image from "../assets/PressVartaIcon2(1).png";
 
 import Buttons from "../components/Buttons";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import { useSendOTPMutation } from "../services/profile";
+import { ToastContainer, toast } from "react-toastify";
+
+
 
 const ForgotPasswordOne = () => {
-  const [number, setNumber] = useState("");
+  const [phonenumber, setNumber] = useState("");
   const navigate = useNavigate();
-  console.log("number", number);
+  console.log("phonenumber", phonenumber);
 
+  const [sendOTP] = useSendOTPMutation();
+
+  const handleSubmit = async () => {
+    let mobileNumber = `+91${phonenumber}`;
+    const data = { mobileNumber };
+    const res = await sendOTP(data);
+    console.log(res, "kknjkn");
+
+    if (res.error.data === "pending") {
+      toast("OTP sent")
+      navigate("/forgotp2",
+      {state:{
+        phonenumber
+      }});
+    }
+  };
   return (
     <div className="container">
+      <ToastContainer/>
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className=" mt-10 ml-10">
-          <EmojiPeople fontSize="large" />
+      <div className=" mt-10 mx-auto">
+          <img src={Image} height="200" width="200" alt="Press Varta" />
         </div>
         <div className="mx-auto">
           <div className=" mx-auto mt-11">
@@ -55,7 +76,7 @@ const ForgotPasswordOne = () => {
             </div> */}
           </div>
           <div className=" pt-1 ">
-            <Box onClick={() => navigate("/forgotp2")}>
+            <Box onClick={() => handleSubmit()}>
               <Buttons name={"Send OTP"}></Buttons>
             </Box>
           </div>

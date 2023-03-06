@@ -2,21 +2,34 @@ import React, { useState } from "react";
 // import EmojiPeople from "@mui/icons-material/EmojiPeople";
 import Buttons from "../components/Buttons";
 import { Box } from "@mui/system";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Image from "../assets/PressVartaIcon2(1).png";
+import { useAdminChangePasswordMutation } from "../services/profile";
 
 const ForgotPasswordThree = () => {
   const navigate = useNavigate();
-  const [old, setOld] = useState();
-  const [confirm1, setConfirm1] = useState();
-  const [confirm2, setConfirm2] = useState();
+  // const [old, setOld] = useState();
+  const [password, setConfirm1] = useState();
+  const [cpassword, setConfirm2] = useState();
 
-  console.log(old, "old passs");
-  console.log(confirm1, "confirm 1");
-  console.log(confirm2, "confirm 3");
+  // console.log(old, "old passs");
+  console.log(password, "confirm 1");
+  console.log(cpassword, "confirm 3");
 
-  const handleSubmit = () => {
-    navigate("/");
+  const [changePassword] = useAdminChangePasswordMutation();
+
+  const {
+    state: { phonenumber },
+  } = useLocation();
+
+  const handleSubmit = async () => {
+    if (password === cpassword && password) {
+      let data = { password, phonenumber };
+      const res = await changePassword(data);
+      console.log(res, "match");
+      if(res.data.status==="success")
+      navigate("/");
+    }
   };
 
   return (
@@ -36,10 +49,10 @@ const ForgotPasswordThree = () => {
             <div className=" block text-center mb-10 ">
               <h5 className=" text-info ">Set New Password</h5>
             </div>
-            <div className="relative mx-2 mt-3 mb-3 rounded-md shadow-sm">
+            {/* <div className="relative mx-2 mt-3 mb-3 rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
                 <span className="text-gray sm:text-xm text-xs">
-                  {/* <Dialpad /> */}
+                
                 </span>
               </div>
               <input
@@ -48,7 +61,7 @@ const ForgotPasswordThree = () => {
                 placeholder=" Old Password"
                 onChange={(e) => setOld(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="relative  mx-2 mt-3 mb-3 rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
                 <span className="text-gray sm:text-xm text-xs">
@@ -56,7 +69,9 @@ const ForgotPasswordThree = () => {
                 </span>
               </div>
               <input
-                type="tel"
+                minLength={4}
+                maxLength={10}
+                type="text"
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder=" New Password"
                 onChange={(e) => setConfirm1(e.target.value)}
@@ -69,7 +84,9 @@ const ForgotPasswordThree = () => {
                 </span>
               </div>
               <input
-                type="Password"
+                minLength={4}
+                maxLength={10}
+                type="text"
                 className="block py-2 text-sm h-12 w-96 rounded-md border border-secondary pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Confirm New Password"
                 onChange={(e) => setConfirm2(e.target.value)}

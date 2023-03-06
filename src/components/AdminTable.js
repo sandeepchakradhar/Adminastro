@@ -41,9 +41,10 @@ const AdminTable = ({ data }) => {
   const change = async () => {
     // let value ={password}
     const res = await chnagePassword({ token });
-    console.log("Change");
+    // console.log("Change");
   };
-  console.log(nobe, "switch");
+  // console.log(nobe, "switch");
+  console.log(data,"datalnknknk")
 
   return (
     <TableContainer component={Paper}>

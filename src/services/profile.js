@@ -192,6 +192,26 @@ export const profileApi = createApi({
 
       invalidatesTags: ["User"],
     }),
+
+    sendOTP: builder.mutation({
+      query(body) {
+        return {
+          url: "sendOTP",
+          method: "POST",
+          body,
+        };
+      },
+    }),
+
+    verifyOTP: builder.mutation({
+      query(data) {
+        return {
+          url: "verifyOTP",
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
     register: builder.mutation({
       query(body) {
         return {
@@ -339,18 +359,13 @@ export const profileApi = createApi({
     }),
 
     adminChangePassword: builder.mutation({
-      query({ value, token }) {
+      query(data) {
         return {
           url: "adminChangePassword",
           method: "PATCH",
-          body: value,
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
+          body: data,
         };
       },
-
-      invalidatesTags: ["User"],
     }),
 
     activeNewsById: builder.mutation({
@@ -403,4 +418,6 @@ export const {
   useDeleteSpecializationByIdMutation,
   useEditSpecializationByIdMutation,
   useGetSpecializationQuery,
+  useSendOTPMutation,
+  useVerifyOTPMutation,
 } = profileApi;

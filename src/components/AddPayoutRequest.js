@@ -22,14 +22,14 @@ const AddPayoutRequest = ({ open, handleClose }) => {
   const handleDateChange = (newValue) => {
     setValue(newValue);
   };
-  function convert1(value) {
-    var date = new Date(value),
-      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    return [date.getFullYear(), mnth, day].join("-");
-  }
+  // function convert1(value) {
+  //   var date = new Date(value),
+  //     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+  //     day = ("0" + date.getDate()).slice(-2);
+  //   return [date.getFullYear(), mnth, day].join("-");
+  // }
 
-  console.log(convert1(value),"date and time");
+  // console.log(convert1(value),"date and time");
 
 
   //for request amount
@@ -53,10 +53,10 @@ const AddPayoutRequest = ({ open, handleClose }) => {
     setCode(event.target.value);
   };
 
-  console.log(amount,"amount")
-  console.log(name,"name")
-  console.log(accNumber,"accNumber")
-  console.log(code,"code")
+  // console.log(amount,"amount")
+  // console.log(name,"name")
+  // console.log(accNumber,"accNumber")
+  // console.log(code,"code")
 
   return (
     <div>
