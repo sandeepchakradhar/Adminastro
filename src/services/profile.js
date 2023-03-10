@@ -248,6 +248,20 @@ export const profileApi = createApi({
 
       invalidatesTags: ["User"],
     }),
+    editProfilePic: builder.mutation({
+      query({ Data, token }) {
+        return {
+          url: "editProfilePic",
+          method: "POST",
+          body: Data,
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+      },
+
+      invalidatesTags: ["User"],
+    }),
 
     deleteLanguageById: builder.mutation({
       query({ _id, token }) {
@@ -420,4 +434,5 @@ export const {
   useGetSpecializationQuery,
   useSendOTPMutation,
   useVerifyOTPMutation,
+  useEditProfilePicMutation
 } = profileApi;

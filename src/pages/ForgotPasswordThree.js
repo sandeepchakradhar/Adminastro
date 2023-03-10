@@ -27,8 +27,8 @@ const ForgotPasswordThree = () => {
       let data = { password, phonenumber };
       const res = await changePassword(data);
       console.log(res, "match");
-      if(res.data.status==="success")
-      navigate("/");
+      if (res.data.status === "success") navigate("/");
+      console.log("sjdfibsdi");
     }
   };
 

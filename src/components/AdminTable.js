@@ -8,7 +8,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import EditIcon from "@mui/icons-material/Edit";
-import { Switch } from "@mui/material";
 import { useAdminChangePasswordMutation } from "../services/profile";
 import { getToken } from "../services/LocalStorage";
 
@@ -36,7 +35,6 @@ const AdminTable = ({ data }) => {
   const token = getToken("token");
   const [chnagePassword, { isLoading }] = useAdminChangePasswordMutation();
 
-  const [nobe, setNobe] = useState("");
 
   const change = async () => {
     // let value ={password}
@@ -68,10 +66,7 @@ const AdminTable = ({ data }) => {
             <StyledTableCell align="right">
               <EditIcon />
             </StyledTableCell>
-            <StyledTableCell align="right">
-              {" "}
-              <Switch onChange={(e) => setNobe(e.target.value)} />
-            </StyledTableCell>
+           
           </StyledTableRow>
         </TableBody>
       </Table>

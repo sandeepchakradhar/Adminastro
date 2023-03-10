@@ -1,42 +1,23 @@
 // import { Image } from "@mui/icons-material";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 // import Button from "../components/Button";
 // import HumanIcon from "../components/HumanIcon";
 import Avatar from "@mui/material/Avatar";
-import Image from "../assets/PressVartaIcon2(1).png"
+import Image from "../assets/PressVartaIcon2(1).png";
+import {
+  useEditProfilePicMutation,
+  useGetProfileQuery,
+} from "../services/profile";
+import { getToken } from "../services/LocalStorage";
+import EditIcon from "@mui/icons-material/Edit";
 
 const SideNav = () => {
-  // const buttonFunction = (e) => {
-  //   console.log("first", e.target);
-  // };
-  // const buttonFunction1 = (e) => {
-  //   console.log("first", e.target);
-  // };
-  // const buttonFunction2 = (e) => {
-  //   console.log("first", e.target);
-  // };
-  // const buttonFunction3 = (e) => {
-  //   console.log("first", e.target);
-  // };
-  // const buttonFunction4 = (e) => {
-  //   console.log("first", e);
-  // };
+  const [file, setFile] = useState();
+  console.log(file,"uploaded Image")
 
-  // for button hover
-
-  //  const ButtonStyle= {
-  //   '&:hover': {
-  //     backgroundColor: '#ffffff',
-  //     boxShadow: 'none',
-  //   },
-  //   '&:active': {
-  //     boxShadow: 'none',
-  //     backgroundColor: '#3c52b2',
-  //   },
-  // }
 
   //  for active navlink
 
@@ -49,11 +30,16 @@ const SideNav = () => {
     };
   };
 
+  const token = getToken("token");
+
+  const [updatePic] = useEditProfilePicMutation();
+  const { data } = useGetProfileQuery(token);
+
   return (
     <div>
       <Container
         className="bg-error border border-secondary rounded-b-xl"
-        sx={{ maxWidth: "220px", }}
+        sx={{ maxWidth: "220px" }}
       >
         <div className="mt-4 mb-8 ml-7">
           <img src={Image} height="70" width="70" alt="Press Varta" />
@@ -61,9 +47,19 @@ const SideNav = () => {
         <div className=" flex mb-7">
           <div>
             <Avatar
-              alt="Sandeep"
-              src="https://media.licdn.com/dms/image/C4D03AQGTVuPCGh2c-w/profile-displayphoto-shrink_100_100/0/1650885404610?e=1680134400&v=beta&t=dU06dR-eGZGvBS5lcm7CoG9Q_1aNp1MAGGljv6jJN1s"
+              sx={{ width: 60, height: 60 }}
+              alt="Admin"
+              src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/pimage/${data?.user.pimage}`}
             />
+            <Button className=" mt-1 -mb-5" component="label">
+                <EditIcon></EditIcon>
+                <input
+                  type="file"
+                  hidden
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+              </Button>
+              
           </div>
           <div className="ml-4">
             <Typography
@@ -73,7 +69,9 @@ const SideNav = () => {
             >
               Admin
             </Typography>
-            <Typography sx={{ fontWeight: "bold" }}>Sandeep</Typography>
+            <Typography sx={{ fontWeight: "bold", width: 40 }}>
+              {data?.user.name}{" "}
+            </Typography>
           </div>
         </div>
 
