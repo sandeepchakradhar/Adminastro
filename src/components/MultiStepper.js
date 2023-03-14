@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -26,7 +26,22 @@ const MultiStepper = () => {
   };
 
   const { user: phonenumber } = useSelector((state) => state.user);
-  console.log(phonenumber, "khjsdbiugsdfisdhih");
+  console.log(
+    phonenumber,
+    Object.keys(phonenumber).length,
+    "khjsdbiugsdfisdhih"
+  );
+  const [Length, setLength] = useState(0);
+  useEffect(() => {
+    setLength(Object.keys(phonenumber).length);
+
+    if (Length == 10) {
+      setactiveStep(activeStep + 1);
+    }
+  }, [phonenumber]);
+
+  console.log(Length);
+
   return (
     <Box>
       <HeaderTwo header={"Add Expert"} />
@@ -44,13 +59,12 @@ const MultiStepper = () => {
         <Button disabled={activeStep === 0} onClick={handleBack}>
           Back
         </Button>
-        
-          <Button  onClick={handleNext}>
-          {phonenumber?"Next":""}
-          </Button>
-        
-          {/* <Button onClick={handleNext}>Next</Button> */}
-      
+
+        <Button variant="contained" onClick={handleNext}>
+          {Length == 10 ? "Next" : ""}
+        </Button>
+
+        {/* <Button onClick={handleNext}>Next</Button> */}
       </Box>
     </Box>
   );
