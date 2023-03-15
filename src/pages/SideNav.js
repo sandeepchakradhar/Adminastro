@@ -15,9 +15,8 @@ import { getToken } from "../services/LocalStorage";
 import EditIcon from "@mui/icons-material/Edit";
 
 const SideNav = () => {
-  const [file, setFile] = useState();
-  console.log(file,"uploaded Image")
-
+  const [pimage, setFile] = useState();
+  console.log(pimage, "uploaded Image");
 
   //  for active navlink
 
@@ -35,6 +34,16 @@ const SideNav = () => {
   const [updatePic] = useEditProfilePicMutation();
   const { data } = useGetProfileQuery(token);
 
+  const submitPic = async () => {
+    const data = new FormData();
+    data.append("pimage", pimage);
+    if (pimage) {
+      const res = await updatePic({ data, token });
+      console.log(res, "res");
+      console.log("hbwfubducbdubcu");
+    }
+  };
+
   return (
     <div>
       <Container
@@ -51,15 +60,6 @@ const SideNav = () => {
               alt="Admin"
               src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/pimage/${data?.user.pimage}`}
             />
-            <Button className=" mt-1 -mb-5" component="label">
-                <EditIcon></EditIcon>
-                <input
-                  type="file"
-                  hidden
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-              </Button>
-              
           </div>
           <div className="ml-4">
             <Typography
@@ -73,6 +73,19 @@ const SideNav = () => {
               {data?.user.name}{" "}
             </Typography>
           </div>
+        </div>
+        <div className=" my-2 flex gap-2">
+          <Button size="small" className=" mt-1 -mb-5" component="label">
+            <EditIcon></EditIcon>
+            <input
+              type="file"
+              hidden
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </Button>
+          <Box onClick={() => submitPic()}>
+            <Button size="small">Change Pic</Button>
+          </Box>
         </div>
 
         <Stack

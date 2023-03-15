@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Avatar, Button, Checkbox, TextField } from "@mui/material";
+import { Avatar, Box, Button, Checkbox, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import EditIcon from "@mui/icons-material/Edit";
@@ -261,7 +261,10 @@ if (!dateOfBirth) {
               </div>
             </div>
           </div>
-          <Button variant="contained" type="submit">Submit</Button>
+          <Box className="mt-4">
+
+          <Button  variant="contained" type="submit">Submit</Button>
+          </Box>
         </form>
       </Container>
     </div>

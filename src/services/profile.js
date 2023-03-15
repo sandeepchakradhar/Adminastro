@@ -19,6 +19,8 @@ export const profileApi = createApi({
           },
         };
       },
+      providesTags: ["User"],
+
     }),
     getRating: builder.query({
       query: (token) => {
@@ -220,8 +222,7 @@ export const profileApi = createApi({
           body,
         };
       },
-
-      invalidatesTags: ["User"],
+      providesTags: ["User"],
     }),
     form: builder.mutation({
       query(body) {
@@ -249,17 +250,16 @@ export const profileApi = createApi({
       invalidatesTags: ["User"],
     }),
     editProfilePic: builder.mutation({
-      query({ Data, token }) {
+      query({ data, token }) {
         return {
           url: "editProfilePic",
-          method: "POST",
-          body: Data,
+          method: "PATCH",
+          body: data,
           headers: {
             authorization: `Bearer ${token}`,
           },
         };
       },
-
       invalidatesTags: ["User"],
     }),
 

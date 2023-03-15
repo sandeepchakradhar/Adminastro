@@ -35,10 +35,10 @@ const MultiStepper = () => {
   useEffect(() => {
     setLength(Object.keys(phonenumber).length);
 
-    if (Length == 10) {
+    if (Length === 10) {
       setactiveStep(activeStep + 1);
     }
-  }, [phonenumber]);
+  }, [Length,phonenumber]);
 
   console.log(Length);
 
@@ -60,9 +60,9 @@ const MultiStepper = () => {
           Back
         </Button>
 
-        <Button variant="contained" onClick={handleNext}>
-          {Length == 10 ? "Next" : ""}
-        </Button>
+        {/* <Button variant="contained" onClick={handleNext}>
+          {Length === 10 ? "Next" : ""}
+        </Button> */}
 
         {/* <Button onClick={handleNext}>Next</Button> */}
       </Box>
