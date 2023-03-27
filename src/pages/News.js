@@ -1,4 +1,4 @@
-import { Avatar, Button, Switch } from "@mui/material";
+import {  Button, Switch } from "@mui/material";
 import React, { useState } from "react";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
@@ -21,7 +21,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import { useGetAllReporterQuery } from "../services/profile";
 import { getToken } from "../services/LocalStorage";
 
 //styling start//
@@ -59,8 +58,8 @@ const News = () => {
   const [updateStatus] = useActiveNewsByIdMutation();
   console.log(data, "news");
   // for Switch
-  const [nobe, setNobe] = useState("");
-  console.log(nobe, "switch");
+  // const [nobe, setNobe] = useState("");
+  // console.log(nobe, "switch");
 
   const Loader = () => {
     if (isLoading === true) {
@@ -148,7 +147,7 @@ const News = () => {
                         alt="video"
                         src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${video}`}
                       /> */}
-                      {video.split(".")[1] == "mp4" ? (
+                      {video.split(".")[1] === "mp4" ? (
                         <div
                           style={{
                             justifyContent: "center",
@@ -156,6 +155,7 @@ const News = () => {
                           }}
                         >
                           <iframe
+                          title="video"
                             alt="video"
                             src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${video}`}
                           />
@@ -168,7 +168,7 @@ const News = () => {
                             width: 200,
                           }}
                         >
-                          <img
+                          <img alt="img"
                             src={`https://pressvartaserver.umpteeninnovation.com/public/uploads/video/${video}`}
                           />
                         </div>
